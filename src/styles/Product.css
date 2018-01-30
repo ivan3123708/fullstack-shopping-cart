@@ -1,0 +1,29 @@
+.product {
+  display: flex;
+  width: 98%;
+  height: 200px;
+  max-height: 200px;
+  margin: 10px 0 10px 20px;
+  box-shadow: 0 0 7px #d6d6d6;
+}
+
+.product img {
+  max-width: 190px;
+  max-height: 180px;
+  margin: auto;
+}
+
+.product .content {
+  width: 75%;
+  height: 190px;
+  max-height: 190px;
+  margin: auto;
+}
+
+.product .content h3 {
+  margin: 10px 0 25px 0;
+}
+
+.product .content div {
+  margin: 1.5px 0;
+}

@@ -1,4 +1,10 @@
 .container {
   width: 80%;
   margin: auto;
+  font-family: 'Roboto';
+  color: #2e3a4e;
+}
+
+.main {
+  display: flex;
 }
