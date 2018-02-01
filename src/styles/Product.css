@@ -1,6 +1,6 @@
 .product {
   display: flex;
-  width: 98%;
+  width: 97.8%;
   height: 200px;
   max-height: 200px;
   margin: 10px 0 10px 20px;
@@ -13,17 +13,32 @@
   margin: auto;
 }
 
-.product .content {
+.content {
+  display: flex;
   width: 75%;
   height: 190px;
   max-height: 190px;
   margin: auto;
 }
 
-.product .content h3 {
+.content-left {
+  width: 80%;
+}
+
+.content-left h3 {
   margin: 10px 0 25px 0;
 }
 
-.product .content div {
+.content-left div {
   margin: 1.5px 0;
+}
+
+.content-right {
+  width: 20%;
+}
+
+.content-right h2 {
+  margin: 80px 0 25px 0;
+  font-size: 30px;
+  color: #64DD17;
 }
