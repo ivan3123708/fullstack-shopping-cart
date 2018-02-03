@@ -6,19 +6,13 @@ import Checkbox from 'material-ui/Checkbox';
 import { setFilter } from '../actions/filterActions';
 import '../styles/FiltersList.css';
 
+const styles = {
+  checkbox: {
+    marginLeft: 20
+  }
+}
+
 class FiltersList extends React.Component {
-
-  state = {
-    open: false
-  };
-
-  handleClick = () => {
-    this.setState({ open: !this.state.open });
-  };
-
-  handleNestedListToggle = (item) => {
-    this.setState({ open: item.state.open });
-  };
 
   handleCheck = (e) => {
     console.log(e.target.name);
@@ -34,115 +28,105 @@ class FiltersList extends React.Component {
           <Subheader style={{ fontSize: '16px', fontWeight: 'bold' }}>Search by:</Subheader>
           <ListItem 
             primaryText="Price"
-            open={this.state.open}
-            onClick={this.handleClick}
-            onNestedListToggle={this.handleNestedListToggle}
+            initiallyOpen={false}
+            primaryTogglesNestedList={true}
             nestedItems={[
-              <ListItem key={1} primaryText="$0 - $100" leftCheckbox={<Checkbox name="price" value="0-100" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="$100 - $250" leftCheckbox={<Checkbox name="price" value="100-250" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="$250 - $500" leftCheckbox={<Checkbox name="price" value="250-500" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="$500 - $1000" leftCheckbox={<Checkbox name="price" value="500-1000" onCheck={this.handleCheck} />} />
+              <Checkbox style={styles.checkbox} label="$0 - $100" name="price" value="0-100" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="$100 - $250" name="price" value="100-250" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="$250 - $500" name="price" value="250-500" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="$500 - $1000" name="price" value="500-1000" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 
             primaryText="Brand"
-            open={this.state.open}
-            onClick={this.handleClick}
-            onNestedListToggle={this.handleNestedListToggle}
+            initiallyOpen={false}
+            primaryTogglesNestedList={true}
             nestedItems={[
-              <ListItem key={1} primaryText="Samsung" leftCheckbox={<Checkbox name="brand" value="samsung" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="Apple" leftCheckbox={<Checkbox name="brand" value="apple" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="Huawei" leftCheckbox={<Checkbox name="brand" value="huawei" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="LG" leftCheckbox={<Checkbox name="brand" value="lg" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="HTC" leftCheckbox={<Checkbox name="brand" value="htc" onCheck={this.handleCheck} />} />,
+              <Checkbox style={styles.checkbox} label="Siemens" name="brand" value="samsung" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="Apple" name="brand" value="apple" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="Huawei" name="brand" value="huawei" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="LG" name="brand" value="lg" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="HTC" name="brand" value="htc" onCheck={this.handleCheck} />,
             ]}
           />
           <ListItem 
             primaryText="Color"
-            open={this.state.open}
-            onClick={this.handleClick}
-            onNestedListToggle={this.handleNestedListToggle}
+            initiallyOpen={false}
+            primaryTogglesNestedList={true}
             nestedItems={[
-              <ListItem key={1} primaryText="Black" leftCheckbox={<Checkbox name="color" value="black" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="White" leftCheckbox={<Checkbox name="color" value="white" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="Grey" leftCheckbox={<Checkbox name="color" value="grey" onCheck={this.handleCheck} />} />
+              <Checkbox style={styles.checkbox} label="Black" name="color" value="black" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="White" name="color" value="white" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="Grey" name="color" value="grey" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 
             primaryText="OS"
-            open={this.state.open}
-            onClick={this.handleClick}
-            onNestedListToggle={this.handleNestedListToggle}
+            initiallyOpen={false}
+            primaryTogglesNestedList={true}
             nestedItems={[
-              <ListItem key={1} primaryText="Android" leftCheckbox={<Checkbox name="os" value="android" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="iOS" leftCheckbox={<Checkbox name="os" value="iOs" onCheck={this.handleCheck} />} />
+              <Checkbox style={styles.checkbox} label="Android" name="os" value="android" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="iOS" name="os" value="iOs" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 
             primaryText="Internal memory"
-            open={this.state.open}
-            onClick={this.handleClick}
-            onNestedListToggle={this.handleNestedListToggle}
+            initiallyOpen={false}
+            primaryTogglesNestedList={true}
             nestedItems={[
-              <ListItem key={1} primaryText="8GB" leftCheckbox={<Checkbox name="internalMemory" value="8" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="16GB" leftCheckbox={<Checkbox name="internalMemory" value="16" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="32GB" leftCheckbox={<Checkbox name="internalMemory" value="32" onCheck={this.handleCheck} />} />
+              <Checkbox style={styles.checkbox} label="8GB" name="internalMemory" value="8" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="16GB" name="internalMemory" value="16" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="32GB" name="internalMemory" value="32" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 
             primaryText="RAM"
-            open={this.state.open}
-            onClick={this.handleClick}
-            onNestedListToggle={this.handleNestedListToggle}
+            initiallyOpen={false}
+            primaryTogglesNestedList={true}
             nestedItems={[
-              <ListItem key={1} primaryText="1GB" leftCheckbox={<Checkbox name="ram" value="1" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="2GB" leftCheckbox={<Checkbox name="ram" value="2" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="3GB" leftCheckbox={<Checkbox name="ram" value="3" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="4GB" leftCheckbox={<Checkbox name="ram" value="4" onCheck={this.handleCheck} />} />
+              <Checkbox style={styles.checkbox} label="1GB" name="ram" value="1" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="2GB" name="ram" value="2" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="3GB" name="ram" value="3" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="4GB" name="ram" value="4" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 
             primaryText="Display size"
-            open={this.state.open}
-            onClick={this.handleClick}
-            onNestedListToggle={this.handleNestedListToggle}
+            initiallyOpen={false}
+            primaryTogglesNestedList={true}
             nestedItems={[
-              <ListItem key={1} primaryText="5''" leftCheckbox={<Checkbox name="displaySize" value="5" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="5.2''" leftCheckbox={<Checkbox name="displaySize" value="5.2" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="5.5''" leftCheckbox={<Checkbox name="displaySize" value="5.5" onCheck={this.handleCheck} />} />
+              <Checkbox style={styles.checkbox} label="5''" name="displaySize" value="5" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="5.2''" name="displaySize" value="5.2" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="5.5''" name="displaySize" value="5.5" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 
             primaryText="Display resolution"
-            open={this.state.open}
-            onClick={this.handleClick}
-            onNestedListToggle={this.handleNestedListToggle}
+            initiallyOpen={false}
+            primaryTogglesNestedList={true}
             nestedItems={[
-              <ListItem key={1} primaryText="1280x720" leftCheckbox={<Checkbox name="displayResolution" value="1280x720" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="1920x1080" leftCheckbox={<Checkbox name="displayResolution" value="1920x1080" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="2560x1440" leftCheckbox={<Checkbox name="displayResolution" value="2560x1440" onCheck={this.handleCheck} />} />
+              <Checkbox style={styles.checkbox} label="1280x720" name="displayResolution" value="1280x720" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="1920x1080" name="displayResolution" value="1920x1080" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="2560x1440" name="displayResolution" value="2560x1440" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 
             primaryText="Camera"
-            open={this.state.open}
-            onClick={this.handleClick}
-            onNestedListToggle={this.handleNestedListToggle}
+            initiallyOpen={false}
+            primaryTogglesNestedList={true}
             nestedItems={[
-              <ListItem key={1} primaryText="8Mpix" leftCheckbox={<Checkbox name="camera" value="8" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="12Mpix" leftCheckbox={<Checkbox name="camera" value="12" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="13Mpix" leftCheckbox={<Checkbox name="camera" value="13" onCheck={this.handleCheck} />} />
+              <Checkbox style={styles.checkbox} label="8Mpix" name="camera" value="8" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="12Mpix" name="camera" value="12" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="13Mpix" name="camera" value="13" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 
             primaryText="CPU"
-            open={this.state.open}
-            onClick={this.handleClick}
-            onNestedListToggle={this.handleNestedListToggle}
+            initiallyOpen={false}
+            primaryTogglesNestedList={true}
             nestedItems={[
-              <ListItem key={1} primaryText="Quad Core" leftCheckbox={<Checkbox name="cpu" value="quad core" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="Hexa Core" leftCheckbox={<Checkbox name="cpu" value="hexa core" onCheck={this.handleCheck} />} />,
-              <ListItem key={1} primaryText="Octa Core" leftCheckbox={<Checkbox name="cpu" value="octa core" onCheck={this.handleCheck} />} />
+              <Checkbox style={styles.checkbox} label="Quad Core" name="cpu" value="quad core" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="Hexa Core" name="cpu" value="hexa core" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="Octa Core" name="cpu" value="octa core" onCheck={this.handleCheck} />
             ]}
           />
         </List>
