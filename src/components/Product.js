@@ -3,21 +3,21 @@ import RaisedButton from 'material-ui/RaisedButton';
 import NavigateNext from 'material-ui/svg-icons/image/navigate-next';
 import '../styles/Product.css';
 
-const Product = () => (
+const Product = ({ item }) => (
   <div className="product">
-    <img src="./img/a3.JPG" />
+    <img src={item.info.photo} />
     <div className="content">
       <div className="content-left">
-        <h3>SAMSUNG A3 2015</h3>
-        <div><b>Display size: </b><span>15 inches</span></div>
-        <div><b>Display resolution: </b><span>1920x1440</span></div>
-        <div><b>CPU: </b><span>1920x1440</span></div>
-        <div><b>Internal memory: </b><span>1920x1440</span></div>
-        <div><b>RAM: </b><span>1920x1440</span></div>
-        <div><b>Camera: </b><span>1920x1440</span></div>
+        <h3>{item.info.name}</h3>
+        <div><b>Display size: </b><span>{item.info.displaySize}</span></div>
+        <div><b>Display resolution: </b><span>{item.info.displayResolution}</span></div>
+        <div><b>CPU: </b><span>{item.info.cpu}</span></div>
+        <div><b>Internal memory: </b><span>{item.info.internalMemory}</span></div>
+        <div><b>RAM: </b><span>{item.info.ram}</span></div>
+        <div><b>Camera: </b><span>{item.info.camera}</span></div>
       </div>
       <div className="content-right">
-        <h2>$250.50</h2>
+        <h2>{item.info.price}</h2>
         <RaisedButton
           className="btn"
           label="See more"

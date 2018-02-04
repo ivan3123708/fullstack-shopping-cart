@@ -65,7 +65,7 @@ class FiltersList extends React.Component {
             primaryTogglesNestedList={true}
             nestedItems={[
               <Checkbox style={styles.checkbox} label="Android" name="os" value="android" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="iOS" name="os" value="iOs" onCheck={this.handleCheck} />
+              <Checkbox style={styles.checkbox} label="iOS" name="os" value="ios" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 

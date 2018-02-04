@@ -9,11 +9,12 @@ let defaultFiltersState = {
   displayResolution: [],
   camera: [],
   cpu: []
-}
+};
 
 const filtersReducer = (state = defaultFiltersState, action) => {
   switch (action.type) {
     case 'SET_FILTER':
+      console.log(state);
       state[action.filterType].push(action.filter);
       return {
         ...state
