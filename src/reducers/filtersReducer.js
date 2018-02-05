@@ -14,8 +14,12 @@ let defaultFiltersState = {
 const filtersReducer = (state = defaultFiltersState, action) => {
   switch (action.type) {
     case 'SET_FILTER':
-      console.log(state);
-      state[action.filterType].push(action.filter);
+      if(state[action.filterType].includes(action.filter)) {
+        state[action.filterType] = state[action.filterType].filter((item) => item !== action.filter);
+      } else {
+        state[action.filterType].push(action.filter);
+      }
+
       return {
         ...state
       }

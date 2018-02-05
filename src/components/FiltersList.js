@@ -15,9 +15,6 @@ const styles = {
 class FiltersList extends React.Component {
 
   handleCheck = (e) => {
-    console.log(e.target.name);
-    console.log(e.target.value);
-
     this.props.setFilter(e.target.name, e.target.value);
   };
 
@@ -42,7 +39,7 @@ class FiltersList extends React.Component {
             initiallyOpen={false}
             primaryTogglesNestedList={true}
             nestedItems={[
-              <Checkbox style={styles.checkbox} label="Siemens" name="brand" value="samsung" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="Samsung" name="brand" value="samsung" onCheck={this.handleCheck} />,
               <Checkbox style={styles.checkbox} label="Apple" name="brand" value="apple" onCheck={this.handleCheck} />,
               <Checkbox style={styles.checkbox} label="Huawei" name="brand" value="huawei" onCheck={this.handleCheck} />,
               <Checkbox style={styles.checkbox} label="LG" name="brand" value="lg" onCheck={this.handleCheck} />,
