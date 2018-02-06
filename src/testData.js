@@ -16,7 +16,7 @@ const catalog = [
       batery: 'Non-removable Li-Ion 1900 mAh battery',
       color: 'Silver',
       price: '$150.00',
-      photo: './img/samsung_galaxy_a3.JPG'
+      photo: '/img/samsung_galaxy_a3.JPG'
     },
     tags: {
       price: '150',
@@ -48,7 +48,7 @@ const catalog = [
       batery: 'Non-removable Li-Ion 2716 mAh battery (10.35 Wh)',
       color: 'Silver',
       price: '$950.00',
-      photo: './img/apple_iphone_x.jpg'
+      photo: '/img/apple_iphone_x.jpg'
     },
     tags: {
       price: '950',
@@ -80,7 +80,7 @@ const catalog = [
       batery: 'Non-removable Li-Po 3300 mAh battery',
       color: 'Silver',
       price: '$800.00',
-      photo: './img/lg_g6.jpg'
+      photo: '/img/lg_g6.jpg'
     },
     tags: {
       price: '800',
