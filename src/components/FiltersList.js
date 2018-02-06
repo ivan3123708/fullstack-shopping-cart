@@ -7,6 +7,13 @@ import { setFilter } from '../actions/filterActions';
 import '../styles/FiltersList.css';
 
 const styles = {
+  subheader: {
+    fontSize: '16px',
+    fontWeight: 'bold' 
+  },
+  listItem: {
+    borderTop: '1px solid #dcdcdc'
+  },
   checkbox: {
     marginLeft: 20
   }
@@ -22,8 +29,9 @@ class FiltersList extends React.Component {
     return (
       <div className="filtersList">
         <List>
-          <Subheader style={{ fontSize: '16px', fontWeight: 'bold' }}>Search by:</Subheader>
+          <Subheader style={styles.subheader}>Search by:</Subheader>
           <ListItem 
+            style={styles.listItem}
             primaryText="Price"
             initiallyOpen={false}
             primaryTogglesNestedList={true}
@@ -35,6 +43,7 @@ class FiltersList extends React.Component {
             ]}
           />
           <ListItem 
+            style={styles.listItem}
             primaryText="Brand"
             initiallyOpen={false}
             primaryTogglesNestedList={true}
@@ -47,6 +56,7 @@ class FiltersList extends React.Component {
             ]}
           />
           <ListItem 
+            style={styles.listItem}
             primaryText="Color"
             initiallyOpen={false}
             primaryTogglesNestedList={true}
@@ -57,6 +67,7 @@ class FiltersList extends React.Component {
             ]}
           />
           <ListItem 
+            style={styles.listItem}
             primaryText="OS"
             initiallyOpen={false}
             primaryTogglesNestedList={true}
@@ -66,6 +77,7 @@ class FiltersList extends React.Component {
             ]}
           />
           <ListItem 
+            style={styles.listItem}
             primaryText="Internal memory"
             initiallyOpen={false}
             primaryTogglesNestedList={true}
@@ -76,6 +88,7 @@ class FiltersList extends React.Component {
             ]}
           />
           <ListItem 
+            style={styles.listItem}
             primaryText="RAM"
             initiallyOpen={false}
             primaryTogglesNestedList={true}
@@ -87,6 +100,7 @@ class FiltersList extends React.Component {
             ]}
           />
           <ListItem 
+            style={styles.listItem}
             primaryText="Display size"
             initiallyOpen={false}
             primaryTogglesNestedList={true}
@@ -97,6 +111,7 @@ class FiltersList extends React.Component {
             ]}
           />
           <ListItem 
+            style={styles.listItem}
             primaryText="Display resolution"
             initiallyOpen={false}
             primaryTogglesNestedList={true}
@@ -107,6 +122,7 @@ class FiltersList extends React.Component {
             ]}
           />
           <ListItem 
+            style={styles.listItem}
             primaryText="Camera"
             initiallyOpen={false}
             primaryTogglesNestedList={true}
@@ -117,6 +133,7 @@ class FiltersList extends React.Component {
             ]}
           />
           <ListItem 
+            style={styles.listItem}
             primaryText="CPU"
             initiallyOpen={false}
             primaryTogglesNestedList={true}

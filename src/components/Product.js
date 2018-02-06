@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import RaisedButton from 'material-ui/RaisedButton';
 import NavigateNext from 'material-ui/svg-icons/image/navigate-next';
 import '../styles/Product.css';
@@ -19,6 +20,7 @@ const Product = ({ item }) => (
       <div className="content-right">
         <h2>{item.info.price}</h2>
         <RaisedButton
+          containerElement={<Link to={`/product/${item.id}`} />}
           className="btn"
           label="See more"
           labelPosition="before"

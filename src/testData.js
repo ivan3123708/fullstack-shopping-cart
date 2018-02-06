@@ -1,5 +1,6 @@
 const catalog = [
   {
+    id: 1,
     info: {
       name: 'Samsung Galaxy A3',
       dimensions: '130.1 x 65.5 x 6.9 mm',
@@ -31,6 +32,7 @@ const catalog = [
     }
   },
   {
+    id: 2,
     info: {
       name: 'Apple iPhone X',
       dimensions: '143.6 x 70.9 x 7.7 mm',
@@ -62,6 +64,7 @@ const catalog = [
     }
   },
   {
+    id: 3,
     info: {
       name: 'LG G6',
       dimensions: '148.9 x 71.9 x 7.9 mm',
