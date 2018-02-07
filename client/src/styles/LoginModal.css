@@ -1,0 +1,37 @@
+.login-modal {
+  width: 30%;
+  height: 400px;
+  margin: auto;
+  margin-top: 100px;
+  background: white;
+  color: #2e3a4e;
+  border: 1px solid #00BCD4;
+  border-radius: 10px;
+  outline: none;
+}
+
+.login-modal .form {
+  width: 70%;
+  margin: auto;
+  margin-top: 10px;
+  text-align: center;
+  font-family: 'Roboto';
+}
+
+.login-modal .form h1 {
+  color: #00BCD4;
+}
+
+.login-modal .form .btn {
+  margin: 30px auto 50px auto;
+}
+
+.login-modal .form p {
+  margin: 0;
+  font-style: italic;
+}
+
+.login-modal .form a {
+  color: #00BCD4;
+  cursor: pointer;
+}

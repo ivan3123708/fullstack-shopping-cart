@@ -1,0 +1,36 @@
+.register-modal {
+  width: 30%;
+  height: 600px;
+  margin: auto;
+  margin-top: 100px;
+  background: white;
+  border: 1px solid #00BCD4;
+  border-radius: 10px;
+  outline: none;
+}
+
+.register-modal .form {
+  width: 70%;
+  margin: auto;
+  margin-top: 10px;
+  text-align: center;
+  font-family: 'Roboto';
+}
+
+.register-modal .form h1 {
+  color: #00BCD4;
+}
+
+.register-modal .form .btn {
+  margin: 30px auto 50px auto;
+}
+
+.register-modal .form p {
+  margin: 0;
+  font-style: italic;
+}
+
+.register-modal .form a {
+  color: #00BCD4;
+  cursor: pointer;
+}

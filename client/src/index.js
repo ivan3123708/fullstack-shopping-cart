@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import ShoppingCart from './components/ShoppingCart';
-import testReducer from './reducers/testReducer';
+import userReducer from './reducers/userReducer';
 import catalogReducer from './reducers/catalogReducer';
 import filtersReducer from './reducers/filtersReducer';
 
 const store = createStore(combineReducers({
-  test: testReducer,
+  user: userReducer,
   catalog: catalogReducer,
   filters: filtersReducer
 }));

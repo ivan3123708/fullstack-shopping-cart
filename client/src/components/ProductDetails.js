@@ -72,7 +72,7 @@ const ProductDetails = ({ product }) => (
         <span className="price-text">Amount: </span>
         <span><input type="number" name="amount"/></span>
         <RaisedButton
-          containerElement={<Link to="/" />}
+          containerElement={<a href="/api/hello" />}
           className="btn"
           label="Add to cart"
           labelPosition="before"
