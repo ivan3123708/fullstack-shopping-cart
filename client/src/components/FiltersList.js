@@ -36,10 +36,10 @@ class FiltersList extends React.Component {
             initiallyOpen={false}
             primaryTogglesNestedList={true}
             nestedItems={[
-              <Checkbox style={styles.checkbox} label="$0 - $100" name="price" value="0-100" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="$100 - $250" name="price" value="100-250" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="$250 - $500" name="price" value="250-500" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="$500 - $1000" name="price" value="500-1000" onCheck={this.handleCheck} />
+              <Checkbox style={styles.checkbox} label="< $250" name="price" value="<250" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="$250 - $5000" name="price" value="250-500" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="$500 - $750" name="price" value="500-750" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="$750 >" name="price" value="750>" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 

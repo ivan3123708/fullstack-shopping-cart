@@ -10,20 +10,27 @@ const LoginModal = (props) => (
     isOpen={props.isOpen}
     onRequestClose={props.onRequestClose}
   >
-    <div className="form">
+    <form className="form" action="/api/login" method="POST">
       <h1>Log In</h1>
       <TextField
         hintText="Enter Username"
         floatingLabelText="Username"
+        name="username"
       /><br />
       <TextField
         hintText="Enter Password"
         floatingLabelText="Password"
+        name="password"
         type="password"
       /><br />
-      <RaisedButton className="btn" label="Submit" primary={true} />
+      <RaisedButton 
+        className="btn" 
+        label="Submit" 
+        primary={true} 
+        type="submit"
+      />
       <p>Don't have an account yet? <a onClick={props.switch}>Register here</a>.</p>
-    </div>
+    </form>
   </Modal>
 );
 

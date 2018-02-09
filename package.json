@@ -6,9 +6,16 @@
   "author": "",
   "license": "ISC",
   "scripts": {
+    "start:dev": "nodemon server.js",
+    "start:client": "npm run start:dev --prefix client",
+    "start:dev-full": "concurrently \"npm run start:dev\" \"npm run start:client\"",
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.16.2"
+    "body-parser": "^1.18.2",
+    "concurrently": "^3.5.1",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.3",
+    "nodemon": "^1.14.12"
   }
 }
