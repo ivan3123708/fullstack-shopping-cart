@@ -36,10 +36,10 @@ class FiltersList extends React.Component {
             initiallyOpen={false}
             primaryTogglesNestedList={true}
             nestedItems={[
-              <Checkbox style={styles.checkbox} label="< $250" name="price" value="<250" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="$250 - $5000" name="price" value="250-500" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="$500 - $750" name="price" value="500-750" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="$750 >" name="price" value="750>" onCheck={this.handleCheck} />
+              <Checkbox style={styles.checkbox} label="< $250" name="priceRange" value="<250" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="$250 - $500" name="priceRange" value="250-500" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="$500 - $750" name="priceRange" value="500-750" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="$750 >" name="priceRange" value="750>" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 
@@ -82,9 +82,10 @@ class FiltersList extends React.Component {
             initiallyOpen={false}
             primaryTogglesNestedList={true}
             nestedItems={[
-              <Checkbox style={styles.checkbox} label="8GB" name="internalMemory" value="8" onCheck={this.handleCheck} />,
               <Checkbox style={styles.checkbox} label="16GB" name="internalMemory" value="16" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="32GB" name="internalMemory" value="32" onCheck={this.handleCheck} />
+              <Checkbox style={styles.checkbox} label="64GB" name="internalMemory" value="64" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="128GB" name="internalMemory" value="128" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="256GB" name="internalMemory" value="256" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 
@@ -94,9 +95,9 @@ class FiltersList extends React.Component {
             primaryTogglesNestedList={true}
             nestedItems={[
               <Checkbox style={styles.checkbox} label="1GB" name="ram" value="1" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="2GB" name="ram" value="2" onCheck={this.handleCheck} />,
               <Checkbox style={styles.checkbox} label="3GB" name="ram" value="3" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="4GB" name="ram" value="4" onCheck={this.handleCheck} />
+              <Checkbox style={styles.checkbox} label="4GB" name="ram" value="4" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="6GB" name="ram" value="6" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 
@@ -105,9 +106,12 @@ class FiltersList extends React.Component {
             initiallyOpen={false}
             primaryTogglesNestedList={true}
             nestedItems={[
-              <Checkbox style={styles.checkbox} label="5''" name="displaySize" value="5" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="5.2''" name="displaySize" value="5.2" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="5.5''" name="displaySize" value="5.5" onCheck={this.handleCheck} />
+              <Checkbox style={styles.checkbox} label="4.5''" name="displaySize" value="4.5" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="5.1''" name="displaySize" value="5.1" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="5.5''" name="displaySize" value="5.5" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="5.8''" name="displaySize" value="5.8" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="6.0''" name="displaySize" value="6.0" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="6.3''" name="displaySize" value="6.3" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 
@@ -116,9 +120,12 @@ class FiltersList extends React.Component {
             initiallyOpen={false}
             primaryTogglesNestedList={true}
             nestedItems={[
-              <Checkbox style={styles.checkbox} label="1280x720" name="displayResolution" value="1280x720" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="1920x1080" name="displayResolution" value="1920x1080" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="2560x1440" name="displayResolution" value="2560x1440" onCheck={this.handleCheck} />
+              <Checkbox style={styles.checkbox} label="540x960" name="displayResolution" value="540x960" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="1080x1920" name="displayResolution" value="1080x1920" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="1125x2436" name="displayResolution" value="1125x2436" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="1440x2560" name="displayResolution" value="1440x2560" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="1440x2880" name="displayResolution" value="1440x2880" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="1440x2960" name="displayResolution" value="1440x2960" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 
@@ -129,7 +136,8 @@ class FiltersList extends React.Component {
             nestedItems={[
               <Checkbox style={styles.checkbox} label="8Mpix" name="camera" value="8" onCheck={this.handleCheck} />,
               <Checkbox style={styles.checkbox} label="12Mpix" name="camera" value="12" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="13Mpix" name="camera" value="13" onCheck={this.handleCheck} />
+              <Checkbox style={styles.checkbox} label="13Mpix" name="camera" value="13" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="16Mpix" name="camera" value="16" onCheck={this.handleCheck} />
             ]}
           />
           <ListItem 
@@ -138,9 +146,9 @@ class FiltersList extends React.Component {
             initiallyOpen={false}
             primaryTogglesNestedList={true}
             nestedItems={[
-              <Checkbox style={styles.checkbox} label="Quad Core" name="cpu" value="quad core" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="Hexa Core" name="cpu" value="hexa core" onCheck={this.handleCheck} />,
-              <Checkbox style={styles.checkbox} label="Octa Core" name="cpu" value="octa core" onCheck={this.handleCheck} />
+              <Checkbox style={styles.checkbox} label="Quad Core" name="cpu" value="quad_core" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="Hexa Core" name="cpu" value="hexa_core" onCheck={this.handleCheck} />,
+              <Checkbox style={styles.checkbox} label="Octa Core" name="cpu" value="octa_core" onCheck={this.handleCheck} />
             ]}
           />
         </List>

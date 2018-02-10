@@ -1,5 +1,5 @@
 let defaultFiltersState = {
-  price: [],
+  priceRange: [],
   brand: [],
   color: [],
   os: [],

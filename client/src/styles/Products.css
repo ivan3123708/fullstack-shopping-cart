@@ -1,3 +1,7 @@
 .products {
   width: 100%;
 }
+
+.products-handle {
+  border: 1px solid red;
+}

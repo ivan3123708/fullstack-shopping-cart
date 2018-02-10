@@ -18,7 +18,7 @@ const Product = ({ item }) => (
         <div><b>Camera: </b><span>{item.info.camera}</span></div>
       </div>
       <div className="content-right">
-        <h2>{item.info.price}</h2>
+        <h2>${item.info.price}.00</h2>
         <RaisedButton
           containerElement={<Link to={`/product/${item.id}`} />}
           className="btn"
