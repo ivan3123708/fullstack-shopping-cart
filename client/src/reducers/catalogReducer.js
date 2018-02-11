@@ -1,13 +1,9 @@
-import catalog from '../testData';
-
-const defaultCatalogState = catalog;
-
-const catalogReducer = (state = defaultCatalogState, action) => {
+const catalogReducer = (state = [], action) => {
   switch (action.type) {
     case 'INIT_CATALOG':
-      return {
-        ...state
-      }
+      return [
+        ...action.catalog
+      ]
     default:
       return state
   }

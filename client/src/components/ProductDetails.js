@@ -85,7 +85,7 @@ const ProductDetails = ({ product }) => (
 );
 
 const mapStateToProps = (state, props) => ({
-  product: state.catalog.find((item) => item.id == props.match.params.id)
+  product: state.catalog.find((item) => item._id == props.match.params.id)
 });
 
 export default connect(mapStateToProps)(ProductDetails);

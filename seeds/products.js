@@ -1,3 +1,6 @@
+const mongoose = require('mongoose');
+const Product = require('../models/Product');
+
 const products = [
   {
     info: {
@@ -310,3 +313,24 @@ const products = [
     }
   }
 ];
+
+const seedProducts = () => {
+  Product.remove({}, (err) => {
+    if(err) {
+      console.log(err);
+    }
+    console.log('PRODUCTS REMOVED');
+    products.forEach((product) => {
+      Product.create(product, (err, createdProduct) => {
+        if(err) {
+          console.log(err);
+        } else {
+          console.log('PRODUCT CREATED');
+          createdProduct.save();
+        }
+      })
+    })
+  })
+}
+
+module.exports = seedProducts;

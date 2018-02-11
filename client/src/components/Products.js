@@ -27,7 +27,11 @@ class Products extends React.Component {
   }
   
   render() {
-    return (
+    if(this.props.catalog.length === 0) {
+      return (
+        <h1 className="loader">LOADING DATA...</h1>
+      )
+    } else return (
       <div className="products">
         <div className="products-handle">
           <div className="left">
@@ -65,7 +69,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  initCatalog : (dispatch) => initCatalog,
+  initCatalog: () => dispatch(initCatalog()),
   setSortBy: (sortBy) => dispatch(setSortBy(sortBy)),
   clearFilters: () => dispatch(clearFilters())
 });

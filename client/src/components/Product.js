@@ -21,7 +21,7 @@ const Product = ({ item }) => (
         <p><b>Price:</b></p>
         <h2>${item.info.price}.00</h2>
         <RaisedButton
-          containerElement={<Link to={`/product/${item.id}`} />}
+          containerElement={<Link to={`/product/${item._id}`} />}
           className="btn"
           label="See more"
           labelPosition="before"
