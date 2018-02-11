@@ -4,4 +4,8 @@ const setFilter = (filterType, filter) => ({
   filter: filter
 });
 
-export { setFilter };
+const clearFilters = () => ({
+  type: 'CLEAR_FILTERS'
+});
+
+export { setFilter, clearFilters };

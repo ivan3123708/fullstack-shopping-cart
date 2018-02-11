@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { initCatalog } from '../actions/catalogActions';
+import { clearFilters } from '../actions/filterActions';
 import { setSortBy } from '../actions/sortActions';
+import filterProducts from '../selectors/filterProducts';
+import sortProducts from '../selectors/sortProducts';
+import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import Product from './Product';
-import filterProducts from '../selectors/filterProducts';
-import sortProducts from '../selectors/sortProducts';
 import '../styles/Products.css';
 
 class Products extends React.Component {
@@ -28,17 +30,27 @@ class Products extends React.Component {
     return (
       <div className="products">
         <div className="products-handle">
-          <span>Products found: {this.props.catalog.length}</span>
-          <span>Sort By: </span>
-          <SelectField
-          value={this.state.value}
-          onChange={this.handleChange}
-          >
-            <MenuItem value="Name: A-Z" primaryText="Name: A-Z" />
-            <MenuItem value="Name: Z-A" primaryText="Name: Z-A" />
-            <MenuItem value="Price: Low to High" primaryText="Price: Low to High" />
-            <MenuItem value="Price: High to Low" primaryText="Price: High to Low" />
-          </SelectField>
+          <div className="left">
+            <span><b>Products found: </b>{this.props.catalog.length}</span>
+            <RaisedButton
+              className="btn"
+              label="Clear Filters"
+              onClick={this.props.clearFilters}
+              secondary={true}
+            />
+          </div>
+          <div className="right">
+            <span><b>Sort By:</b></span>
+            <SelectField
+              value={this.state.value}
+              onChange={this.handleChange}
+            >
+              <MenuItem value="Name: A-Z" primaryText="Name: A-Z" />
+              <MenuItem value="Name: Z-A" primaryText="Name: Z-A" />
+              <MenuItem value="Price: Low to High" primaryText="Price: Low to High" />
+              <MenuItem value="Price: High to Low" primaryText="Price: High to Low" />
+            </SelectField>
+          </div>
         </div>
         {this.props.catalog.map((item) => {
           return <Product item={item} />
@@ -54,7 +66,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   initCatalog : (dispatch) => initCatalog,
-  setSortBy: (sortBy) => dispatch(setSortBy(sortBy))
+  setSortBy: (sortBy) => dispatch(setSortBy(sortBy)),
+  clearFilters: () => dispatch(clearFilters())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products);

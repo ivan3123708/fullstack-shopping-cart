@@ -68,7 +68,7 @@ const ProductDetails = ({ product }) => (
           </tr>
         </table>
         <span className="price-text">Price: </span>
-        <span className="price-num">{product.info.price}</span>
+        <span className="price-num">${product.info.price}.00</span>
         <span className="price-text">Amount: </span>
         <span><input type="number" name="amount"/></span>
         <RaisedButton

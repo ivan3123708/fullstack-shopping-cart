@@ -10,6 +10,11 @@ class Header extends React.Component {
     registerModalOpen: false
   }
 
+  styles = {
+    fontFamily: 'Bungee Inline',
+    fontStyle: 'italic'
+  }
+
   toggleLoginModal = () => {
     this.setState((prevState) => ({ loginModalOpen: !prevState.loginModalOpen }))
   }
@@ -27,9 +32,10 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="header">
         <AppBar 
-          title="MobileHouse"
+          style={this.styles}
+          title="MOBILE SHOP"
           iconElementRight={<FlatButton 
             label="LOGIN"
             onClick={this.toggleLoginModal}

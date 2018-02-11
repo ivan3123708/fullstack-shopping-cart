@@ -1,5 +1,6 @@
 const catalog = [
   {
+    id: 1,
     info: {
       name: 'Apple iPhone 8 Plus',
       dimensions: '158.4 x 78.1 x 7.5 mm',
@@ -31,6 +32,7 @@ const catalog = [
     }
   },
   {
+    id: 2,
     info: {
       name: 'Apple iPhone X',
       dimensions: '143.6 x 70.9 x 7.7 mm',
@@ -62,6 +64,7 @@ const catalog = [
     }
   },
   {
+    id: 3,
     info: {
       name: 'HTC U11',
       dimensions: '153.9 x 75.9 x 7.9 mm',
@@ -93,6 +96,7 @@ const catalog = [
     }
   },
   {
+    id: 4,
     info: {
       name: 'Huawei Mate 10 Pro',
       dimensions: '154.2 x 74.5 x 7.9 mm',
@@ -124,6 +128,7 @@ const catalog = [
     }
   },
   {
+    id: 5,
     info: {
       name: 'Huawei P10',
       dimensions: '145.3 x 69.3 x 7 mm',
@@ -155,6 +160,7 @@ const catalog = [
     }
   },
   {
+    id: 6,
     info: {
       name: 'LG G6',
       dimensions: '148.9 x 71.9 x 7.9 mm',
@@ -186,6 +192,7 @@ const catalog = [
     }
   },
   {
+    id: 7,
     info: {
       name: 'LG V30',
       dimensions: '151.7 x 75.4 x 7.3 mm',
@@ -217,6 +224,7 @@ const catalog = [
     }
   },
   {
+    id: 8,
     info: {
       name: 'Samsung Galaxy A3',
       dimensions: '130.1 x 65.5 x 6.9 mm',
@@ -248,6 +256,7 @@ const catalog = [
     }
   },
   {
+    id: 9,
     info: {
       name: 'Samsung Galaxy Note 8',
       dimensions: '162.5 x 74.8 x 8.6 mm',
@@ -279,6 +288,7 @@ const catalog = [
     }
   },
   {
+    id: 10,
     info: {
       name: 'Samsung Galaxy S8',
       dimensions: '148.9 x 68.1 x 8 mm',

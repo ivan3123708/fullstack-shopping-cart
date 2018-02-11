@@ -7,4 +7,5 @@
 
 .homepage {
   display: flex;
+  justify-content: space-between;
 }

@@ -1,7 +1,31 @@
 .products {
-  width: 100%;
+  width: 78%;
+  margin: 10px 0;
 }
 
 .products-handle {
-  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #81D4FA;
+}
+
+.products-handle .left {
+  height: 37px;
+  margin: 10px 0;
+}
+
+.products-handle .left .btn {
+  margin-left: 70px;
+}
+
+.products-handle .right {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  height: 50px;
+}
+
+.products-handle .right span {
+  margin: 18px 20px 0 0;
 }

@@ -22,7 +22,20 @@ const filtersReducer = (state = defaultFiltersState, action) => {
 
       return {
         ...state
-      }
+      };
+    case 'CLEAR_FILTERS':
+      return {
+        priceRange: [],
+        brand: [],
+        color: [],
+        os: [],
+        internalMemory: [],
+        ram: [],
+        displaySize: [],
+        displayResolution: [],
+        camera: [],
+        cpu: []
+      };
     default:
       return state
   }

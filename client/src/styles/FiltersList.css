@@ -1,9 +1,7 @@
 .filtersList {
-  width: 275px;
+  width: 20%;
+  height:100%;
+  min-height: auto;
   margin: 10px 0;
   background-color: #f5f5f5;
-}
-
-checkBox {
-  color: blue;
 }
