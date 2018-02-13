@@ -13,7 +13,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   combineReducers({
-    user: userReducer,
+    loggedUser: userReducer,
     catalog: catalogReducer,
     filters: filtersReducer,
     sortBy: sortReducer

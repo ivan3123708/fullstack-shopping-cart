@@ -10,12 +10,13 @@ const LoginModal = (props) => (
     isOpen={props.isOpen}
     onRequestClose={props.onRequestClose}
   >
-    <form className="form" action="/api/login" method="POST">
+    <form className="form" action="/auth/login" method="POST">
       <h1>Log In</h1>
       <TextField
         hintText="Enter Username"
         floatingLabelText="Username"
         name="username"
+        autoFocus
       /><br />
       <TextField
         hintText="Enter Password"

@@ -1,20 +1,7 @@
-let defaultUserState = {
-  isLogged: false,
-  data: {
-    username: '',
-    password: ''
-  },
-  cart: []
-};
-
-const userReducer = (state = defaultUserState, action) => {
+const userReducer = (state = null, action) => {
   switch(action.type) {
-    case 'TOGGLE_LOGGED':
-    console.log(state);
-      return {
-        ...state,
-        isLogged: true
-      }
+    case 'GET_USER':
+      return action.user
     default: 
       return state
   }

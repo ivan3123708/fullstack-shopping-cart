@@ -10,12 +10,13 @@ const RegisterModal = (props) => (
     isOpen={props.isOpen}
     onRequestClose={props.onRequestClose}
   >
-    <form className="form" action="/api/register" method="POST">
+    <form className="form" action="/auth/register" method="POST">
       <h1>Register</h1>
       <TextField
         hintText="Enter Username"
         floatingLabelText="Username"
         name="username"
+        autoFocus
       /><br />
       <TextField
         hintText="Enter Password"
