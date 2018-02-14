@@ -5,6 +5,11 @@
   max-height: 200px;
   margin: 10px 0;
   box-shadow: 0 0 7px #d6d6d6;
+  transition: .3s;
+}
+
+.product:hover {
+  box-shadow: 0 0 7px #b3b3b3;
 }
 
 .product img {

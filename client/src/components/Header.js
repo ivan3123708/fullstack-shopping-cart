@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getUser } from '../actions/userActions';
+import { Link } from 'react-router-dom';
 import { AppBar, FlatButton } from 'material-ui';
+import Person from 'material-ui/svg-icons/social/person';
+import ShoppingCart from 'material-ui/svg-icons/action/shopping-cart.js';
+import Input from 'material-ui/svg-icons/action/input.js';
 import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
 
@@ -13,8 +17,16 @@ class Header extends React.Component {
   }
 
   styles = {
-    fontFamily: 'Bungee Inline',
-    fontStyle: 'italic'
+    title: {
+      fontFamily: 'Bungee Inline',
+      fontStyle: 'italic'
+    },
+    menu: { 
+      marginTop: '5px'
+    },
+    btn: {
+      color: 'white'
+    }
   }
 
   toggleLoginModal = () => {
@@ -37,17 +49,20 @@ class Header extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="header">
         <AppBar 
           title="MOBILE SHOP"
-          titleStyle={this.styles}
+          titleStyle={this.styles.title}
           showMenuIconButton={false}
           iconElementRight={
             this.props.loggedUser ? 
-              <FlatButton label="LOGOUT" containerElement={<a href="/auth/logout"/>} /> : 
-              <FlatButton label="LOGIN" onClick={this.toggleLoginModal} />
+              <div style={this.styles.menu}>
+                <FlatButton style={this.styles.btn} label="ACCOUNT" icon={<Person />} containerElement={<Link to="/account" />}/>
+                <FlatButton style={this.styles.btn} label="CART" icon={<ShoppingCart />} containerElement={<Link to="/cart" />}/>
+                <FlatButton style={this.styles.btn} label="LOGOUT" containerElement={<a href="/auth/logout"/>}/>
+              </div> : 
+              <FlatButton label="LOGIN" labelPosition="before" icon={<Input/>} onClick={this.toggleLoginModal} />
           }
         />
         <LoginModal isOpen={this.state.loginModalOpen} onRequestClose={this.toggleLoginModal} switch={this.switchLoginRegister} />

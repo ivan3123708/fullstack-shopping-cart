@@ -37,7 +37,6 @@ app.get('/api/catalog', (req, res) => {
     if(err) {
       console.log(err);
     } else {
-      console.log('CATALOG INITIALIZED');
       res.send(foundProduct);
     }
   });

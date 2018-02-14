@@ -8,6 +8,7 @@ import sortProducts from '../selectors/sortProducts';
 import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import Remove from 'material-ui/svg-icons/content/remove-circle-outline.js';
 import Product from './Product';
 import '../styles/Products.css';
 
@@ -39,6 +40,8 @@ class Products extends React.Component {
             <RaisedButton
               className="btn"
               label="Clear Filters"
+              labelPosition="before" 
+              icon={<Remove/>}
               onClick={this.props.clearFilters}
               secondary={true}
             />
