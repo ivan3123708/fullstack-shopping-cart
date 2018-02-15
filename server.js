@@ -4,9 +4,11 @@ const bodyParser = require('body-parser');
 const expressSession = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+const requireLogin = require('./middleware/requireLogin');
 const mongoose = require('mongoose');
 const User = require('./models/User');
 const Product = require('./models/Product');
+const Cart = require('./models/Cart');
 const privates = require('./config/privates');
 const seedProducts = require('./seeds/products');
 
@@ -18,6 +20,7 @@ mongoose.connect(privates.mongoDBURI);
 
 app.use(express.static(publicPath));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(expressSession({
   secret: privates.sessionSecret,
   resave: false,
@@ -33,17 +36,49 @@ passport.deserializeUser(User.deserializeUser());
 // seedProducts();
 
 app.get('/api/catalog', (req, res) => {
-  Product.find({}, (err, foundProduct) => {
-    if(err) {
-      console.log(err);
-    } else {
+  Product.find({})
+    .then((foundProduct) => {
       res.send(foundProduct);
-    }
-  });
+    });
 });
 
 app.get('/api/logged_user', (req, res) => {
   res.send(req.user);
+});
+
+app.get('/api/cart', requireLogin, (req, res) => {
+  Cart.findOne({
+    user: req.user.id
+  })
+    .then((foundCart) => {
+      res.send(foundCart);
+    });
+});
+
+app.post('/api/cart', requireLogin, (req, res) => {
+
+  Cart.findOne({ user: req.user.id })
+    .then((foundCart) => {
+      if(foundCart) {
+        foundCart.items.push(req.body.item);
+        foundCart.save();
+        console.log('ADDED TO CART');
+        res.redirect('/');
+      } else {
+        let items = [req.body.item]
+
+        Cart.create({
+          user: req.body.user,
+          items: items
+        })
+          .then((createdCart) => {
+            createdCart.save();
+            console.log('CART CREATED, ADDED TO CART');
+            res.redirect('/');
+          })
+          .catch((err) => console.log(err));
+      }
+    });
 });
 
 // AUTH ROUTES
@@ -56,13 +91,8 @@ app.post('/auth/register', (req, res) => {
     phone: req.body.phone
   };
 
-  User.register(newUser, req.body.password, (err, user) => {
-    if(err) {
-      console.log(err);
-    }
-    passport.authenticate('local')(req, res, () => {
-      res.redirect('/');
-    });
+  User.register(newUser, req.body.password, () => {
+      passport.authenticate('local')(req, res, () => res.redirect('/'));
   });
 });
 

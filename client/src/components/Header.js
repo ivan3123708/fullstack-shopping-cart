@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getUser } from '../actions/userActions';
+import { getCart } from '../actions/cartActions';
 import { Link } from 'react-router-dom';
 import { AppBar, FlatButton } from 'material-ui';
 import Person from 'material-ui/svg-icons/social/person';
@@ -44,8 +45,9 @@ class Header extends React.Component {
     }))
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getUser();
+    this.props.getCart();
   }
 
   render() {
@@ -73,11 +75,13 @@ class Header extends React.Component {
 };
 
 const mapStateToProps = (state) => ({
-  loggedUser: state.loggedUser 
+  loggedUser: state.loggedUser,
+  cart: state.cart
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getUser: () => dispatch(getUser())
+  getUser: () => dispatch(getUser()),
+  getCart: () => dispatch(getCart())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
