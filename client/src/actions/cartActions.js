@@ -5,7 +5,7 @@ const getCart = () => {
     axios.get('/api/cart')
       .then((res) => dispatch({
         type: 'GET_CART',
-        cart: res.data
+        cart: res.data.items || []
       }))
       .catch((err) => console.log(err));
   }

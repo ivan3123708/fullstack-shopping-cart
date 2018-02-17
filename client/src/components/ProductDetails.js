@@ -3,16 +3,32 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import RaisedButton from 'material-ui/RaisedButton';
+import Snackbar from 'material-ui/Snackbar';
 import AddShoppingCart from 'material-ui/svg-icons/action/add-shopping-cart';
 import '../styles/ProductDetails.css';
 
 class ProductDetails extends React.Component {
 
-  addToCart = () => {
-    axios.post('/api/cart', {
+  state = {
+    postData: {
       user: this.props.loggedUser._id,
-      item: this.props.product._id
-    });
+      item: this.props.product._id,
+      amount: 1
+    },
+    snackbarOpen: false
+  }
+
+  onAmountChange = (e) => {
+    let value = e.target.value;
+    this.setState((prevState) => ({
+      postData: { ...prevState.postData, amount: value*1 }
+    }));
+    console.log(this.state);
+  }
+
+  addToCart = () => {
+    axios.post('/api/cart', this.state.postData);
+    this.setState({ snackbarOpen: true });
   }
 
   render() {
@@ -81,7 +97,7 @@ class ProductDetails extends React.Component {
             <span className="price-text">Price: </span>
             <span className="price-num">${this.props.product.info.price}.00</span>
             <span className="price-text">Amount: </span>
-            <span><input type="number" name="amount"/></span>
+            <span><input type="number" value={this.state.postData.amount} min="1" max="5" onChange={this.onAmountChange}/></span>
             <RaisedButton
               onClick={this.addToCart}
               className="btn"
@@ -89,6 +105,12 @@ class ProductDetails extends React.Component {
               labelPosition="before"
               primary={true}
               icon={<AddShoppingCart />}
+            />
+            <Snackbar
+              open={this.state.snackbarOpen}
+              message={this.props.loggedUser ? 'Item added to your cart.' : 'You must be logged in!'}
+              autoHideDuration={4000}
+              bodyStyle={this.props.loggedUser ? { 'background': '#64DD17' } : { 'background': '#F44336' }}
             />
           </div>
         </div>

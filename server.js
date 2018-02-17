@@ -57,28 +57,36 @@ app.get('/api/cart', requireLogin, (req, res) => {
 
 app.post('/api/cart', requireLogin, (req, res) => {
 
-  Cart.findOne({ user: req.user.id })
+  const user = req.body.user;
+  const item = {
+    number: req.body.item,
+    amount: req.body.amount
+  };
+
+  Cart.findOne({ user: user })
     .then((foundCart) => {
       if(foundCart) {
-        foundCart.items.push(req.body.item);
-        foundCart.save();
-        console.log('ADDED TO CART');
-        res.redirect('/');
+        let numbers = foundCart.items.map((x) => x.number + '');
+        if(numbers.includes(item.number)) {
+          Cart.findOneAndUpdate({
+            user: user,
+            items: {
+              $elemMatch: { number: item.number }
+            }},
+            {
+              $inc: { 'items.$.amount': item.amount }
+            }).exec();
+        } else {
+          foundCart.items.push(item);
+          foundCart.save();
+        }
       } else {
-        let items = [req.body.item]
-
         Cart.create({
-          user: req.body.user,
-          items: items
-        })
-          .then((createdCart) => {
-            createdCart.save();
-            console.log('CART CREATED, ADDED TO CART');
-            res.redirect('/');
-          })
-          .catch((err) => console.log(err));
+          user: user,
+          items: [item]
+        });
       }
-    });
+  });
 });
 
 // AUTH ROUTES
