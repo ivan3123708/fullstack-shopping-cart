@@ -27,7 +27,7 @@
   color: white;
 }
 
-.product-info th, td {
+.product-info th, .product-info td {
   padding: 3px;
   text-align: left;
   border: 1px solid #80DEEA;

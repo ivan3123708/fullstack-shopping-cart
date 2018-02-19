@@ -54,6 +54,7 @@ class Header extends React.Component {
         <AppBar 
           title="MOBILE SHOP"
           titleStyle={this.styles.title}
+          onTitleClick={() => this.props.history.push('/')}
           showMenuIconButton={false}
           iconElementRight={
             this.props.loggedUser ? 

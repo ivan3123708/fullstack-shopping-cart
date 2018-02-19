@@ -12,7 +12,7 @@ class ProductDetails extends React.Component {
   state = {
     postData: {
       user: this.props.loggedUser._id,
-      item: this.props.product._id,
+      product: this.props.product._id,
       amount: 1
     },
     snackbarOpen: false

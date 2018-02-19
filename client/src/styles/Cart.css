@@ -25,14 +25,23 @@
   width: 78%;
 }
 
-.cart-item {
-  width: 100%;
-  margin: 5px auto;
-  padding: 10px 5px;
-  box-shadow: 0 0 7px #d6d6d6;
-  transition: .3s;
+.cart-items img {
+  max-width: 50px;
 }
 
-.cart-item:hover {
-  box-shadow: 0 0 7px #b3b3b3;
+.cart-items table {
+  width: 100%;
+  border-spacing: 0;
+}
+
+.cart-items th {
+  padding: 5px 5px;
+  background-color: #00BCD4;
+  color: white;
+  text-align: left;
+}
+
+.cart-items td {
+  padding: 12px 5px;
+  text-align: left;
 }

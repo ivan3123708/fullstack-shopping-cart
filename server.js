@@ -47,31 +47,28 @@ app.get('/api/logged_user', (req, res) => {
 });
 
 app.get('/api/cart', requireLogin, (req, res) => {
-  Cart.findOne({
-    user: req.user.id
-  })
-    .then((foundCart) => {
-      res.send(foundCart);
-    });
+  Cart.findOne({ user: req.user.id })
+    .populate('items.product')
+    .exec((err, cart) => res.send(cart.items));
 });
 
 app.post('/api/cart', requireLogin, (req, res) => {
 
   const user = req.body.user;
   const item = {
-    number: req.body.item,
+    product: req.body.product,
     amount: req.body.amount
   };
 
   Cart.findOne({ user: user })
     .then((foundCart) => {
       if(foundCart) {
-        let numbers = foundCart.items.map((x) => x.number + '');
-        if(numbers.includes(item.number)) {
+        let products = foundCart.items.map((item) => item.product + '');
+        if(products.includes(item.product)) {
           Cart.findOneAndUpdate({
             user: user,
             items: {
-              $elemMatch: { number: item.number }
+              $elemMatch: { product: item.product }
             }},
             {
               $inc: { 'items.$.amount': item.amount }
