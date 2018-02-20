@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import numeral from 'numeral';
 import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 import AddShoppingCart from 'material-ui/svg-icons/action/add-shopping-cart';
@@ -95,7 +96,7 @@ class ProductDetails extends React.Component {
               </tr>
             </table>
             <span className="price-text">Price: </span>
-            <span className="price-num">${this.props.product.info.price}.00</span>
+            <span className="price-num">{numeral(this.props.product.info.price).format('$0,0.00')}</span>
             <span className="price-text">Amount: </span>
             <span><input type="number" value={this.state.postData.amount} min="1" max="5" onChange={this.onAmountChange}/></span>
             <RaisedButton

@@ -1,11 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import numeral from 'numeral';
 import { getCart } from '../actions/cartActions';
 import RaisedButton from 'material-ui/RaisedButton';
 import RemoveShoppingCart from 'material-ui/svg-icons/action/remove-shopping-cart.js';
 import '../styles/Cart.css';
 
 class Cart extends React.Component {
+
+  emptyCart = () => {
+    axios.delete('/api/cart', { params: { id: this.props.cart._id } });
+    this.props.getCart();
+  }
 
   componentDidMount() {
     this.props.getCart();
@@ -17,9 +25,18 @@ class Cart extends React.Component {
         <h1>Your Cart</h1>
         <div className="cart">
           <div className="cart-info">
-            <p><b>Number of items: </b>{this.props.cart.reduce((acc, item) => acc += item.amount, 0)}</p>
-            <p><b>Total amount: </b><span className="total">${this.props.cart.reduce((acc, item) => acc += item.product.info.price * item.amount, 0)}.00</span></p>
+            <p>
+              <b>Number of items: </b>
+              {this.props.cart && this.props.cart.items.reduce((acc, item) => acc += item.amount, 0)}
+            </p>
+            <p>
+              <b>Total amount: </b>
+              <span className="total">
+                {this.props.cart && numeral(this.props.cart.items.reduce((acc, item) => acc += item.product.info.price * item.amount, 0)).format('$0,0.00')}
+              </span>
+            </p>
             <RaisedButton
+              onClick={this.emptyCart}
               className="btn"
               label="Empty cart"
               labelPosition="before"
@@ -34,18 +51,21 @@ class Cart extends React.Component {
                 <th>Product Name</th>
                 <th>Price</th>
                 <th>Amount</th>
+                <th></th>
               </tr>
-              {this.props.cart.map((item) => {
+              {this.props.cart && this.props.cart.items.map((item) => {
                 return (
                   <tr>
                     <td><img src={item.product.info.photo} /></td>
-                    <td>{item.product.info.name}</td>
-                    <td>{item.product.info.price}</td>
+                    <td><Link to={`/product/${item.product._id}`}>{item.product.info.name}</Link></td>
+                    <td>{numeral(item.product.info.price).format('$0,0.00')}</td>
                     <td>{item.amount}</td>
+                    <td><button title="Remove this item from the cart">X</button></td>
                   </tr>
                 );
               })}
             </table>
+            {!this.props.cart && <h1>No items in the cart.</h1>}
           </div>
         </div>
       </div>
@@ -62,8 +82,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
-
-// <span><img src={item.product.info.photo} /></span>
-// <span><b>{item.product.info.name}</b></span>
-// <span><b>Price: </b>{item.product.info.price}</span>
-// <span><b>Amount: </b>{item.amount}</span>

@@ -46,10 +46,12 @@ app.get('/api/logged_user', (req, res) => {
   res.send(req.user);
 });
 
+// CART ROUTES
+
 app.get('/api/cart', requireLogin, (req, res) => {
   Cart.findOne({ user: req.user.id })
     .populate('items.product')
-    .exec((err, cart) => res.send(cart.items));
+    .exec((err, cart) => res.send(cart));
 });
 
 app.post('/api/cart', requireLogin, (req, res) => {
@@ -83,6 +85,16 @@ app.post('/api/cart', requireLogin, (req, res) => {
           items: [item]
         });
       }
+  });
+});
+
+app.delete('/api/cart', (req, res) => {
+  Cart.findByIdAndRemove(req.query.id, (err) => {
+    if(err) {
+      console.log(err);
+    } else {
+      console.log('CART DELETED');
+    }
   });
 });
 

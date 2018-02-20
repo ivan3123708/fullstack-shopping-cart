@@ -45,3 +45,28 @@
   padding: 12px 5px;
   text-align: left;
 }
+
+.cart-items a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cart-items button {
+  padding: 1px 4px;
+  background: none;
+  color: #F44336;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.cart-items button:hover {
+  background: #F44336;
+  color: white;
+}
+
+.cart-items h1 {
+  text-align: center;
+  margin-top: 100px;
+}

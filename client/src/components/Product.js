@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import numeral from 'numeral';
 import RaisedButton from 'material-ui/RaisedButton';
 import NavigateNext from 'material-ui/svg-icons/image/navigate-next';
 import '../styles/Product.css';
@@ -19,7 +20,7 @@ const Product = ({ item }) => (
       </div>
       <div className="content-right">
         <p><b>Price:</b></p>
-        <h2>${item.info.price}.00</h2>
+        <h2>{numeral(item.info.price).format('$0,0.00')}</h2>
         <RaisedButton
           containerElement={<Link to={`/product/${item._id}`} />}
           className="btn"
