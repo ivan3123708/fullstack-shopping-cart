@@ -1,3 +1,7 @@
+button:focus {
+  outline: 0;
+}
+
 .container {
   width: 80%;
   margin: auto;

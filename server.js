@@ -48,12 +48,14 @@ app.get('/api/logged_user', (req, res) => {
 
 // CART ROUTES
 
+// show route
 app.get('/api/cart', requireLogin, (req, res) => {
   Cart.findOne({ user: req.user.id })
     .populate('items.product')
     .exec((err, cart) => res.send(cart));
 });
 
+// create route
 app.post('/api/cart', requireLogin, (req, res) => {
 
   const user = req.body.user;
@@ -88,14 +90,19 @@ app.post('/api/cart', requireLogin, (req, res) => {
   });
 });
 
+// update route
+app.put('/api/cart', (req, res) => {
+  Cart.findById(req.query.cartId)
+    .then((foundCart) => {
+      foundCart.items = foundCart.items.filter((item) => item._id != req.query.itemId);
+      foundCart.save(() => res.end());
+    });
+});
+
+// destroy route
 app.delete('/api/cart', (req, res) => {
-  Cart.findByIdAndRemove(req.query.id, (err) => {
-    if(err) {
-      console.log(err);
-    } else {
-      console.log('CART DELETED');
-    }
-  });
+  Cart.findByIdAndRemove(req.query.id)
+    .then(() => res.end());
 });
 
 // AUTH ROUTES
