@@ -59,15 +59,42 @@ class Header extends React.Component {
           iconElementRight={
             this.props.loggedUser ? 
               <div style={this.styles.menu}>
-                <FlatButton style={this.styles.btn} label="ACCOUNT" icon={<Person />} containerElement={<Link to="/account" />}/>
-                <FlatButton style={this.styles.btn} label="CART" icon={<ShoppingCart />} containerElement={<Link to="/cart" />}/>
-                <FlatButton style={this.styles.btn} label="LOGOUT" containerElement={<a href="/auth/logout"/>}/>
+                <FlatButton 
+                  style={this.styles.btn} 
+                  label="ACCOUNT" 
+                  icon={<Person />} 
+                  containerElement={<Link to="/account" />}
+                />
+                <FlatButton 
+                  style={this.styles.btn} 
+                  label="CART" 
+                  icon={<ShoppingCart />} 
+                  containerElement={<Link to="/cart" />}
+                />
+                <FlatButton 
+                  style={this.styles.btn} 
+                  label="LOGOUT" 
+                  containerElement={<a href="/auth/logout"/>}
+                />
               </div> : 
-              <FlatButton label="LOGIN" labelPosition="before" icon={<Input/>} onClick={this.toggleLoginModal} />
+              <FlatButton 
+                label="LOGIN" 
+                labelPosition="before" 
+                icon={<Input/>} 
+                onClick={this.toggleLoginModal} 
+              />
           }
         />
-        <LoginModal isOpen={this.state.loginModalOpen} onRequestClose={this.toggleLoginModal} switch={this.switchLoginRegister} />
-        <RegisterModal isOpen={this.state.registerModalOpen} onRequestClose={this.toggleRegisterModal} switch={this.switchLoginRegister} />
+        <LoginModal 
+          isOpen={this.state.loginModalOpen} 
+          onRequestClose={this.toggleLoginModal} 
+          switch={this.switchLoginRegister} 
+        />
+        <RegisterModal 
+          isOpen={this.state.registerModalOpen} 
+          onRequestClose={this.toggleRegisterModal} 
+          switch={this.switchLoginRegister} 
+        />
       </div>
     )
   }

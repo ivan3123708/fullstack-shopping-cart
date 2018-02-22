@@ -1,0 +1,20 @@
+.account {
+  display: flex;
+}
+
+.account-info {
+  width: 50%;
+}
+
+.account-info .btn {
+  margin-top: 20px;
+}
+
+.account-history {
+  width: 50%;
+}
+
+.account-history h1 {
+  margin-top: 100px;
+  text-align: center;
+}

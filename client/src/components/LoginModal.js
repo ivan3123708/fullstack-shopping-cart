@@ -26,7 +26,7 @@ const LoginModal = (props) => (
       /><br />
       <RaisedButton 
         className="btn" 
-        label="Submit" 
+        label="Submit"
         primary={true} 
         type="submit"
       />

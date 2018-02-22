@@ -2,16 +2,16 @@ import React from 'react';
 import Modal from 'react-modal';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import '../styles/RegisterModal.css';
+import '../styles/AccountModal.css';
 
-const RegisterModal = (props) => (
+const AccountModal = (props) => (
   <Modal
-    className="register-modal"
+    className="account-modal"
     isOpen={props.isOpen}
     onRequestClose={props.onRequestClose}
   >
-    <form className="form" action="/auth/register" method="POST">
-      <h1>Register</h1>
+    <form className="form" action="/api/account" method="POST">
+      <h1>Edit Account</h1>
       <TextField
         hintText="Enter Username"
         floatingLabelText="Username"
@@ -39,15 +39,14 @@ const RegisterModal = (props) => (
         floatingLabelText="Telephone Number"
         name="phone"
       /><br />
-      <RaisedButton 
-        className="btn" 
-        label="Submit"
-        primary={true} 
+      <RaisedButton
+        className="btn"
+        label="Save"
+        primary={true}
         type="submit"
       />
-      <p>Already have an account? <a onClick={props.switch}>Login here</a>.</p>
     </form>
   </Modal>
 );
 
-export default RegisterModal;
+export default AccountModal;
