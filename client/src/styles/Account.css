@@ -1,3 +1,9 @@
+.loader {
+  margin: 20px auto;
+  color: #00BCD4;
+  text-align: center;
+}
+
 .account {
   display: flex;
 }

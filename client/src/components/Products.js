@@ -30,8 +30,11 @@ class Products extends React.Component {
   render() {
     if(this.props.catalog.length === 0) {
       return (
-        <h1 className="loader">LOADING PRODUCTS...</h1>
-      )
+        <div className="loader">
+          <img src="/img/loader.gif" />
+          <h1>LOADING PRODUCTS...</h1>
+        </div>
+      );
     } else return (
       <div className="products">
         <div className="products-handle">

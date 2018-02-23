@@ -1,4 +1,4 @@
-.account-modal {
+.checkout-modal {
   width: 30%;
   height: 400px;
   margin: auto;
@@ -9,7 +9,7 @@
   outline: none;
 }
 
-.account-modal .form {
+.checkout-modal .order {
   width: 70%;
   margin: auto;
   margin-top: 10px;
@@ -17,10 +17,10 @@
   font-family: 'Roboto';
 }
 
-.account-modal .form h1 {
+.checkout-modal .order h1 {
   color: #00BCD4;
 }
 
-.account-modal .form .btn {
+.checkout-modal .order .btn {
   margin: 30px auto 50px auto;
 }

@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import numeral from 'numeral';
 import { getCart } from '../actions/cartActions';
+import CheckoutModal from './CheckoutModal';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import NavigateNext from 'material-ui/svg-icons/image/navigate-next';
 import RemoveShoppingCart from 'material-ui/svg-icons/action/remove-shopping-cart.js';
 import Dialog from 'material-ui/Dialog';
 import Snackbar from 'material-ui/Snackbar';
@@ -18,8 +20,13 @@ params.append('param2', 'value2');
 class Cart extends React.Component {
 
   state = {
+    checkoutModalOpen: false,
     dialogOpen: false,
     snackbarOpen: false
+  }
+
+  toggleCheckoutModal = () => {
+    this.setState({ checkoutModalOpen: !this.state.checkoutModalOpen });
   }
 
   toggleDialog = () => {
@@ -67,14 +74,29 @@ class Cart extends React.Component {
                 {this.props.cart.items.length ? numeral(this.props.cart.items.reduce((acc, item) => acc += item.product.info.price * item.amount, 0)).format('$0,0.00') : numeral(0).format('$0,0.00')}
               </span>
             </p>
-            <RaisedButton
-              onClick={this.toggleDialog}
-              className="btn"
-              label="Empty cart"
-              labelPosition="before"
-              icon={<RemoveShoppingCart />}
-              secondary={true}
-              disabled={!this.props.cart.items.length}
+            <div className="btns">
+              <RaisedButton
+                onClick={this.toggleCheckoutModal}
+                className="btn"
+                label="Checkout"
+                labelPosition="before"
+                icon={<NavigateNext />}
+                primary={true}
+                disabled={!this.props.cart.items.length}
+              />
+              <RaisedButton
+                onClick={this.toggleDialog}
+                className="btn"
+                label="Empty cart"
+                labelPosition="before"
+                icon={<RemoveShoppingCart />}
+                secondary={true}
+                disabled={!this.props.cart.items.length}
+              />
+            </div>
+            <CheckoutModal
+              isOpen={this.state.checkoutModalOpen}
+              onRequestClose={this.toggleCheckoutModal}             
             />
             <Dialog
               title="Are you sure that you want to empty your cart?"

@@ -30,18 +30,18 @@ class Header extends React.Component {
   }
 
   toggleLoginModal = () => {
-    this.setState((prevState) => ({ loginModalOpen: !prevState.loginModalOpen }))
+    this.setState({ loginModalOpen: !this.state.loginModalOpen });
   }
 
   toggleRegisterModal = () => {
-    this.setState((prevState) => ({ registerModalOpen: !prevState.registerModalOpen }))
+    this.setState({ registerModalOpen: !this.state.registerModalOpen });
   }
 
   switchLoginRegister = () => {
-    this.setState((prevState) => ({ 
-      loginModalOpen: !prevState.loginModalOpen,
-      registerModalOpen: !prevState.registerModalOpen 
-    }))
+    this.setState({ 
+      loginModalOpen: !this.state.loginModalOpen,
+      registerModalOpen: !this.state.registerModalOpen 
+    });
   }
 
   componentDidMount() {

@@ -46,6 +46,17 @@ app.get('/api/logged_user', (req, res) => {
   res.send(req.user);
 });
 
+app.post('/api/account', (req, res) => {
+  User.findById(req.user)
+    .then((foundUser) => {
+      foundUser.email = req.body.email;
+      foundUser.address = req.body.address;
+      foundUser.phone = req.body.phone;
+      foundUser.save()
+        .then(() => res.redirect('/account'));
+    });
+});
+
 // CART ROUTES
 
 // show route

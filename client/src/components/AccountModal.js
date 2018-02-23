@@ -4,49 +4,61 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import '../styles/AccountModal.css';
 
-const AccountModal = (props) => (
-  <Modal
-    className="account-modal"
-    isOpen={props.isOpen}
-    onRequestClose={props.onRequestClose}
-  >
-    <form className="form" action="/api/account" method="POST">
-      <h1>Edit Account</h1>
-      <TextField
-        hintText="Enter Username"
-        floatingLabelText="Username"
-        name="username"
-        autoFocus
-      /><br />
-      <TextField
-        hintText="Enter Password"
-        floatingLabelText="Password"
-        name="password"
-        type="password"
-      /><br />
-      <TextField
-        hintText="Enter E-mail"
-        floatingLabelText="E-mail"
-        name="email"
-      /><br />
-      <TextField
-        hintText="Enter Address"
-        floatingLabelText="Address"
-        name="address"
-      /><br />
-      <TextField
-        hintText="Enter Telephone Number"
-        floatingLabelText="Telephone Number"
-        name="phone"
-      /><br />
-      <RaisedButton
-        className="btn"
-        label="Save"
-        primary={true}
-        type="submit"
-      />
-    </form>
-  </Modal>
-);
+class AccountModal extends React.Component {
+
+  state = {
+    email: this.props.user.email,
+    address: this.props.user.address,
+    phone: this.props.user.phone
+  }
+
+  onInputChange = (e) => {
+    const value = e.target.value;
+    const key = e.target.name;
+
+    this.setState({ [key]: value });
+  }
+
+  render() {
+    return (
+      <Modal
+        className="account-modal"
+        isOpen={this.props.isOpen}
+        onRequestClose={this.props.onRequestClose}
+      >
+        <form className="form" action="/api/account" method="POST">
+          <h1>Edit Account</h1>
+          <TextField
+            hintText="Enter E-mail"
+            floatingLabelText="E-mail"
+            name="email"
+            value={this.state.email}
+            onChange={this.onInputChange}
+          /><br />
+          <TextField
+            hintText="Enter Address"
+            floatingLabelText="Address"
+            name="address"
+            value={this.state.address}
+            onChange={this.onInputChange}
+          /><br />
+          <TextField
+            hintText="Enter Telephone Number"
+            floatingLabelText="Telephone Number"
+            name="phone"
+            value={this.state.phone}
+            onChange={this.onInputChange}
+          /><br />
+          <RaisedButton
+            className="btn"
+            label="Save"
+            primary={true}
+            type="submit"
+          />
+        </form>
+      </Modal>
+    );
+  }
+}
 
 export default AccountModal;
