@@ -24,3 +24,21 @@
   margin-top: 100px;
   text-align: center;
 }
+
+.account-history .orders table {
+  width: 100%;
+  margin: 10px auto;
+  border-spacing: 0;
+}
+
+.orders th {
+  padding: 5px 5px;
+  background-color: #00BCD4;
+  color: white;
+  text-align: left;
+}
+
+.orders td {
+  padding: 12px 5px;
+  text-align: left;
+}

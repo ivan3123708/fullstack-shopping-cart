@@ -18,9 +18,11 @@ const port = process.env.PORT || 5000;
 const app = express();
 mongoose.connect(privates.mongoDBURI);
 
+const urlencodedParser = bodyParser.urlencoded({ extended: true });
+const jsonParser = bodyParser.json();
+
 app.use(express.static(publicPath));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(urlencodedParser);
 app.use(expressSession({
   secret: privates.sessionSecret,
   resave: false,
@@ -67,7 +69,7 @@ app.get('/api/cart', requireLogin, (req, res) => {
 });
 
 // create route
-app.post('/api/cart', requireLogin, (req, res) => {
+app.post('/api/cart', requireLogin, jsonParser, (req, res) => {
 
   const user = req.body.user;
   const item = {
@@ -102,10 +104,10 @@ app.post('/api/cart', requireLogin, (req, res) => {
 });
 
 // update route
-app.put('/api/cart', (req, res) => {
-  Cart.findById(req.query.cartId)
+app.put('/api/cart', jsonParser, (req, res) => {
+  Cart.findById(req.body.cartId)
     .then((foundCart) => {
-      foundCart.items = foundCart.items.filter((item) => item._id != req.query.itemId);
+      foundCart.items = foundCart.items.filter((item) => item._id != req.body.itemId);
       foundCart.save(() => res.end());
     });
 });
@@ -119,7 +121,7 @@ app.delete('/api/cart', (req, res) => {
 // ORDER ROUTE
 
 // create routes
-app.post('/api/order', (req, res) => {
+app.post('/api/order', jsonParser, (req, res) => {
   User.findById(req.user)
     .then((foundUser) => {
       foundUser.orders = foundUser.orders.concat(req.body.order);

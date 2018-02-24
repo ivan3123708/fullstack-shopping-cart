@@ -25,17 +25,15 @@ class Cart extends React.Component {
     this.setState({ checkoutModalOpen: !this.state.checkoutModalOpen });
   }
 
-  toggleDialog = () => {
-    this.setState({ dialogOpen: !this.state.dialogOpen });
+  toggleDialog = (value) => {
+    this.setState({ dialogOpen: value });
   }
 
   removeItem = (itemId) => {
-    axios.put('/api/cart', {}, {
-      params: {
+    axios.put('/api/cart', {
         cartId: this.props.cart._id,
         itemId: itemId
-      }
-    })
+      })
       .then(() => {
         this.props.getCart();
         this.setState({ snackbarOpen: true });
@@ -45,7 +43,7 @@ class Cart extends React.Component {
   emptyCart = () => {
     axios.delete('/api/cart', { params: { id: this.props.cart._id } })
       .then(() => {
-        this.toggleDialog();
+        this.toggleDialog(false);
         this.props.getCart();
       });
   }
@@ -61,7 +59,11 @@ class Cart extends React.Component {
       return order;
     });
 
-    axios.post('/api/order', { order: order });
+    axios.post('/api/order', { order: order })
+      .then(() => {
+        this.toggleCheckoutModal();
+        this.emptyCart();
+      });
   }
 
   componentDidMount() {
@@ -95,7 +97,7 @@ class Cart extends React.Component {
                 disabled={!this.props.cart.items.length}
               />
               <RaisedButton
-                onClick={this.toggleDialog}
+                onClick={() => this.toggleDialog(true)}
                 className="btn"
                 label="Empty cart"
                 labelPosition="before"
@@ -107,6 +109,7 @@ class Cart extends React.Component {
             <CheckoutModal
               isOpen={this.state.checkoutModalOpen}
               onRequestClose={this.toggleCheckoutModal}
+              toggle={this.toggleCheckoutModal}
               makeOrder={this.makeOrder}           
             />
             <Dialog
@@ -115,7 +118,7 @@ class Cart extends React.Component {
                 <FlatButton
                   label="Cancel"
                   primary={true}
-                  onClick={this.toggleDialog}
+                  onClick={() => this.toggleDialog(false)}
                 />,
                 <FlatButton
                   label="Yes"

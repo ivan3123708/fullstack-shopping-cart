@@ -46,6 +46,7 @@ class CheckoutModal extends React.Component {
               className="btn"
               label="Cancel"
               primary={true}
+              onClick={this.props.toggle}
             />
             <RaisedButton
               className="btn"
