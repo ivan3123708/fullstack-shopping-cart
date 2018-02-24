@@ -8,6 +8,7 @@ import ShoppingCart from 'material-ui/svg-icons/action/shopping-cart.js';
 import Input from 'material-ui/svg-icons/action/input.js';
 import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
+import '../styles/Header.css';
 
 class Header extends React.Component {
 

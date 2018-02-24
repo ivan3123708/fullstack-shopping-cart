@@ -72,7 +72,7 @@ app.post('/api/cart', requireLogin, (req, res) => {
   const user = req.body.user;
   const item = {
     product: req.body.product,
-    amount: req.body.amount
+    quantity: req.body.quantity
   };
 
   Cart.findOne({ user: user })
@@ -86,7 +86,7 @@ app.post('/api/cart', requireLogin, (req, res) => {
               $elemMatch: { product: item.product }
             }},
             {
-              $inc: { 'items.$.amount': item.amount }
+              $inc: { 'items.$.quantity': item.quantity }
             }).exec();
         } else {
           foundCart.items.push(item);
@@ -116,6 +116,17 @@ app.delete('/api/cart', (req, res) => {
     .then(() => res.end());
 });
 
+// ORDER ROUTE
+
+// create routes
+app.post('/api/order', (req, res) => {
+  User.findById(req.user)
+    .then((foundUser) => {
+      foundUser.orders = foundUser.orders.concat(req.body.order);
+      foundUser.save(() => res.end());
+    })
+})
+
 // AUTH ROUTES
 
 app.post('/auth/register', (req, res) => {
@@ -123,7 +134,8 @@ app.post('/auth/register', (req, res) => {
     username: req.body.username,
     email: req.body.email,
     address: req.body.address,
-    phone: req.body.phone
+    phone: req.body.phone,
+    orders: []
   };
 
   User.register(newUser, req.body.password, () => {

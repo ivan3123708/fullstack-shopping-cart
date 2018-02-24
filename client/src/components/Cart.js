@@ -13,10 +13,6 @@ import Dialog from 'material-ui/Dialog';
 import Snackbar from 'material-ui/Snackbar';
 import '../styles/Cart.css';
 
-var params = new URLSearchParams();
-params.append('param1', 'value1');
-params.append('param2', 'value2');
-
 class Cart extends React.Component {
 
   state = {
@@ -54,6 +50,20 @@ class Cart extends React.Component {
       });
   }
 
+  makeOrder = () => {
+    const order = this.props.cart.items.map((item) => {
+      let order = {
+        name: item.product.info.name,
+        price: item.product.info.price,
+        quantity: item.quantity,
+        dateCreated: Date.now()
+      };
+      return order;
+    });
+
+    axios.post('/api/order', { order: order });
+  }
+
   componentDidMount() {
     this.props.getCart();
   }
@@ -66,12 +76,12 @@ class Cart extends React.Component {
           <div className="cart-info">
             <p>
               <b>Number of items: </b>
-              {this.props.cart.items.length ? this.props.cart.items.reduce((acc, item) => acc += item.amount, 0) : 0}
+              {this.props.cart.items.length ? this.props.cart.items.reduce((acc, item) => acc += item.quantity, 0) : 0}
             </p>
             <p>
               <b>Total amount: </b>
               <span className="total">
-                {this.props.cart.items.length ? numeral(this.props.cart.items.reduce((acc, item) => acc += item.product.info.price * item.amount, 0)).format('$0,0.00') : numeral(0).format('$0,0.00')}
+                {this.props.cart.items.length ? numeral(this.props.cart.items.reduce((acc, item) => acc += item.product.info.price * item.quantity, 0)).format('$0,0.00') : numeral(0).format('$0,0.00')}
               </span>
             </p>
             <div className="btns">
@@ -96,7 +106,8 @@ class Cart extends React.Component {
             </div>
             <CheckoutModal
               isOpen={this.state.checkoutModalOpen}
-              onRequestClose={this.toggleCheckoutModal}             
+              onRequestClose={this.toggleCheckoutModal}
+              makeOrder={this.makeOrder}           
             />
             <Dialog
               title="Are you sure that you want to empty your cart?"
@@ -124,7 +135,7 @@ class Cart extends React.Component {
                 <th></th>
                 <th>Product Name</th>
                 <th>Price</th>
-                <th>Amount</th>
+                <th>Quantity</th>
                 <th>Total</th>
                 <th></th>
               </tr>
@@ -134,8 +145,8 @@ class Cart extends React.Component {
                     <td><img src={item.product.info.photo} /></td>
                     <td><Link to={`/product/${item.product._id}`}>{item.product.info.name}</Link></td>
                     <td>{numeral(item.product.info.price).format('$0,0.00')}</td>
-                    <td>{item.amount}</td>
-                    <td>{numeral(item.product.info.price * item.amount).format('$0,0.00')}</td>
+                    <td>{item.quantity}</td>
+                    <td>{numeral(item.product.info.price * item.quantity).format('$0,0.00')}</td>
                     <td><button title="Remove this item from the cart" onClick={() => this.removeItem(item._id)}>X</button></td>
                   </tr>
                 );

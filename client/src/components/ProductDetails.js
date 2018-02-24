@@ -14,17 +14,16 @@ class ProductDetails extends React.Component {
     postData: {
       user: this.props.loggedUser._id,
       product: this.props.product._id,
-      amount: 1
+      quantity: 1
     },
     snackbarOpen: false
   }
 
-  onAmountChange = (e) => {
+  onQuantityChange = (e) => {
     let value = e.target.value;
     this.setState((prevState) => ({
-      postData: { ...prevState.postData, amount: value*1 }
+      postData: { ...prevState.postData, quantity: value*1 }
     }));
-    console.log(this.state);
   }
 
   addToCart = () => {
@@ -97,8 +96,8 @@ class ProductDetails extends React.Component {
             </table>
             <span className="price-text">Price: </span>
             <span className="price-num">{numeral(this.props.product.info.price).format('$0,0.00')}</span>
-            <span className="price-text">Amount: </span>
-            <span><input type="number" value={this.state.postData.amount} min="1" max="5" onChange={this.onAmountChange}/></span>
+            <span className="price-text">Quantity: </span>
+            <span><input type="number" value={this.state.postData.quantity} min="1" max="5" onChange={this.onQuantityChange}/></span>
             <RaisedButton
               onClick={this.addToCart}
               className="btn"
