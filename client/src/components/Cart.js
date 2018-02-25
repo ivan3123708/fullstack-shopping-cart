@@ -59,7 +59,7 @@ class Cart extends React.Component {
       return order;
     });
 
-    axios.post('/api/order', { order: order })
+    axios.post('/api/user/order', { order: order })
       .then(() => {
         this.toggleCheckoutModal();
         this.emptyCart();

@@ -26,7 +26,7 @@ class AccountModal extends React.Component {
         isOpen={this.props.isOpen}
         onRequestClose={this.props.onRequestClose}
       >
-        <form className="form" action="/api/account" method="POST">
+        <form className="form" action="/api/user" method="POST">
           <h1>Edit Account</h1>
           <TextField
             hintText="Enter E-mail"
