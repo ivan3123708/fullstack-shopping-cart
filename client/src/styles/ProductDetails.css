@@ -1,6 +1,16 @@
+.product-details-container {
+  min-height: 100vh;
+  margin-top: -72px;
+  border: 1px solid #ffffff00;
+}
+
+.product-details-container h1 {
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
 .product-details {
   display: flex;
-  margin: 50px auto;
 }
 
 .product-image {
@@ -47,6 +57,7 @@
 
 .product-handle {
   display: flex;
+  margin: 40px 0;
 }
 
 .product-handle .left {

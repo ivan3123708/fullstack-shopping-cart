@@ -1,12 +1,13 @@
 .loader {
-  margin: 100px auto;
+  margin-top: 150px;
   color: #00BCD4;
   text-align: center;
 }
 
 .products {
   width: 78%;
-  margin: 10px 0;
+  margin-top: 90px;
+  margin-bottom: 40px;
 }
 
 .products-handle {

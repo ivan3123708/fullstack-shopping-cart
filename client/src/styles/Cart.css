@@ -1,3 +1,14 @@
+.cart-container {
+  min-height: 100vh;
+  margin-top: -72px;
+  border: 1px solid #ffffff00;
+}
+
+.cart-container h1 {
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
+
 .cart {
   display: flex;
   justify-content: space-between;

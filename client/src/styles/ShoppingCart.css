@@ -8,8 +8,3 @@ button:focus {
   font-family: 'Roboto';
   color: #2e3a4edc;
 }
-
-.homepage {
-  display: flex;
-  justify-content: space-between;
-}

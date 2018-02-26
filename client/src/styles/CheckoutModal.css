@@ -3,8 +3,9 @@
 }
 
 .checkout-modal {
-  width: 45%;
-  height: 500px;
+  width: 500px;
+  /* height: 500px; */
+  height: auto;
   margin: auto;
   margin-top: 100px;
   background: white;
@@ -14,7 +15,7 @@
 }
 
 .checkout-modal .order {
-  width: 70%;
+  width: 80%;
   margin: auto;
   margin-top: 10px;
   text-align: center;
@@ -55,7 +56,8 @@
 }
 
 .checkout-modal .btns {
-  margin: 40px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 .checkout-modal .btns .btn {

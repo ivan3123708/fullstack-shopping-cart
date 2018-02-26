@@ -33,7 +33,7 @@ class Account extends React.Component {
       );
     } else {
       return (
-        <div>
+        <div className="account-container">
           <h1>Your Account</h1>
           <div className="account">
             <div className="account-info">

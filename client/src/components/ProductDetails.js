@@ -34,7 +34,7 @@ class ProductDetails extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="product-details-container">
         <h1>{this.props.product.info.name}</h1>
         <div className="product-details">
           <div className="product-image">
