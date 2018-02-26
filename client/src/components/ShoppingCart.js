@@ -6,6 +6,7 @@ import Account from './Account';
 import Cart from './Cart';
 import Homepage from './Homepage';
 import ProductDetails from './ProductDetails';
+import Footer from './Footer';
 import '../styles/ShoppingCart.css';
 
 const ShoppingCart = () => (
@@ -17,6 +18,7 @@ const ShoppingCart = () => (
         <Route path="/account" component={Account} />
         <Route path="/cart" component={Cart} />
         <Route path="/product/:id" component={ProductDetails} />
+        <Route path="/" component={Footer} />
       </div>
     </MuiThemeProvider>
   </BrowserRouter>

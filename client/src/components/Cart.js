@@ -5,6 +5,7 @@ import axios from 'axios';
 import numeral from 'numeral';
 import { getCart } from '../actions/cartActions';
 import CheckoutModal from './CheckoutModal';
+import OrderSuccessModal from './OrderSuccessModal';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import NavigateNext from 'material-ui/svg-icons/image/navigate-next';
@@ -17,12 +18,17 @@ class Cart extends React.Component {
 
   state = {
     checkoutModalOpen: false,
+    orderSuccessModalOpen: false,
     dialogOpen: false,
     snackbarOpen: false
   }
 
   toggleCheckoutModal = () => {
     this.setState({ checkoutModalOpen: !this.state.checkoutModalOpen });
+  }
+
+  toggleOrderSuccessModal = () => {
+    this.setState({ orderSuccessModalOpen: !this.state.orderSuccessModalOpen });
   }
 
   toggleDialog = (value) => {
@@ -59,9 +65,10 @@ class Cart extends React.Component {
       return order;
     });
 
-    axios.post('/api/user/order', { order: order })
+    axios.post('/api/order', { order: order })
       .then(() => {
         this.toggleCheckoutModal();
+        this.toggleOrderSuccessModal();
         this.emptyCart();
       });
   }
@@ -111,6 +118,11 @@ class Cart extends React.Component {
               onRequestClose={this.toggleCheckoutModal}
               toggle={this.toggleCheckoutModal}
               makeOrder={this.makeOrder}           
+            />
+            <OrderSuccessModal
+              isOpen={this.state.orderSuccessModalOpen}
+              onRequestClose={this.toggleOrderSuccessModal}
+              toggle={this.toggleOrderSuccessModal}
             />
             <Dialog
               title="Are you sure that you want to empty your cart?"

@@ -57,6 +57,7 @@ class Header extends React.Component {
           titleStyle={this.styles.title}
           onTitleClick={() => this.props.history.push('/')}
           showMenuIconButton={false}
+          zDepth={0}
           iconElementRight={
             this.props.loggedUser ? 
               <div style={this.styles.menu}>

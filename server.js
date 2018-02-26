@@ -9,6 +9,7 @@ const authRoutes = require('./routes/authRoutes');
 const catalogRoutes = require('./routes/catalogRoutes');
 const userRoutes = require('./routes/userRoutes');
 const cartRoutes = require('./routes/cartRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 const User = require('./models/User');
 const privates = require('./config/privates');
 
@@ -37,6 +38,7 @@ app.use('/auth', authRoutes);
 app.use('/api/catalog', catalogRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/order', orderRoutes);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));

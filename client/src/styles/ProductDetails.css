@@ -8,8 +8,8 @@
 }
 
 .product-image img {
-  height: 400px;
-  max-height: 400px;
+  max-height: 364px;
+  margin: 20px 0;
 }
 
 .product-info {
@@ -19,7 +19,7 @@
 
 .product-info table {
   width: 100%;
-  margin-bottom: 50px;
+  margin: 20px 0;
 }
 
 .product-info th {
@@ -35,7 +35,7 @@
 
 .price-text {
   font-size: 16px;
-  /* font-weight: bold; */
+  font-weight: bold;
 }
 
 .price-num {
@@ -45,7 +45,23 @@
   color: #64DD17;
 }
 
-.product-info input {
+.product-handle {
+  display: flex;
+}
+
+.product-handle .left {
+  width: 40%;
+}
+
+.product-handle .left .btn {
+  margin-top: 9px;
+}
+
+.product-handle .right {
+  width: 60%;
+}
+
+.product-handle .right input {
   margin: 10px;
   width: 40px;
   height: 28px;

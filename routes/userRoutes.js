@@ -12,21 +12,13 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   User.findById(req.user)
-    .then((foundUser) => {
-      foundUser.email = req.body.email;
-      foundUser.address = req.body.address;
-      foundUser.phone = req.body.phone;
-      foundUser.save()
-        .then(() => res.redirect('/account'));
-    });
-});
-
-router.post('/order', jsonParser, (req, res) => {
-  User.findById(req.user)
-    .then((foundUser) => {
-      foundUser.orders = foundUser.orders.concat(req.body.order);
-      foundUser.save(() => res.end());
-    })
+  .then((foundUser) => {
+    foundUser.email = req.body.email;
+    foundUser.address = req.body.address;
+    foundUser.phone = req.body.phone;
+    foundUser.save()
+    .then(() => res.redirect('/account'));
+  });
 });
 
 module.exports = router;
