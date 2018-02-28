@@ -30,12 +30,8 @@ class Header extends React.Component {
     }
   }
 
-  toggleLoginModal = () => {
-    this.setState({ loginModalOpen: !this.state.loginModalOpen });
-  }
-
-  toggleRegisterModal = () => {
-    this.setState({ registerModalOpen: !this.state.registerModalOpen });
+  toggleOpen = (targetComponent) => {
+    this.setState({ [targetComponent]: !this.state[targetComponent] });
   }
 
   switchLoginRegister = () => {
@@ -83,18 +79,18 @@ class Header extends React.Component {
                 label="LOGIN" 
                 labelPosition="before" 
                 icon={<Input/>} 
-                onClick={this.toggleLoginModal} 
+                onClick={() => this.toggleOpen('loginModalOpen')} 
               />
           }
         />
         <LoginModal 
           isOpen={this.state.loginModalOpen} 
-          onRequestClose={this.toggleLoginModal} 
+          onRequestClose={() => this.toggleOpen('loginModalOpen')} 
           switch={this.switchLoginRegister} 
         />
         <RegisterModal 
           isOpen={this.state.registerModalOpen} 
-          onRequestClose={this.toggleRegisterModal} 
+          onRequestClose={() => this.toggleOpen('registerModalOpen')} 
           switch={this.switchLoginRegister} 
         />
       </div>

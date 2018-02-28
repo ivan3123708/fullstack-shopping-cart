@@ -27,16 +27,19 @@ router.post('/', requireLogin, jsonParser, (req, res) => {
           },
             {
               $inc: { 'items.$.quantity': item.quantity }
-            }).exec();
+            })
+            .exec()
+            .then(() => res.end());
         } else {
           foundCart.items.push(item);
-          foundCart.save();
+          foundCart.save().then(() => res.end());
         }
       } else {
         Cart.create({
           user: user,
           items: [item]
-        });
+        })
+          .then(() => res.end());
       }
     });
 });
@@ -47,7 +50,7 @@ router.get('/', requireLogin, (req, res) => {
     .exec((err, cart) => res.send(cart));
 });
 
-router.put('/', jsonParser, (req, res) => {
+router.put('/', requireLogin, jsonParser, (req, res) => {
   Cart.findById(req.body.cartId)
     .then((foundCart) => {
       foundCart.items = foundCart.items.filter((item) => item._id != req.body.itemId);
@@ -55,7 +58,7 @@ router.put('/', jsonParser, (req, res) => {
     });
 });
 
-router.delete('/', (req, res) => {
+router.delete('/', requireLogin, (req, res) => {
   Cart.findByIdAndRemove(req.query.id)
     .then(() => res.end());
 });

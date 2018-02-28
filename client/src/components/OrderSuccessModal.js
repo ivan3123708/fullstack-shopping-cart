@@ -7,7 +7,7 @@ const OrderSuccessModal = (props) => (
       <Modal
         className="order-success-modal"
         isOpen={props.isOpen}
-        onRequestClose={props.onRequestClose}
+        onRequestClose={() => props.toggle('orderSuccessModalOpen')}
       >
         <div className="success">
           <h1>Success!</h1>
@@ -17,7 +17,7 @@ const OrderSuccessModal = (props) => (
             Your order has been received. The items you've ordered will be sent to your address.
           </p>
           <RaisedButton
-            onClick={props.toggle}
+            onClick={() => props.toggle('orderSuccessModalOpen')}
             className="btn"
             label="OK"
             primary={true}

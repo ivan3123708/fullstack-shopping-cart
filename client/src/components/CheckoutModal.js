@@ -9,7 +9,7 @@ const CheckoutModal = (props) => (
   <Modal
     className="checkout-modal"
     isOpen={props.isOpen}
-    onRequestClose={props.onRequestClose}
+    onRequestClose={() => props.toggle('checkoutModalOpen')}
   >
     <div className="order">
       <h1>Checkout Information</h1>
@@ -43,7 +43,7 @@ const CheckoutModal = (props) => (
           className="btn"
           label="Cancel"
           primary={true}
-          onClick={props.toggle}
+          onClick={() => props.toggle('checkoutModalOpen')}
         />
         <RaisedButton
           className="btn"

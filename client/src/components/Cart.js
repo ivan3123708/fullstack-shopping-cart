@@ -23,16 +23,8 @@ class Cart extends React.Component {
     snackbarOpen: false
   }
 
-  toggleCheckoutModal = () => {
-    this.setState({ checkoutModalOpen: !this.state.checkoutModalOpen });
-  }
-
-  toggleOrderSuccessModal = () => {
-    this.setState({ orderSuccessModalOpen: !this.state.orderSuccessModalOpen });
-  }
-
-  toggleDialog = (value) => {
-    this.setState({ dialogOpen: value });
+  toggleOpen = (targetComponent) => {
+    this.setState({ [targetComponent]: !this.state[targetComponent] });
   }
 
   removeItem = (itemId) => {
@@ -42,14 +34,17 @@ class Cart extends React.Component {
       })
       .then(() => {
         this.props.getCart();
-        this.setState({ snackbarOpen: true });
+        this.toggleOpen('snackbarOpen');
+        setTimeout(() => {
+          this.toggleOpen('snackbarOpen');
+        }, 4000);
       });
   }
 
   emptyCart = () => {
     axios.delete('/api/cart', { params: { id: this.props.cart._id } })
       .then(() => {
-        this.toggleDialog(false);
+        this.setState({ dialogOpen: false });
         this.props.getCart();
       });
   }
@@ -67,8 +62,8 @@ class Cart extends React.Component {
 
     axios.post('/api/order', { order: order })
       .then(() => {
-        this.toggleCheckoutModal();
-        this.toggleOrderSuccessModal();
+        this.toggleOpen('checkoutModalOpen');
+        this.toggleOpen('orderSuccessModalOpen');
         this.emptyCart();
       });
   }
@@ -95,7 +90,7 @@ class Cart extends React.Component {
             </p>
             <div className="btns">
               <RaisedButton
-                onClick={this.toggleCheckoutModal}
+                onClick={() => this.toggleOpen('checkoutModalOpen')}
                 className="btn"
                 label="Checkout"
                 labelPosition="before"
@@ -104,7 +99,7 @@ class Cart extends React.Component {
                 disabled={!this.props.cart.items.length}
               />
               <RaisedButton
-                onClick={() => this.toggleDialog(true)}
+                onClick={() => this.toggleOpen('dialogOpen')}
                 className="btn"
                 label="Empty cart"
                 labelPosition="before"
@@ -115,14 +110,14 @@ class Cart extends React.Component {
             </div>
             <CheckoutModal
               isOpen={this.state.checkoutModalOpen}
-              onRequestClose={this.toggleCheckoutModal}
-              toggle={this.toggleCheckoutModal}
+              onRequestClose={this.toggleOpen}
+              toggle={this.toggleOpen}
               makeOrder={this.makeOrder}           
             />
             <OrderSuccessModal
               isOpen={this.state.orderSuccessModalOpen}
-              onRequestClose={this.toggleOrderSuccessModal}
-              toggle={this.toggleOrderSuccessModal}
+              onRequestClose={this.toggleOpen}
+              toggle={this.toggleOpen}
             />
             <Dialog
               title="Are you sure that you want to empty your cart?"
@@ -130,7 +125,7 @@ class Cart extends React.Component {
                 <FlatButton
                   label="Cancel"
                   primary={true}
-                  onClick={() => this.toggleDialog(false)}
+                  onClick={() => this.toggleOpen('dialogOpen')}
                 />,
                 <FlatButton
                   label="Yes"
@@ -171,7 +166,6 @@ class Cart extends React.Component {
             <Snackbar
               open={this.state.snackbarOpen}
               message="Item removed from your cart."
-              autoHideDuration={4000}
               bodyStyle={{ 'textAlign': 'center' }}
             />
           </div>

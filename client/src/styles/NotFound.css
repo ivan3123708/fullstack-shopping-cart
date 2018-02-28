@@ -1,0 +1,21 @@
+.not-found-container {
+  min-height: 100vh;
+  margin-top: -72px;
+  border: 1px solid #ffffff00;
+}
+
+.not-found {
+  width: 50%;
+  min-width: 330px;
+  margin: auto;
+  margin-top: 200px;
+}
+
+.not-found h1 {
+  font-size: 60px;
+  color: #00BCD4;
+}
+
+.not-found h3 {
+  font-size: 45px;
+}
