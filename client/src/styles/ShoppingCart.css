@@ -3,7 +3,8 @@ button:focus {
 }
 
 .container {
-  width: 80%;
+  width: 100%;
+  max-width: 1200px;
   margin: auto;
   font-family: 'Roboto';
   color: #2e3a4edc;

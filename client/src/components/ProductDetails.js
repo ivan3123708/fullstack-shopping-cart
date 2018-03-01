@@ -115,17 +115,23 @@ class ProductDetails extends React.Component {
             />
           </div>
           <div className="right">
-            <span className="price-text">Price: </span>
-            <span className="price-num">{numeral(this.props.product.info.price).format('$0,0.00')}</span>
-            <span className="price-text">Quantity: </span>
-            <span><input type="number" value={this.state.postData.quantity} min="1" max="5" onChange={this.onQuantityChange} /></span>
-            <RaisedButton
-              onClick={this.addToCart}
-              label="Add to cart"
-              labelPosition="before"
-              primary={true}
-              icon={<AddShoppingCart />}
-            />
+            <div className="price">
+              <span className="price-text">Price: </span>
+              <span className="price-num">{numeral(this.props.product.info.price).format('$0,0.00')}</span>
+            </div>
+            <div className="quantity">
+              <span className="price-text">Quantity: </span>
+              <span><input type="number" value={this.state.postData.quantity} min="1" max="5" onChange={this.onQuantityChange} /></span>
+            </div>
+            <div className="btn">
+              <RaisedButton
+                onClick={this.addToCart}
+                label="Add to cart"
+                labelPosition="before"
+                primary={true}
+                icon={<AddShoppingCart />}
+              />
+            </div>
            </div> 
         </div>
       </div>

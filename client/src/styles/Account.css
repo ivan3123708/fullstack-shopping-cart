@@ -17,10 +17,12 @@
 
 .account {
   display: flex;
+  flex-direction: row;
 }
 
 .account-info {
   width: 50%;
+  margin-bottom: 50px;
 }
 
 .account-info .btn {
@@ -53,4 +55,18 @@
 .orders td {
   padding: 12px 5px;
   text-align: left;
+}
+
+@media (max-width: 1000px) {
+  .account {
+    flex-direction: column;
+  }
+
+  .account-info {
+    width: 100%;
+  }
+
+  .account-history {
+    width: 100%;
+  }
 }

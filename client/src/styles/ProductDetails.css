@@ -11,6 +11,7 @@
 
 .product-details {
   display: flex;
+  flex-direction: row;
 }
 
 .product-image {
@@ -49,7 +50,6 @@
 }
 
 .price-num {
-  margin: 0 50px 0 10px;
   font-size: 30px;
   font-weight: bold;
   color: #64DD17;
@@ -57,6 +57,7 @@
 
 .product-handle {
   display: flex;
+  flex-direction: row;
   margin: 40px 0;
 }
 
@@ -65,16 +66,87 @@
 }
 
 .product-handle .left .btn {
-  margin-top: 9px;
+  margin: 10px auto;
 }
 
 .product-handle .right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   width: 60%;
 }
 
-.product-handle .right input {
-  margin: 10px;
-  width: 40px;
+.right .price {
+  width: 200px;
+  margin: 5px 0;
+}
+
+.right .quantity {
+  width: 130px;
+  text-align: center;
+}
+
+.right .quantity input {
+  width: 30px;
   height: 28px;
+  margin: 10px;
   font-size: 17px;
+}
+
+.right .btn {
+  width: 160px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .product-details {
+    flex-direction: column;
+  }
+
+  .product-image {
+    width: 100%;
+    margin: 30px auto;
+    text-align: center;
+  }
+
+  .product-image img {
+    max-height: 300px;
+    margin: auto;
+  }
+
+  .product-info {
+    width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .product-handle {
+    flex-direction: column;
+  }
+
+  .product-handle .left {
+    width: 100%;
+    margin: 20px auto;
+    order: 2;
+  }
+
+   .product-handle .right {
+    width: 100%;
+    order: 1;
+  }
+}
+
+@media (max-width: 650px) {
+  .product-handle .right {
+    flex-direction: column;
+  }
+
+  .right .price, .right .quantity, .right .btn {
+    width: 100%;
+  }
+
+  .right .price, .left {
+    text-align: center;
+  }
 }

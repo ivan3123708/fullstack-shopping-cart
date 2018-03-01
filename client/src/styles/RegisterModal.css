@@ -1,5 +1,6 @@
 .register-modal {
-  width: 385px;
+  width: 90%;
+  max-width: 385px;
   height: 600px;
   margin: auto;
   margin-top: 100px;
@@ -10,7 +11,8 @@
 }
 
 .register-modal .form {
-  width: 70%;
+  width: 90%;
+  max-width: 360px;
   margin: auto;
   margin-top: 10px;
   text-align: center;

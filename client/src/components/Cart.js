@@ -78,16 +78,18 @@ class Cart extends React.Component {
         <h1>Your Cart</h1>
         <div className="cart">
           <div className="cart-info">
-            <p>
-              <b>Number of items: </b>
-              {this.props.cart.items.length ? this.props.cart.items.reduce((acc, item) => acc += item.quantity, 0) : 0}
-            </p>
-            <p>
-              <b>Total amount: </b>
-              <span className="total">
-                {this.props.cart.items.length ? numeral(this.props.cart.items.reduce((acc, item) => acc += item.product.info.price * item.quantity, 0)).format('$0,0.00') : numeral(0).format('$0,0.00')}
-              </span>
-            </p>
+            <div className="info">
+              <p>
+                <b>Number of items: </b>
+                {this.props.cart.items.length ? this.props.cart.items.reduce((acc, item) => acc += item.quantity, 0) : 0}
+              </p>
+              <p>
+                <b>Total amount: </b>
+                <span className="total">
+                  {this.props.cart.items.length ? numeral(this.props.cart.items.reduce((acc, item) => acc += item.product.info.price * item.quantity, 0)).format('$0,0.00') : numeral(0).format('$0,0.00')}
+                </span>
+              </p>
+            </div>
             <div className="btns">
               <RaisedButton
                 onClick={() => this.toggleOpen('checkoutModalOpen')}
