@@ -1,8 +1,12 @@
-.filtersList {
-  width: 20%;
-  height:100%;
-  min-height: auto;
-  margin-top: 90px;
-  margin-bottom: 40px;
-  background-color: #f5f5f5;
+.subheader {
+  font-size: 16px !important;
+  font-weight: bold !important; 
+}
+
+.listItem {
+  border-top: 1px solid #dcdcdc;
+}
+
+.checkbox {
+  margin-left: 20px;
 }

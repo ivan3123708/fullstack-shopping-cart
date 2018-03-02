@@ -6,16 +6,22 @@ import { setSortBy } from '../actions/sortActions';
 import filterProducts from '../selectors/filterProducts';
 import sortProducts from '../selectors/sortProducts';
 import RaisedButton from 'material-ui/RaisedButton';
+import Drawer from 'material-ui/Drawer';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import Remove from 'material-ui/svg-icons/content/remove-circle-outline.js';
+import FiltersList from './FiltersList';
 import Product from './Product';
 import '../styles/Products.css';
 
 class Products extends React.Component {
 
   state = {
+    drawerOpen: false,
     value: 'Name: A-Z'
+  }
+
+  toggleDrawer = () => {
+    this.setState({ drawerOpen: !this.state.drawerOpen });
   }
 
   handleChange = (event, index, value) => {
@@ -38,20 +44,29 @@ class Products extends React.Component {
     } else return (
       <div className="products">
         <div className="products-handle">
-          <div className="left">
+          <div className="products-found">
             <span><b>Products found: </b>{this.props.catalog.length}</span>
+          </div>
+          <div className="filters">
+            <div className="set-filters">
+              <RaisedButton
+                className="btn"
+                label="Filter products"
+                onClick={this.toggleDrawer}
+                primary={true}
+              />
+            </div>
             <RaisedButton
               className="btn"
               label="Clear Filters"
-              labelPosition="before" 
-              icon={<Remove/>}
               onClick={this.props.clearFilters}
               secondary={true}
             />
           </div>
-          <div className="right">
+          <div className="products-sort">
             <span><b>Sort By:</b></span>
             <SelectField
+              className="sort-field"
               value={this.state.value}
               onChange={this.handleChange}
             >
@@ -60,6 +75,14 @@ class Products extends React.Component {
               <MenuItem value="Price: Low to High" primaryText="Price: Low to High" />
               <MenuItem value="Price: High to Low" primaryText="Price: High to Low" />
             </SelectField>
+            <Drawer 
+              docked={false}
+              width={200}
+              open={this.state.drawerOpen}
+              onRequestChange={this.toggleDrawer}
+            >
+              <FiltersList />
+            </Drawer>
           </div>
         </div>
         {this.props.catalog.map((item) => {

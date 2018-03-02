@@ -5,7 +5,9 @@ import '../styles/Homepage.css';
 
 const Homepage = () => (
   <div className="homepage-container">
-    <FiltersList />
+    <div className="filtersList-desktop">
+      <FiltersList />
+    </div>
     <Products />
   </div>
 );
