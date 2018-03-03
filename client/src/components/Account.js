@@ -26,9 +26,11 @@ class Account extends React.Component {
   render() {
     if(!this.props.user) {
       return (
-        <div className="loader">
-          <img src="/img/loader.gif" />
-          <h1>LOADING ACCOUNT DATA...</h1>
+        <div className="account-container">
+          <div className="loader">
+            <img src="/img/loader.gif" />
+            <h1>LOADING ACCOUNT DATA...</h1>
+          </div>
         </div>
       );
     } else {
@@ -62,7 +64,7 @@ class Account extends React.Component {
                       <th>Date Created</th>
                       <th>Product Name</th>
                       <th>Price</th>
-                      <th>Quantity</th>
+                      <th>Qty</th>
                       <th>Total</th>
                     </tr>
                     {this.props.user.orders.map((order) => {

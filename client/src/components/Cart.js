@@ -147,7 +147,7 @@ class Cart extends React.Component {
                 <th></th>
                 <th>Product Name</th>
                 <th>Price</th>
-                <th>Quantity</th>
+                <th>Qty</th>
                 <th>Total</th>
                 <th></th>
               </tr>
