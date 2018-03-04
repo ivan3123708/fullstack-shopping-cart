@@ -1,7 +1,7 @@
 {
   "name": "fullstack-shopping-cart",
   "version": "1.0.0",
-  "description": "",
+  "description": "Mobile phones shopping cart",
   "main": "server.js",
   "author": "Ivan Jakimovski",
   "license": "ISC",
@@ -9,9 +9,10 @@
     "start:dev": "nodemon server.js",
     "start:client": "npm run start:dev --prefix client",
     "start:dev-full": "concurrently \"npm run start:dev\" \"npm run start:client\"",
+    "install:client": "npm install --prefix client",
     "build": "npm run build --prefix client",
     "start": "node server.js",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run install:client && npm run build"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
