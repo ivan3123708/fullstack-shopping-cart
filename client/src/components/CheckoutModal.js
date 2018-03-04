@@ -17,22 +17,26 @@ const CheckoutModal = (props) => (
         <i>Please read the list of items in your order and click "Confirm" to confirm your order.</i>
       </p>
       <table>
-        <tr>
-          <th>Product Name</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Total</th>
-        </tr>
-        {props.cart.map((item) => {
-          return (
-            <tr>
-              <td>{item.product.info.name}</td>
-              <td>{numeral(item.product.info.price).format('$0,0.00')}</td>
-              <td>{item.quantity}</td>
-              <td>{numeral(item.product.info.price * item.quantity).format('$0,0.00')}</td>
-            </tr>
-          )
-        })}
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.cart.map((item) => {
+            return (
+              <tr>
+                <td>{item.product.info.name}</td>
+                <td>{numeral(item.product.info.price).format('$0,0.00')}</td>
+                <td>{item.quantity}</td>
+                <td>{numeral(item.product.info.price * item.quantity).format('$0,0.00')}</td>
+              </tr>
+            )
+          })}
+        </tbody>
       </table>
       <p className="total">
         <b>TOTAL AMOUNT: </b>
@@ -49,7 +53,7 @@ const CheckoutModal = (props) => (
           className="btn"
           label="Confirm"
           backgroundColor="#64DD17"
-          labelColor="white"
+          labelColor="#fff"
           onClick={props.makeOrder}
         />
       </div>

@@ -143,26 +143,30 @@ class Cart extends React.Component {
           </div>
           <div className="cart-items">
             <table>
-              <tr>
-                <th></th>
-                <th>Product Name</th>
-                <th>Price</th>
-                <th>Qty</th>
-                <th>Total</th>
-                <th></th>
-              </tr>
-              {this.props.cart.items.length ? this.props.cart.items.map((item) => {
-                return (
-                  <tr>
-                    <td><img src={item.product.info.photo} /></td>
-                    <td><Link to={`/product/${item.product._id}`}>{item.product.info.name}</Link></td>
-                    <td>{numeral(item.product.info.price).format('$0,0.00')}</td>
-                    <td>{item.quantity}</td>
-                    <td>{numeral(item.product.info.price * item.quantity).format('$0,0.00')}</td>
-                    <td><button title="Remove this item from the cart" onClick={() => this.removeItem(item._id)}>X</button></td>
-                  </tr>
-                );
-              }) : ''}
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Product Name</th>
+                  <th>Price</th>
+                  <th>Qty</th>
+                  <th>Total</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.props.cart.items.length ? this.props.cart.items.map((item) => {
+                  return (
+                    <tr>
+                      <td><img src={item.product.info.photo} /></td>
+                      <td><Link to={`/product/${item.product._id}`}>{item.product.info.name}</Link></td>
+                      <td>{numeral(item.product.info.price).format('$0,0.00')}</td>
+                      <td>{item.quantity}</td>
+                      <td>{numeral(item.product.info.price * item.quantity).format('$0,0.00')}</td>
+                      <td><button title="Remove this item from the cart" onClick={() => this.removeItem(item._id)}>X</button></td>
+                    </tr>
+                  );
+                }) : ''}
+              </tbody>
             </table>
             {!this.props.cart.items.length && <h1>No items in the cart.</h1>}
             <Snackbar

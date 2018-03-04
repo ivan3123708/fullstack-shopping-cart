@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "author": "",
+  "author": "Ivan Jakimovski",
   "license": "ISC",
   "scripts": {
     "start:dev": "nodemon server.js",
     "start:client": "npm run start:dev --prefix client",
     "start:dev-full": "concurrently \"npm run start:dev\" \"npm run start:client\"",
-    "start": "node server.js"
+    "build": "npm run build --prefix client",
+    "start": "node server.js",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "body-parser": "^1.18.2",

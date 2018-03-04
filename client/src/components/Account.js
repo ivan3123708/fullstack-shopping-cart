@@ -57,27 +57,31 @@ class Account extends React.Component {
             <div className="account-history">
               <h2>Order History</h2>
               <Divider />
-              <div class="orders">
+              <div className="orders">
                 {this.props.user.orders.length ? 
                   <table>
-                    <tr>
-                      <th>Date Created</th>
-                      <th>Product Name</th>
-                      <th>Price</th>
-                      <th>Qty</th>
-                      <th>Total</th>
-                    </tr>
-                    {this.props.user.orders.map((order) => {
-                      return (
-                        <tr>
-                          <td>{moment(order.dateCreated).format('ll')}</td>
-                          <td>{order.name}</td>
-                          <td>{numeral(order.price).format('$0,0.00')}</td>
-                          <td>{order.quantity}</td>
-                          <td>{numeral(order.price * order.quantity).format('$0,0.00')}</td>
-                        </tr>
-                      );
-                    })}
+                    <thead>
+                      <tr>
+                        <th>Date Created</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.props.user.orders.map((order) => {
+                        return (
+                          <tr>
+                            <td>{moment(order.dateCreated).format('ll')}</td>
+                            <td>{order.name}</td>
+                            <td>{numeral(order.price).format('$0,0.00')}</td>
+                            <td>{order.quantity}</td>
+                            <td>{numeral(order.price * order.quantity).format('$0,0.00')}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
                   </table> :
                   <h1>No order history.</h1>
                 }
