@@ -64,3 +64,10 @@
 .checkout-modal .btns .btn {
   margin: 0 20px;
 }
+
+@media (max-height: 700px) {
+  .checkout-modal {
+    height: 500px;
+    overflow: scroll;
+  }
+}
