@@ -67,7 +67,8 @@
 
 @media (max-height: 700px) {
   .checkout-modal {
-    height: 500px;
+    height: 440px;
+    min-height: auto;
     overflow: scroll;
   }
 }
