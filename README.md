@@ -56,10 +56,14 @@ mongoose.connect(privates.mongoDBURI); ---> to ---> mongoose.connect(<Insert you
 replace express-session secret on line 27:<br/>
 ```
 secret: privates.sessionSecret, ---> to ---> secret: <Insert your secret string here>,
+```<br/>
+5. Build the app
 ```
-5. Execute the app:<br/>
+npm run build
+```
+6. Execute the app:<br/>
 ```
 cd ..
 npm run start
 ```
-6. App now running on localhost:5000
+7. App now running on localhost:5000
