@@ -47,19 +47,17 @@ npm install
 cd client
 npm install
 ```
-4. In server.js:
-<br/>
-remove line 14,
-<br/>
-replace mongoDB connection URI with your own, on line 20:
+4. In server.js:<br/>
+remove line 14,<br/>
+replace mongoDB connection URI with your own, on line 20:<br/>
 ```
 mongoose.connect(privates.mongoDBURI); ---> to ---> mongoose.connect(<Insert your mongoDB connection string here>);
 ```
-replace express-session secret on line 27:
+replace express-session secret on line 27:<br/>
 ```
 secret: privates.sessionSecret, ---> to ---> secret: <Insert your secret string here>,
 ```
-5. Execute the app:
+5. Execute the app:<br/>
 ```
 cd ..
 npm run start
