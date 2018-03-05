@@ -1,8 +1,5 @@
-const privatesDev = require('./dev');
-const privatesProd = require('./prod');
-
 if (process.env.NODE_ENV === 'production') {
-  module.exports = privatesProd;
+  module.exports = require('./prod');
 } else {
-  module.exports = privatesDev;
+  module.exports = require('./dev');
 }
