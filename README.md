@@ -10,7 +10,7 @@ View demo <a href="http://ij-mobile-shop.herokuapp.com/">here</a> or go to "Gett
 
 ## Technologies & Tools
 
-### Front-end
+### Front-end:
 
 * React
 * Redux
@@ -19,29 +19,49 @@ View demo <a href="http://ij-mobile-shop.herokuapp.com/">here</a> or go to "Gett
 * Babel
 * Axios
 
-### Backend
+### Backend:
 
 * Node/Express
 * MongoDB/Mongoose
 * Passport
 
-## Getting Started
+## Installation and Usage
 
-Clone repo on your local machine:
+### Requirements:
+
+* Node.js installed
+* MongoDB connection
+
+### Steps:
+1. Clone repo on your local machine:
 ```
 git clone git@github.com:ivan3123708/fullstack-shopping-cart.git
 ```
-Install server-side dependencies:
+2. Install server-side dependencies:
 ```
+cd fullstack-shopping-cart
 npm install
 ```
-Install client-side dependencies:
+3. Install client-side dependencies:
 ```
 cd client
 npm install
 ```
-Execute the app:
+4. In server.js:
+<br/>
+remove line 14,
+<br/>
+replace mongoDB connection URI with your own, on line 20:
+```
+mongoose.connect(privates.mongoDBURI); ---> to ---> mongoose.connect(<Insert your mongoDB connection string here>);
+```
+replace express-session secret on line 27:
+```
+secret: privates.sessionSecret, ---> to ---> secret: <Insert your secret string here>,
+```
+5. Execute the app:
 ```
 cd ..
-npm start
+npm run start
 ```
+6. App now running on localhost:5000
