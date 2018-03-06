@@ -34,7 +34,7 @@ class Products extends React.Component {
   }
   
   render() {
-    if(this.props.catalog.length === 0) {
+    if(!this.props.catalogLoaded) {
       return (
         <div className="loader">
           <img src="/img/loader.gif" />
@@ -85,16 +85,19 @@ class Products extends React.Component {
             </Drawer>
           </div>
         </div>
-        {this.props.catalog.map((item) => {
-          return <Product item={item} />
-        })}
+        {this.props.catalog.length ? 
+          this.props.catalog.map((item) => {
+            return <Product item={item} />
+          }) : 
+          <h1 className="no-products">No products found.</h1>}
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  catalog: sortProducts(filterProducts(state.catalog, state.filters), state.sortBy)
+  catalogLoaded: state.catalog.isLoaded,
+  catalog: sortProducts(filterProducts(state.catalog.items, state.filters), state.sortBy)
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -6,7 +6,7 @@ Shopping cart app build with MERN stack and using RESTful API design. Responsive
 
 You can get and view the list of all products from the API, register, add products to cart, remove specific product or empty entire cart, make order...
 
-View demo <a href="http://ij-mobile-shop.herokuapp.com/">here</a> or go to "Getting Started" and follow the instructions to install and use.
+View demo <a href="http://ij-mobile-shop.herokuapp.com/">here</a> or go to "Installation and Usage" and follow the instructions to install and use.
 
 ## Technologies & Tools
 
@@ -51,11 +51,11 @@ npm install
 remove line 14,<br/>
 replace mongoDB connection URI with your own, on line 20:<br/>
 ```
-mongoose.connect(privates.mongoDBURI); ---> to ---> mongoose.connect(<Insert your mongoDB connection string here>);
+mongoose.connect(privates.mongoDBURI); --> to --> mongoose.connect(<Insert your mongoDB connection string here>);
 ```
 replace express-session secret on line 27:<br/>
 ```
-secret: privates.sessionSecret, ---> to ---> secret: <Insert your secret string here>,
+secret: privates.sessionSecret, --> to --> secret: <Insert your secret string here>,
 ```
 5. Build the app
 ```

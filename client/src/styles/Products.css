@@ -4,6 +4,11 @@
   text-align: center;
 }
 
+.no-products {
+  margin-top: 150px;
+  text-align: center;
+}
+
 .products {
   width: 78%;
   margin-top: 90px;
