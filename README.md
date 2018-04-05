@@ -16,7 +16,6 @@ View demo <a href="http://ij-mobile-shop.herokuapp.com/">here</a> or go to "Inst
 * Redux
 * Material-UI
 * Webpack
-* Babel
 * Axios
 
 ### Backend:
@@ -35,19 +34,20 @@ View demo <a href="http://ij-mobile-shop.herokuapp.com/">here</a> or go to "Inst
 ### Steps:
 1. Clone repo on your local machine:
 ```
-git clone git@github.com:ivan3123708/fullstack-shopping-cart.git
+$ git clone git@github.com:ivan3123708/fullstack-shopping-cart.git
 ```
 2. Install server-side dependencies:
 ```
-cd fullstack-shopping-cart
-npm install
+$ cd fullstack-shopping-cart
+$ npm install
 ```
 3. Install client-side dependencies:
 ```
-cd client
-npm install
+$ cd client
+$ npm install
 ```
 4. In server.js:<br/>
+
 remove line 14,<br/>
 replace mongoDB connection URI with your own, on line 20:<br/>
 ```
@@ -57,13 +57,13 @@ replace express-session secret on line 27:<br/>
 ```
 secret: privates.sessionSecret, --> to --> secret: <Insert your secret string here>,
 ```
-5. Build the app
+6. Build the app
 ```
-npm run build
+$ npm run build
 ```
-6. Execute the app:<br/>
+7. Execute the app:<br/>
 ```
-cd ..
-npm run start
+$ cd ..
+$ npm run start
 ```
-7. App now running on localhost:5000
+8. App now running on localhost:5000
