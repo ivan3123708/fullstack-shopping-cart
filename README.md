@@ -34,7 +34,7 @@ View demo <a href="http://ij-mobile-shop.herokuapp.com/">here</a> or go to "Inst
 ### Steps:
 1. Clone repo on your local machine:
 ```
-$ git clone git@github.com:ivan3123708/fullstack-shopping-cart.git
+$ git clone https://github.com/ivan3123708/fullstack-shopping-cart.git
 ```
 2. Install server-side dependencies:
 ```
