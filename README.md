@@ -1,5 +1,7 @@
 # MERN stack shopping cart
 
+<img src="githubImg/mobile_shop.jpg"/>
+
 ## Description
 
 Shopping cart app build with MERN stack and using RESTful API design. Responsive front-end design done with Material-UI, Passport used for authentication, database hosted on mLab. Deployed on Heroku.
