@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Account /> renders Account with no user logged correctly 1`] = `
+<div
+  className="account-container"
+>
+  <div
+    className="loader"
+  >
+    <img
+      src="/img/loader.gif"
+    />
+    <h1>
+      LOADING ACCOUNT DATA...
+    </h1>
+  </div>
+</div>
+`;
+
+exports[`<Account /> renders Account with user logged correctly 1`] = `
+<div
+  className="account-container"
+>
+  <h1>
+    Your Account
+  </h1>
+  <div
+    className="account"
+  >
+    <div
+      className="account-info"
+    >
+      <h2>
+        Info
+      </h2>
+      <Divider
+        inset={false}
+      />
+      <p>
+        <b>
+          Username: 
+        </b>
+        John
+      </p>
+      <p>
+        <b>
+          E-mail: 
+        </b>
+        john@mail.com
+      </p>
+      <p>
+        <b>
+          Billing Address: 
+        </b>
+        1st street
+      </p>
+      <p>
+        <b>
+          Phone: 
+        </b>
+        123 456
+      </p>
+      <RaisedButton
+        className="btn"
+        disabled={false}
+        fullWidth={false}
+        icon={<ImageEdit />}
+        label="Edit account"
+        labelPosition="before"
+        onClick={[Function]}
+        primary={true}
+        secondary={false}
+      />
+    </div>
+    <div
+      className="account-history"
+    >
+      <h2>
+        Order History
+      </h2>
+      <Divider
+        inset={false}
+      />
+      <div
+        className="orders"
+      >
+        <table>
+          <thead>
+            <tr>
+              <th>
+                Date Created
+              </th>
+              <th>
+                Product Name
+              </th>
+              <th>
+                Price
+              </th>
+              <th>
+                Qty
+              </th>
+              <th>
+                Total
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Feb 24, 2018
+              </td>
+              <td>
+                Apple iPhone
+              </td>
+              <td>
+                $700.00
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                $700.00
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Feb 24, 2018
+              </td>
+              <td>
+                Samsung Galaxy
+              </td>
+              <td>
+                $800.00
+              </td>
+              <td>
+                1
+              </td>
+              <td>
+                $800.00
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <AccountModal
+    isOpen={false}
+    onRequestClose={[Function]}
+    user={
+      Object {
+        "_id": "123",
+        "address": "1st street",
+        "email": "john@mail.com",
+        "orders": Array [
+          Object {
+            "dateCreated": 1519512681240,
+            "name": "Apple iPhone",
+            "price": 700,
+            "quantity": 1,
+          },
+          Object {
+            "dateCreated": 1519512681240,
+            "name": "Samsung Galaxy",
+            "price": 800,
+            "quantity": 1,
+          },
+        ],
+        "phone": "123 456",
+        "username": "John",
+      }
+    }
+  />
+</div>
+`;

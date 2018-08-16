@@ -9,8 +9,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Edit from 'material-ui/svg-icons/image/edit.js';
 import '../styles/Account.css';
 
-class Account extends React.Component {
-
+export class Account extends React.Component {
   state = {
     accountModalOpen: false
   }
