@@ -5,7 +5,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import '../styles/AccountModal.css';
 
 class AccountModal extends React.Component {
-
   state = {
     email: this.props.user.email,
     address: this.props.user.address,
@@ -29,6 +28,7 @@ class AccountModal extends React.Component {
         <form className="form" action="/api/user" method="POST">
           <h1>Edit Account</h1>
           <TextField
+            id="email"
             hintText="Enter E-mail"
             floatingLabelText="E-mail"
             name="email"
@@ -36,6 +36,7 @@ class AccountModal extends React.Component {
             onChange={this.onInputChange}
           /><br />
           <TextField
+            id="address"
             hintText="Enter Address"
             floatingLabelText="Address"
             name="address"
@@ -43,6 +44,7 @@ class AccountModal extends React.Component {
             onChange={this.onInputChange}
           /><br />
           <TextField
+            id="phone"
             hintText="Enter Telephone Number"
             floatingLabelText="Telephone Number"
             name="phone"

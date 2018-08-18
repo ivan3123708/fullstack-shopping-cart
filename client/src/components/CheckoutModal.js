@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import RaisedButton from 'material-ui/RaisedButton';
 import '../styles/CheckoutModal.css';
 
-const CheckoutModal = (props) => (
+export const CheckoutModal = (props) => (
   <Modal
     className="checkout-modal"
     isOpen={props.isOpen}
@@ -28,7 +28,7 @@ const CheckoutModal = (props) => (
         <tbody>
           {props.cart.map((item) => {
             return (
-              <tr>
+              <tr key={item.product.info.name} >
                 <td>{item.product.info.name}</td>
                 <td>{numeral(item.product.info.price).format('$0,0.00')}</td>
                 <td>{item.quantity}</td>

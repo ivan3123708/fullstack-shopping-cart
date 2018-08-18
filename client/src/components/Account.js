@@ -71,7 +71,7 @@ export class Account extends React.Component {
                     <tbody>
                       {this.props.user.orders.map((order) => {
                         return (
-                          <tr>
+                          <tr key={order.name}>
                             <td>{moment(order.dateCreated).format('ll')}</td>
                             <td>{order.name}</td>
                             <td>{numeral(order.price).format('$0,0.00')}</td>
