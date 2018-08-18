@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
 import Person from 'material-ui/svg-icons/social/person';
 import Menu from 'material-ui/svg-icons/navigation/menu';
@@ -27,8 +26,7 @@ const styles = {
   }
 }
 
-class Header extends React.Component {
-
+export class Header extends React.Component {
   state = {
     loginModalOpen: false,
     registerModalOpen: false
