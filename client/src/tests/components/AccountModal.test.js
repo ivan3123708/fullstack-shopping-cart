@@ -17,8 +17,8 @@ describe('<AccountModal />', () => {
     wrapper.find('#address').simulate('change', { target: { name: 'addres', value: '1st street' } });
     wrapper.find('#phone').simulate('change', { target: { name: 'phone', value: '123456' } });
 
-    expect(wrapper.state('email')).toEqual('xxx@mail.com');
-    expect(wrapper.state('address')).toEqual('1st street');
-    expect(wrapper.state('phone')).toEqual('123456');
+    expect(wrapper.state('email')).toBe('xxx@mail.com');
+    expect(wrapper.state('address')).toBe('1st street');
+    expect(wrapper.state('phone')).toBe('123456');
   });
 });

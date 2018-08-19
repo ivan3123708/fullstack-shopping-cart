@@ -8,8 +8,8 @@ describe('<Account />', () => {
     const wrapper = shallow(<Account user="" getUser={() => { }} />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('img').prop('src')).toEqual('/img/loader.gif');
-    expect(wrapper.find('h1').text()).toEqual('LOADING ACCOUNT DATA...');
+    expect(wrapper.find('img').prop('src')).toBe('/img/loader.gif');
+    expect(wrapper.find('h1').text()).toBe('LOADING ACCOUNT DATA...');
   });
 
   it('renders Account with user logged correctly', () => {
@@ -18,6 +18,6 @@ describe('<Account />', () => {
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('.account-info').children()).toHaveLength(7);
     expect(wrapper.find('.account-history').children()).toHaveLength(3);
-    expect(wrapper.find('tbody').children()).toHaveLength(user.orders.length);
+    expect(wrapper.find('tbody').children()).toHaveLength(2);
   });
 });

@@ -10,11 +10,11 @@ describe('<CheckoutModal />', () => {
       onRequestClose={() => { }}
       toggle={() => { }}
       makeOrder={() => { }}
-      cart={cart}
+      cart={cart.items}
     />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('tbody').children()).toHaveLength(cart.length);
-    expect(wrapper.find('span').text()).toEqual(`$${cart.reduce((acc, item) => acc += item.product.info.price * item.quantity, 0)}.00`);
+    expect(wrapper.find('tbody').children()).toHaveLength(2);
+    expect(wrapper.find('span').text()).toBe('$2,200.00');
   });
 });

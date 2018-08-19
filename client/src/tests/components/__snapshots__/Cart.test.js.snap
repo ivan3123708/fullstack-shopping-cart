@@ -1,0 +1,217 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Cart /> renders Cart correctly 1`] = `
+<div
+  className="cart-container"
+>
+  <h1>
+    Your Cart
+  </h1>
+  <div
+    className="cart"
+  >
+    <div
+      className="cart-info"
+    >
+      <div
+        className="info"
+      >
+        <p>
+          <b>
+            Number of items: 
+          </b>
+          3
+        </p>
+        <p>
+          <b>
+            Total amount: 
+          </b>
+          <span
+            className="total"
+          >
+            $2,200.00
+          </span>
+        </p>
+      </div>
+      <div
+        className="btns"
+      >
+        <RaisedButton
+          className="btn"
+          disabled={false}
+          fullWidth={false}
+          icon={<ImageNavigateNext />}
+          label="Checkout"
+          labelPosition="before"
+          onClick={[Function]}
+          primary={true}
+          secondary={false}
+        />
+        <RaisedButton
+          className="btn"
+          disabled={false}
+          fullWidth={false}
+          icon={<ActionRemoveShoppingCart />}
+          label="Empty cart"
+          labelPosition="before"
+          onClick={[Function]}
+          primary={false}
+          secondary={true}
+        />
+      </div>
+      <Connect(CheckoutModal)
+        isOpen={false}
+        makeOrder={[Function]}
+        onRequestClose={[Function]}
+        toggle={[Function]}
+      />
+      <OrderSuccessModal
+        isOpen={false}
+        onRequestClose={[Function]}
+        toggle={[Function]}
+      />
+      <Dialog
+        actions={
+          Array [
+            <FlatButton
+              disabled={false}
+              fullWidth={false}
+              label="Cancel"
+              labelPosition="after"
+              labelStyle={Object {}}
+              onClick={[Function]}
+              onKeyboardFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onTouchStart={[Function]}
+              primary={true}
+              secondary={false}
+            />,
+            <FlatButton
+              disabled={false}
+              fullWidth={false}
+              label="Yes"
+              labelPosition="after"
+              labelStyle={Object {}}
+              onClick={[Function]}
+              onKeyboardFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onTouchStart={[Function]}
+              primary={true}
+              secondary={false}
+            />,
+          ]
+        }
+        autoDetectWindowHeight={true}
+        autoScrollBodyContent={false}
+        modal={true}
+        open={false}
+        repositionOnUpdate={true}
+        title="Are you sure that you want to empty your cart?"
+      >
+        All items will be removed.
+      </Dialog>
+    </div>
+    <div
+      className="cart-items"
+    >
+      <table>
+        <thead>
+          <tr>
+            <th />
+            <th>
+              Product Name
+            </th>
+            <th>
+              Price
+            </th>
+            <th>
+              Qty
+            </th>
+            <th>
+              Total
+            </th>
+            <th />
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            key="Apple iPhone"
+          >
+            <td>
+              <img />
+            </td>
+            <td>
+              <Link
+                replace={false}
+                to="/product/undefined"
+              >
+                Apple iPhone
+              </Link>
+            </td>
+            <td>
+              $700.00
+            </td>
+            <td>
+              1
+            </td>
+            <td>
+              $700.00
+            </td>
+            <td>
+              <button
+                onClick={[Function]}
+                title="Remove this item from the cart"
+              >
+                X
+              </button>
+            </td>
+          </tr>
+          <tr
+            key="Samsung Galaxy S8"
+          >
+            <td>
+              <img />
+            </td>
+            <td>
+              <Link
+                replace={false}
+                to="/product/undefined"
+              >
+                Samsung Galaxy S8
+              </Link>
+            </td>
+            <td>
+              $750.00
+            </td>
+            <td>
+              2
+            </td>
+            <td>
+              $1,500.00
+            </td>
+            <td>
+              <button
+                onClick={[Function]}
+                title="Remove this item from the cart"
+              >
+                X
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <Snackbar
+        bodyStyle={
+          Object {
+            "textAlign": "center",
+          }
+        }
+        message="Item removed from your cart."
+        open={false}
+      />
+    </div>
+  </div>
+</div>
+`;

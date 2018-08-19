@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ShoppingCart /> renders ShoppingCart correctly 1`] = `
+<BrowserRouter>
+  <MuiThemeProvider>
+    <div
+      className="container"
+    >
+      <Route
+        component={[Function]}
+      />
+      <Switch>
+        <Route
+          component={[Function]}
+          exact={true}
+          path="/"
+        />
+        <Route
+          component={[Function]}
+          path="/account"
+        />
+        <Route
+          component={[Function]}
+          path="/cart"
+        />
+        <Route
+          component={[Function]}
+          path="/product/:id"
+        />
+        <Route
+          component={[Function]}
+        />
+      </Switch>
+      <Route
+        component={[Function]}
+      />
+    </div>
+  </MuiThemeProvider>
+</BrowserRouter>
+`;

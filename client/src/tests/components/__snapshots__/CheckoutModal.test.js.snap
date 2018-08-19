@@ -60,6 +60,22 @@ exports[`<CheckoutModal /> renders CheckoutModal correctly 1`] = `
             $700.00
           </td>
         </tr>
+        <tr
+          key="Samsung Galaxy S8"
+        >
+          <td>
+            Samsung Galaxy S8
+          </td>
+          <td>
+            $750.00
+          </td>
+          <td>
+            2
+          </td>
+          <td>
+            $1,500.00
+          </td>
+        </tr>
       </tbody>
     </table>
     <p
@@ -69,7 +85,7 @@ exports[`<CheckoutModal /> renders CheckoutModal correctly 1`] = `
         TOTAL AMOUNT: 
       </b>
       <span>
-        $700.00
+        $2,200.00
       </span>
     </p>
     <div
