@@ -14,8 +14,7 @@ import Dialog from 'material-ui/Dialog';
 import Snackbar from 'material-ui/Snackbar';
 import '../styles/Cart.css';
 
-class Cart extends React.Component {
-
+export class Cart extends React.Component {
   state = {
     checkoutModalOpen: false,
     orderSuccessModalOpen: false,
@@ -156,7 +155,7 @@ class Cart extends React.Component {
               <tbody>
                 {this.props.cart.items.length ? this.props.cart.items.map((item) => {
                   return (
-                    <tr>
+                    <tr key={item.product.info.name} >
                       <td><img src={item.product.info.photo} /></td>
                       <td><Link to={`/product/${item.product._id}`}>{item.product.info.name}</Link></td>
                       <td>{numeral(item.product.info.price).format('$0,0.00')}</td>
