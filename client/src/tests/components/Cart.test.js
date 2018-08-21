@@ -14,10 +14,22 @@ describe('<Cart />', () => {
     expect(wrapper.find('tbody').childAt(0).children()).toHaveLength(6);
   });
 
-  it('triggers right action when clicked on buttons', () => {
+  it('opens modals on button click', () => {
     const wrapper = shallow(<Cart cart={cart} getCart={() => { }} />);
 
     wrapper.find('RaisedButton').at(0).simulate('click');
     expect(wrapper.state('checkoutModalOpen')).toBe(true);
+
+    wrapper.find('RaisedButton').at(1).simulate('click');
+    expect(wrapper.state('dialogOpen')).toBe(true);
+  });
+
+  it('removes one item from the cart on button click', (done) => {
+    const wrapper = shallow(<Cart cart={cart} getCart={() => { }} />);
+
+    wrapper.find('tbody').childAt(0).childAt(5).childAt(0).simulate('click');
+    expect(wrapper.find('tbody').children()).toHaveLength(2);
+
+    done();
   });
 });

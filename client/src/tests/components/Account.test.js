@@ -20,4 +20,11 @@ describe('<Account />', () => {
     expect(wrapper.find('.account-history').children()).toHaveLength(3);
     expect(wrapper.find('tbody').children()).toHaveLength(2);
   });
+
+  it('opens modal on button click', () => {
+    const wrapper = shallow(<Account user={user} getUser={() => { }} />);
+
+    wrapper.find('RaisedButton').simulate('click');
+    expect(wrapper.state('accountModalOpen')).toBe(true);
+  });
 });

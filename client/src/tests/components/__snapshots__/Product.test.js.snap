@@ -89,7 +89,7 @@ exports[`<Product /> renders Product correctly 1`] = `
         containerElement={
           <Link
             replace={false}
-            to="/product/undefined"
+            to="/product/123"
           />
         }
         disabled={false}

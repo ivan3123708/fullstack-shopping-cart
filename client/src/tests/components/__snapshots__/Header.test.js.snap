@@ -1,0 +1,278 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> renders Header with no user logged correctly 1`] = `
+<div
+  className="header"
+>
+  <AppBar
+    className="title"
+    iconElementRight={
+      <FlatButton
+        disabled={false}
+        fullWidth={false}
+        icon={<ActionInput />}
+        label="LOGIN"
+        labelPosition="before"
+        labelStyle={Object {}}
+        onClick={[Function]}
+        onKeyboardFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onTouchStart={[Function]}
+        primary={false}
+        secondary={false}
+      />
+    }
+    onTitleClick={[Function]}
+    showMenuIconButton={false}
+    title="MOBILE SHOP"
+    zDepth={0}
+  />
+  <LoginModal
+    isOpen={false}
+    onRequestClose={[Function]}
+    switch={[Function]}
+  />
+  <RegisterModal
+    isOpen={false}
+    onRequestClose={[Function]}
+    switch={[Function]}
+  />
+</div>
+`;
+
+exports[`<Header /> renders Header with user logged correctly 1`] = `
+<div
+  className="header"
+>
+  <AppBar
+    className="title"
+    iconElementRight={
+      <div>
+        <div
+          className="menu"
+        >
+          <FlatButton
+            containerElement={
+              <Link
+                replace={false}
+                to="/account"
+              />
+            }
+            disabled={false}
+            fullWidth={false}
+            icon={<SocialPerson />}
+            label="ACCOUNT"
+            labelPosition="after"
+            labelStyle={Object {}}
+            onKeyboardFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchStart={[Function]}
+            primary={false}
+            secondary={false}
+            style={
+              Object {
+                "color": "#fff",
+              }
+            }
+          />
+          <FlatButton
+            containerElement={
+              <Link
+                replace={false}
+                to="/cart"
+              />
+            }
+            disabled={false}
+            fullWidth={false}
+            icon={<ActionShoppingCart />}
+            label="CART"
+            labelPosition="after"
+            labelStyle={Object {}}
+            onKeyboardFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchStart={[Function]}
+            primary={false}
+            secondary={false}
+            style={
+              Object {
+                "color": "#fff",
+              }
+            }
+          />
+          <FlatButton
+            containerElement={
+              <a
+                href="/auth/logout"
+              />
+            }
+            disabled={false}
+            fullWidth={false}
+            icon={<NavigationSubdirectoryArrowLeft />}
+            label="LOGOUT"
+            labelPosition="after"
+            labelStyle={Object {}}
+            onKeyboardFocus={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onTouchStart={[Function]}
+            primary={false}
+            secondary={false}
+            style={
+              Object {
+                "color": "#fff",
+              }
+            }
+          />
+        </div>
+        <div
+          className="icon-menu"
+        >
+          <IconMenu
+            anchorOrigin={
+              Object {
+                "horizontal": "right",
+                "vertical": "top",
+              }
+            }
+            animated={true}
+            clickCloseDelay={200}
+            iconButtonElement={
+              <IconButton
+                disableTouchRipple={false}
+                disabled={false}
+                iconStyle={Object {}}
+                tooltipPosition="bottom-center"
+                touch={false}
+              >
+                <NavigationMenu />
+              </IconButton>
+            }
+            iconStyle={
+              Object {
+                "color": "#fff",
+              }
+            }
+            multiple={false}
+            onClick={[Function]}
+            onItemClick={[Function]}
+            onKeyboardFocus={[Function]}
+            onMouseDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onRequestChange={[Function]}
+            open={null}
+            targetOrigin={
+              Object {
+                "horizontal": "right",
+                "vertical": "top",
+              }
+            }
+            useLayerForClickAway={false}
+          >
+            <FlatButton
+              containerElement={
+                <Link
+                  replace={false}
+                  to="/account"
+                />
+              }
+              disabled={false}
+              fullWidth={false}
+              icon={<SocialPerson />}
+              label="ACCOUNT"
+              labelPosition="after"
+              labelStyle={Object {}}
+              onKeyboardFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onTouchStart={[Function]}
+              primary={false}
+              secondary={false}
+              style={
+                Object {
+                  "color": "#00BCD4",
+                  "minWidth": "168px",
+                  "textAlign": "left",
+                }
+              }
+            />
+            <br />
+            <FlatButton
+              containerElement={
+                <Link
+                  replace={false}
+                  to="/cart"
+                />
+              }
+              disabled={false}
+              fullWidth={false}
+              icon={<ActionShoppingCart />}
+              label="CART"
+              labelPosition="after"
+              labelStyle={Object {}}
+              onKeyboardFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onTouchStart={[Function]}
+              primary={false}
+              secondary={false}
+              style={
+                Object {
+                  "color": "#00BCD4",
+                  "minWidth": "168px",
+                  "textAlign": "left",
+                }
+              }
+            />
+            <br />
+            <FlatButton
+              containerElement={
+                <a
+                  href="/auth/logout"
+                />
+              }
+              disabled={false}
+              fullWidth={false}
+              icon={<NavigationSubdirectoryArrowLeft />}
+              label="LOGOUT"
+              labelPosition="after"
+              labelStyle={Object {}}
+              onKeyboardFocus={[Function]}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              onTouchStart={[Function]}
+              primary={false}
+              secondary={false}
+              style={
+                Object {
+                  "color": "#00BCD4",
+                  "minWidth": "168px",
+                  "textAlign": "left",
+                }
+              }
+            />
+          </IconMenu>
+        </div>
+      </div>
+    }
+    onTitleClick={[Function]}
+    showMenuIconButton={false}
+    title="MOBILE SHOP"
+    zDepth={0}
+  />
+  <LoginModal
+    isOpen={false}
+    onRequestClose={[Function]}
+    switch={[Function]}
+  />
+  <RegisterModal
+    isOpen={false}
+    onRequestClose={[Function]}
+    switch={[Function]}
+  />
+</div>
+`;
