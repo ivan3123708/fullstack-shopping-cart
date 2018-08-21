@@ -13,8 +13,7 @@ import FiltersList from './FiltersList';
 import Product from './Product';
 import '../styles/Products.css';
 
-class Products extends React.Component {
-
+export class Products extends React.Component {
   state = {
     drawerOpen: false,
     value: 'Name: A-Z'
@@ -87,7 +86,7 @@ class Products extends React.Component {
         </div>
         {this.props.catalog.length ? 
           this.props.catalog.map((item) => {
-            return <Product item={item} />
+            return <Product key={item.info.name} item={item} />
           }) : 
           <h1 className="no-products">No products found.</h1>}
       </div>

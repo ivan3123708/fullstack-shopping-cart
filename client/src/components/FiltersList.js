@@ -6,8 +6,7 @@ import Checkbox from 'material-ui/Checkbox';
 import { setFilter } from '../actions/filterActions';
 import '../styles/FiltersList.css';
 
-class FiltersList extends React.Component {
-
+export class FiltersList extends React.Component {
   handleCheck = (e) => {
     this.props.setFilter(e.target.name, e.target.value);
   };

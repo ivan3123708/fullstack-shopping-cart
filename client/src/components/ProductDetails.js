@@ -9,8 +9,7 @@ import AddShoppingCart from 'material-ui/svg-icons/action/add-shopping-cart';
 import KeyboardArrowLeft from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import '../styles/ProductDetails.css';
 
-class ProductDetails extends React.Component {
-
+export class ProductDetails extends React.Component {
   state = {
     postData: {
       user: this.props.loggedUser._id,
