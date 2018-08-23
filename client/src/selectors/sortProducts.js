@@ -1,5 +1,4 @@
 const sortProducts = (productsArr, sortBy) => {
-
   switch (sortBy) {
     case 'Name: A-Z':
       return productsArr.sort((a, b) => (a.info.name > b.info.name) ? 1 : ((b.info.name > a.info.name) ? -1 : 0));

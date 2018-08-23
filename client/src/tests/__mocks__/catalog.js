@@ -16,6 +16,18 @@ const catalog = [
       color: 'White',
       price: 700,
       photo: '/img/apple_iphone_8_plus.jpg'
+    },
+    tags: {
+      priceRange: "500-750",
+      brand: "apple",
+      color: "white",
+      os: "ios",
+      internalMemory: "256",
+      ram: "3",
+      displaySize: "5.5",
+      displayResolution: "1080x1920",
+      camera: "12",
+      cpu: "hexa_core"
     }
   },
   {
@@ -35,6 +47,18 @@ const catalog = [
       color: 'Ice Platinum',
       price: 800,
       photo: '/img/lg_g6.jpg'
+    },
+    tags: {
+      priceRange: "750>",
+      brand: "lg",
+      color: "grey",
+      os: "android",
+      internalMemory: "128",
+      ram: "4",
+      displaySize: "5.8",
+      displayResolution: "1440x2880",
+      camera: "13",
+      cpu: "quad_core"
     }
   },
   {
@@ -54,6 +78,18 @@ const catalog = [
       color: 'Midnight Black',
       price: 720,
       photo: '/img/samsung_galaxy_s8.jpg'
+    },
+    tags: {
+      priceRange: "500-750",
+      brand: "samsung",
+      color: "black",
+      os: "android",
+      internalMemory: "64",
+      ram: "4",
+      displaySize: "5.8",
+      displayResolution: "1440x2960",
+      camera: "12",
+      cpu: "octa_core"
     }
   }
 ];
