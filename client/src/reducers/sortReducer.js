@@ -1,4 +1,4 @@
-let defaultSortState = 'Name: A-Z';
+export const defaultSortState = 'Name: A-Z';
 
 const sortReducer = (state = defaultSortState, action) => {
   switch (action.type) {

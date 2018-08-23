@@ -1,4 +1,4 @@
-const defaultCartState = {
+export const defaultCartState = {
   _id: '',
   items: []
 };

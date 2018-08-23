@@ -1,4 +1,4 @@
-let defaultFiltersState = {
+export const defaultFiltersState = {
   priceRange: [],
   brand: [],
   color: [],
@@ -24,21 +24,10 @@ const filtersReducer = (state = defaultFiltersState, action) => {
         ...state
       };
     case 'CLEAR_FILTERS':
-      return {
-        priceRange: [],
-        brand: [],
-        color: [],
-        os: [],
-        internalMemory: [],
-        ram: [],
-        displaySize: [],
-        displayResolution: [],
-        camera: [],
-        cpu: []
-      };
+      return defaultFiltersState;
     default:
       return state
   }
-}
+};
 
 export default filtersReducer;

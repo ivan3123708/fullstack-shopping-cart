@@ -1,4 +1,4 @@
-const defaultCatalogState = {
+export const defaultCatalogState = {
   isLoaded: false,
   items: []
 }
@@ -6,9 +6,6 @@ const defaultCatalogState = {
 const catalogReducer = (state = defaultCatalogState, action) => {
   switch (action.type) {
     case 'INIT_CATALOG':
-      // return [
-      //   ...action.catalog
-      // ]
       return {
         isLoaded: true,
         items: [ ...action.catalog ]
