@@ -26,6 +26,10 @@ View demo <a href="http://ij-mobile-shop.herokuapp.com/">here</a> or go to "Inst
 * MongoDB/Mongoose
 * Passport
 
+### Tests:
+
+* Jest/Enzyme
+
 ## Installation and Usage
 
 ### Requirements:
