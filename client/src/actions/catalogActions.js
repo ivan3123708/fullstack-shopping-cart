@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const initCatalog = () => {
   return (dispatch) => {
-    axios.get('/api/catalog')
+    return axios.get('/api/catalog')
       .then((res) => dispatch({
         type: 'INIT_CATALOG',
         catalog: res.data

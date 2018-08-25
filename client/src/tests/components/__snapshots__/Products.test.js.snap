@@ -181,6 +181,18 @@ exports[`<Products /> renders Products correctly 1`] = `
           "ram": "3 GB",
           "weight": "202 g",
         },
+        "tags": Object {
+          "brand": "apple",
+          "camera": "12",
+          "color": "white",
+          "cpu": "hexa_core",
+          "displayResolution": "1080x1920",
+          "displaySize": "5.5",
+          "internalMemory": "256",
+          "os": "ios",
+          "priceRange": "500-750",
+          "ram": "3",
+        },
       }
     }
     key="Apple iPhone 8 Plus"
@@ -205,6 +217,18 @@ exports[`<Products /> renders Products correctly 1`] = `
           "ram": "4 GB",
           "weight": "163 g",
         },
+        "tags": Object {
+          "brand": "lg",
+          "camera": "13",
+          "color": "grey",
+          "cpu": "quad_core",
+          "displayResolution": "1440x2880",
+          "displaySize": "5.8",
+          "internalMemory": "128",
+          "os": "android",
+          "priceRange": "750>",
+          "ram": "4",
+        },
       }
     }
     key="LG G6"
@@ -228,6 +252,18 @@ exports[`<Products /> renders Products correctly 1`] = `
           "price": 720,
           "ram": "4 GB",
           "weight": "155 g",
+        },
+        "tags": Object {
+          "brand": "samsung",
+          "camera": "12",
+          "color": "black",
+          "cpu": "octa_core",
+          "displayResolution": "1440x2960",
+          "displaySize": "5.8",
+          "internalMemory": "64",
+          "os": "android",
+          "priceRange": "500-750",
+          "ram": "4",
         },
       }
     }
