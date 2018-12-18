@@ -63,13 +63,18 @@ replace express-session secret on line 27:<br/>
 ```
 secret: privates.sessionSecret, --> to --> secret: <Insert your secret string here>,
 ```
-6. Build the app
+after ```mongoose.connect``` add these two lines to seed products in your database:
+```
+const seedProducts = require('./seeds/products.js');
+seedProducts();
+```
+5. Build the app:
 ```
 $ npm run build
 ```
-7. Execute the app:<br/>
+6. Execute the app:<br/>
 ```
 $ cd ..
 $ npm run start
 ```
-8. App now running on localhost:5000
+7. App now running on ```localhost:5000```
