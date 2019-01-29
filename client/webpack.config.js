@@ -1,8 +1,8 @@
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['babel-regenerator-runtime', './src/index.js'],
   output: {
     path: path.resolve(__dirname, 'public', 'dist'),
     filename: 'bundle.js'
@@ -51,7 +51,7 @@ module.exports = {
     publicPath: '/dist',
     proxy: [{
       context: ['/auth/*', '/api/*'],
-      target: "http://localhost:5000",
+      target: 'http://localhost:5000',
     }]
   }
 }

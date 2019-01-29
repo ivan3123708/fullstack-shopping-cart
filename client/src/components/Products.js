@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../actions';
 import { initCatalog } from '../actions/catalogActions';
 import { clearFilters } from '../actions/filterActions';
 import { setSortBy } from '../actions/sortActions';
@@ -100,7 +101,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  initCatalog: () => dispatch(initCatalog()),
+  initCatalog: () => dispatch(actions.initCatalog()),
   setSortBy: (sortBy) => dispatch(setSortBy(sortBy)),
   clearFilters: () => dispatch(clearFilters())
 });
