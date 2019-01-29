@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { initCatalog } from '../actions/catalogActions';
 import { clearFilters } from '../actions/filterActions';
 import { setSortBy } from '../actions/sortActions';
 import filterProducts from '../selectors/filterProducts';

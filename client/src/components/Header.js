@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getUser } from '../actions/userActions';
 import { Link } from 'react-router-dom';
+import * as actions from '../actions';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import IconMenu from 'material-ui/IconMenu';
@@ -57,7 +57,7 @@ export class Header extends React.Component {
           showMenuIconButton={false}
           zDepth={0}
           iconElementRight={
-            this.props.loggedUser ? 
+            this.props.loggedUser.user ?
               <div>
                 <div className="menu">
                   <FlatButton 
@@ -136,7 +136,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getUser: () => dispatch(getUser())
+  getUser: () => dispatch(actions.getUser())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
