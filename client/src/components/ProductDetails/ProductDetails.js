@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import numeral from 'numeral';
@@ -7,7 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 import AddShoppingCart from 'material-ui/svg-icons/action/add-shopping-cart';
 import KeyboardArrowLeft from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
-import '../styles/ProductDetails.css';
+import '@styles/ProductDetails.css';
 
 export class ProductDetails extends React.Component {
   state = {
@@ -32,73 +31,96 @@ export class ProductDetails extends React.Component {
   }
 
   render() {
+    const {
+      loggedUser,
+      product: {
+        info: {
+          name,
+          photo,
+          dimensions,
+          weight,
+          displayType,
+          displaySize,
+          displayResolution,
+          os,
+          cpu,
+          internalMemory,
+          ram,
+          camera,
+          batery,
+          color,
+          price
+        }
+      }
+    } = this.props;
+
     return (
       <div className="product-details-container">
-        <h1>{this.props.product.info.name}</h1>
+        <h1>{name}</h1>
         <div className="product-details">
           <div className="product-image">
-            <img src={this.props.product.info.photo} />
+            <img src={photo} />
           </div>
           <div className="product-info">
             <table>
               <tr>
                 <th>Model</th>
-                <td>{this.props.product.info.name}</td>
+                <td>{name}</td>
               </tr>
               <tr>
                 <th>Dimensions</th>
-                <td>{this.props.product.info.dimensions}</td>
+                <td>{dimensions}</td>
               </tr>
               <tr>
                 <th>Weight</th>
-                <td>{this.props.product.info.weight}</td>
+                <td>{weight}</td>
               </tr>
               <tr>
                 <th>Display Type</th>
-                <td>{this.props.product.info.displayType}</td>
+                <td>{displayType}</td>
               </tr>
               <tr>
                 <th>Display Size</th>
-                <td>{this.props.product.info.displaySize}</td>
+                <td>{displaySize}</td>
               </tr>
               <tr>
                 <th>Display Resolution</th>
-                <td>{this.props.product.info.displayResolution}</td>
+                <td>{displayResolution}</td>
               </tr>
               <tr>
                 <th>OS</th>
-                <td>{this.props.product.info.os}</td>
+                <td>{os}</td>
               </tr>
               <tr>
                 <th>CPU</th>
-                <td>{this.props.product.info.cpu}</td>
+                <td>{cpu}</td>
               </tr>
               <tr>
                 <th>Internal Memory</th>
-                <td>{this.props.product.info.internalMemory}</td>
+                <td>{internalMemory}</td>
               </tr>
               <tr>
                 <th>RAM</th>
-                <td>{this.props.product.info.ram}</td>
+                <td>{ram}</td>
               </tr>
               <tr>
                 <th>Camera</th>
-                <td>{this.props.product.info.camera}</td>
+                <td>{camera}</td>
               </tr>
               <tr>
                 <th>Batery</th>
-                <td>{this.props.product.info.batery}</td>
+                <td>{batery}</td>
               </tr>
               <tr>
                 <th>Color</th>
-                <td>{this.props.product.info.color}</td>
+                <td>{color}</td>
               </tr>
             </table>
             <Snackbar
               open={this.state.snackbarOpen}
-              message={this.props.loggedUser ? 'Item added to your cart.' : 'You must be logged in!'}
+              message={loggedUser ? 'Item added to your cart.' : 'You must be logged in!'}
               autoHideDuration={4000}
-              bodyStyle={this.props.loggedUser ? { 'background': '#64DD17' } : { 'background': '#F44336' }}
+              bodyStyle={loggedUser ? { 'background': '#64DD17' } : { 'background': '#F44336' }}
             />
           </div>
         </div>
@@ -116,7 +138,7 @@ export class ProductDetails extends React.Component {
           <div className="right">
             <div className="price">
               <span className="price-text">Price: </span>
-              <span className="price-num">{numeral(this.props.product.info.price).format('$0,0.00')}</span>
+              <span className="price-num">{numeral(price).format('$0,0.00')}</span>
             </div>
             <div className="quantity">
               <span className="price-text">Quantity: </span>
@@ -138,9 +160,4 @@ export class ProductDetails extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => ({
-  loggedUser: state.loggedUser.user,
-  product: state.catalog.items.find((item) => item._id == props.match.params.id)
-});
-
-export default connect(mapStateToProps)(ProductDetails);
+export default ProductDetails;

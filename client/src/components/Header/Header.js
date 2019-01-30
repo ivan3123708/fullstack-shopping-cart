@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getUser } from '../actions';
+import { getUser } from '@actions';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import IconMenu from 'material-ui/IconMenu';
@@ -11,9 +11,9 @@ import Menu from 'material-ui/svg-icons/navigation/menu';
 import Logout from 'material-ui/svg-icons/navigation/subdirectory-arrow-left';
 import ShoppingCart from 'material-ui/svg-icons/action/shopping-cart.js';
 import Input from 'material-ui/svg-icons/action/input.js';
-import LoginModal from './LoginModal';
-import RegisterModal from './RegisterModal';
-import '../styles/Header.css';
+import LoginModal from '../LoginModal';
+import RegisterModal from '../RegisterModal';
+import '@styles/Header.css';
 
 const styles = {
   menuBtn: {
@@ -115,28 +115,19 @@ export class Header extends React.Component {
               />
           }
         />
-        <LoginModal 
-          isOpen={this.state.loginModalOpen} 
-          onRequestClose={() => this.toggleOpen('loginModalOpen')} 
-          switch={this.switchLoginRegister} 
+        <LoginModal
+          isOpen={this.state.loginModalOpen}
+          onRequestClose={() => this.toggleOpen('loginModalOpen')}
+          toggle={this.switchLoginRegister}
         />
-        <RegisterModal 
-          isOpen={this.state.registerModalOpen} 
-          onRequestClose={() => this.toggleOpen('registerModalOpen')} 
-          switch={this.switchLoginRegister} 
+        <RegisterModal
+          isOpen={this.state.registerModalOpen}
+          onRequestClose={() => this.toggleOpen('registerModalOpen')}
+          toggle={this.switchLoginRegister}
         />
       </div>
     )
   }
 };
 
-const mapStateToProps = (state) => ({
-  loggedUser: state.loggedUser,
-  cart: state.cart
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getUser: () => dispatch(getUser())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

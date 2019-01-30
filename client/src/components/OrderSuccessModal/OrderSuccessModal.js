@@ -1,13 +1,13 @@
 import React from 'react';
 import Modal from 'react-modal';
 import RaisedButton from 'material-ui/RaisedButton';
-import '../styles/OrderSuccessModal.css';
+import '@styles/OrderSuccessModal.css';
 
-const OrderSuccessModal = (props) => (
+const OrderSuccessModal = ({ isOpen, toggle }) => (
   <Modal
     className="order-success-modal"
-    isOpen={props.isOpen}
-    onRequestClose={() => props.toggle('orderSuccessModalOpen')}
+    isOpen={isOpen}
+    onRequestClose={() => toggle('orderSuccessModalOpen')}
   >
     <div className="success">
       <h1>Success!</h1>
@@ -17,7 +17,7 @@ const OrderSuccessModal = (props) => (
         Your order has been received. The items you've ordered will be sent to your address.
       </p>
       <RaisedButton
-        onClick={() => props.toggle('orderSuccessModalOpen')}
+        onClick={() => toggle('orderSuccessModalOpen')}
         className="btn"
         label="OK"
         primary={true}

@@ -1,9 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import numeral from 'numeral';
 import Modal from 'react-modal';
 import RaisedButton from 'material-ui/RaisedButton';
-import '../styles/CheckoutModal.css';
+import '@styles/CheckoutModal.css';
 
 export const CheckoutModal = (props) => (
   <Modal
@@ -61,8 +60,4 @@ export const CheckoutModal = (props) => (
   </Modal>
 );
 
-const mapStateToProps = (state) => ({
-  cart: state.cart.items
-});
-
-export default connect(mapStateToProps)(CheckoutModal);
+export default CheckoutModal;

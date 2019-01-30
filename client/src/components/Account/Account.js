@@ -1,15 +1,13 @@
 import React from 'react';
 import moment from 'moment';
 import numeral from 'numeral';
-import { connect } from 'react-redux';
-import { getUser } from '../actions';
-import AccountModal from './AccountModal';
+import AccountModal from '../AccountModal';
 import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
 import Edit from 'material-ui/svg-icons/image/edit.js';
-import '../styles/Account.css';
+import '@styles/Account.css';
 
-export class Account extends React.Component {
+class Account extends React.Component {
   state = {
     accountModalOpen: false
   }
@@ -23,7 +21,9 @@ export class Account extends React.Component {
   }
 
   render() {
-    if(!this.props.user) {
+    const { user } = this.props;
+
+    if(!user) {
       return (
         <div className="account-container">
           <div className="loader">
@@ -40,10 +40,10 @@ export class Account extends React.Component {
             <div className="account-info">
               <h2>Info</h2>
               <Divider />
-              <p><b>Username: </b>{this.props.user.username}</p>
-              <p><b>E-mail: </b>{this.props.user.email}</p>
-              <p><b>Billing Address: </b>{this.props.user.address}</p>
-              <p><b>Phone: </b>{this.props.user.phone}</p>
+              <p><b>Username: </b>{user.username}</p>
+              <p><b>E-mail: </b>{user.email}</p>
+              <p><b>Billing Address: </b>{user.address}</p>
+              <p><b>Phone: </b>{user.phone}</p>
               <RaisedButton
                 className="btn"
                 label="Edit account"
@@ -57,7 +57,7 @@ export class Account extends React.Component {
               <h2>Order History</h2>
               <Divider />
               <div className="orders">
-                {this.props.user.orders.length ? 
+                {user.orders.length ? 
                   <table>
                     <thead>
                       <tr>
@@ -69,7 +69,7 @@ export class Account extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {this.props.user.orders.map((order) => {
+                      {user.orders.map((order) => {
                         return (
                           <tr key={order.name}>
                             <td>{moment(order.dateCreated).format('ll')}</td>
@@ -88,7 +88,7 @@ export class Account extends React.Component {
             </div>
           </div>
           <AccountModal
-            user={this.props.user}
+            user={user}
             isOpen={this.state.accountModalOpen}
             onRequestClose={this.toggleAccountModal}
           />
@@ -98,12 +98,4 @@ export class Account extends React.Component {
   }
 };
 
-const mapStateToProps = (state) => ({
-  user: state.loggedUser
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getUser: () => dispatch(getUser())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Account);
+export default Account;

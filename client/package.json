@@ -21,6 +21,7 @@
     "react-modal": "^3.1.12",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
+    "recompose": "^0.30.0",
     "redux": "^3.7.2",
     "redux-actions": "^2.6.4",
     "redux-saga": "^1.0.0",

@@ -1,15 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { initCatalog, clearFilters, setSortBy } from '../actions';
-import filterProducts from '../selectors/filterProducts';
-import sortProducts from '../selectors/sortProducts';
 import RaisedButton from 'material-ui/RaisedButton';
 import Drawer from 'material-ui/Drawer';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import FiltersList from './FiltersList';
-import Product from './Product';
-import '../styles/Products.css';
+import FiltersList from '../FiltersList';
+import Product from '../Product';
+import '@styles/Products.css';
 
 export class Products extends React.Component {
   state = {
@@ -31,7 +27,13 @@ export class Products extends React.Component {
   }
   
   render() {
-    if(!this.props.catalogLoaded) {
+    const {
+      catalogLoaded,
+      catalog,
+      clearFilters
+    } = this.props;
+
+    if(!catalogLoaded) {
       return (
         <div className="loader">
           <img src="/img/loader.gif" />
@@ -42,7 +44,7 @@ export class Products extends React.Component {
       <div className="products">
         <div className="products-handle">
           <div className="products-found">
-            <span><b>Products found: </b>{this.props.catalog.length}</span>
+            <span><b>Products found: </b>{catalog.length}</span>
           </div>
           <div className="filters">
             <div className="set-filters">
@@ -56,7 +58,7 @@ export class Products extends React.Component {
             <RaisedButton
               className="btn"
               label="Clear Filters"
-              onClick={this.props.clearFilters}
+              onClick={clearFilters}
               secondary={true}
             />
           </div>
@@ -82,8 +84,8 @@ export class Products extends React.Component {
             </Drawer>
           </div>
         </div>
-        {this.props.catalog.length ? 
-          this.props.catalog.map((item) => {
+        {catalog.length ? 
+          catalog.map((item) => {
             return <Product key={item.info.name} item={item} />
           }) : 
           <h1 className="no-products">No products found.</h1>}
@@ -92,15 +94,4 @@ export class Products extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  catalogLoaded: state.catalog.isLoaded,
-  catalog: sortProducts(filterProducts(state.catalog.items, state.filters), state.sortBy)
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  initCatalog: () => dispatch(initCatalog()),
-  setSortBy: (sortBy) => dispatch(setSortBy(sortBy)),
-  clearFilters: () => dispatch(clearFilters())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default Products;

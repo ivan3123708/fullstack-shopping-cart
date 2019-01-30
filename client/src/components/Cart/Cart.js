@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import numeral from 'numeral';
-import { getCart } from '../actions';
-import CheckoutModal from './CheckoutModal';
-import OrderSuccessModal from './OrderSuccessModal';
+import { getCart } from '@actions';
+import CheckoutModal from '../CheckoutModal';
+import OrderSuccessModal from '../OrderSuccessModal';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import NavigateNext from 'material-ui/svg-icons/image/navigate-next';
 import RemoveShoppingCart from 'material-ui/svg-icons/action/remove-shopping-cart.js';
 import Dialog from 'material-ui/Dialog';
 import Snackbar from 'material-ui/Snackbar';
-import '../styles/Cart.css';
+import '@styles/Cart.css';
 
 export class Cart extends React.Component {
   state = {
@@ -72,7 +72,6 @@ export class Cart extends React.Component {
   }
 
   render() {
-    console.log(this.props.cart);
     const { cart } = this.props;
 
     return (
@@ -182,12 +181,4 @@ export class Cart extends React.Component {
   }
 };
 
-const mapStateToProps = (state) => ({
-  cart: state.cart
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  getCart: () => dispatch(getCart())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default Cart;

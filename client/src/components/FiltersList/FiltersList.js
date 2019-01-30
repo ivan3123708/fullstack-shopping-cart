@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { List, ListItem } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Checkbox from 'material-ui/Checkbox';
-import { setFilter } from '../actions';
-import '../styles/FiltersList.css';
+import { setFilter } from '@actions';
+import '@styles/FiltersList.css';
 
 export class FiltersList extends React.Component {
   handleCheck = (e) => {
@@ -143,8 +143,4 @@ export class FiltersList extends React.Component {
   }
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  setFilter: (filterType, filter) => dispatch(setFilter(filterType, filter))
-});
-
-export default connect(null, mapDispatchToProps)(FiltersList);
+export default FiltersList;

@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import '../styles/AccountModal.css';
+import '@styles/AccountModal.css';
 
 class AccountModal extends React.Component {
   state = {

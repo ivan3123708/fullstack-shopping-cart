@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import '../styles/RegisterModal.css';
+import '@styles/RegisterModal.css';
 
 const RegisterModal = (props) => (
   <Modal

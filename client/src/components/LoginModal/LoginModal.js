@@ -2,13 +2,13 @@ import React from 'react';
 import Modal from 'react-modal';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import '../styles/LoginModal.css';
+import '@styles/LoginModal.css';
 
-const LoginModal = (props) => (
+const LoginModal = ({ isOpen, onRequestClose, toggle }) => (
   <Modal
     className="login-modal"
-    isOpen={props.isOpen}
-    onRequestClose={props.onRequestClose}
+    isOpen={isOpen}
+    onRequestClose={onRequestClose}
   >
     <form className="form" action="/auth/login" method="POST">
       <h1>Log In</h1>
@@ -25,12 +25,12 @@ const LoginModal = (props) => (
         type="password"
       /><br />
       <RaisedButton 
-        className="btn" 
+        className="btn"
         label="Submit"
-        primary={true} 
+        primary={true}
         type="submit"
       />
-      <p>Don't have an account yet? <a onClick={props.switch}>Register here</a>.</p>
+      <p>Don't have an account yet? <a onClick={toggle}>Register here</a>.</p>
     </form>
   </Modal>
 );
