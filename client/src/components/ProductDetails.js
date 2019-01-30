@@ -139,7 +139,7 @@ export class ProductDetails extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-  loggedUser: state.loggedUser,
+  loggedUser: state.loggedUser.user,
   product: state.catalog.items.find((item) => item._id == props.match.params.id)
 });
 

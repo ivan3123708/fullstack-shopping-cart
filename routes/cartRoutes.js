@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 const Cart = require('../models/Cart');
 const requireLogin = require('../middleware/requireLogin');
 

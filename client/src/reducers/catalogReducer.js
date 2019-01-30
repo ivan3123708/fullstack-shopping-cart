@@ -28,7 +28,6 @@ const catalogReducer = (state = initState, action) => {
     case INIT_CATALOG_FAIL:
       return {
         ...state,
-        isLoading: false,
         isLoaded: true,
         error: action.payload
       }

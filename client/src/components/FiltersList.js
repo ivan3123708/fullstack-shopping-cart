@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { List, ListItem } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Checkbox from 'material-ui/Checkbox';
-import { setFilter } from '../actions/filterActions';
+import { setFilter } from '../actions';
 import '../styles/FiltersList.css';
 
 export class FiltersList extends React.Component {

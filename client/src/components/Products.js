@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
-import { clearFilters } from '../actions/filterActions';
-import { setSortBy } from '../actions/sortActions';
+import { initCatalog, clearFilters, setSortBy } from '../actions';
 import filterProducts from '../selectors/filterProducts';
 import sortProducts from '../selectors/sortProducts';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -100,7 +98,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  initCatalog: () => dispatch(actions.initCatalog()),
+  initCatalog: () => dispatch(initCatalog()),
   setSortBy: (sortBy) => dispatch(setSortBy(sortBy)),
   clearFilters: () => dispatch(clearFilters())
 });

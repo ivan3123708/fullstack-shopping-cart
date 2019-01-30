@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import numeral from 'numeral';
-import { getCart } from '../actions/cartActions';
+import { getCart } from '../actions';
 import CheckoutModal from './CheckoutModal';
 import OrderSuccessModal from './OrderSuccessModal';
 import FlatButton from 'material-ui/FlatButton';
@@ -67,11 +67,14 @@ export class Cart extends React.Component {
       });
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.getCart();
   }
 
   render() {
+    console.log(this.props.cart);
+    const { cart } = this.props;
+
     return (
       <div className="cart-container">
         <h1>Your Cart</h1>
@@ -80,12 +83,12 @@ export class Cart extends React.Component {
             <div className="info">
               <p>
                 <b>Number of items: </b>
-                {this.props.cart.items.length ? this.props.cart.items.reduce((acc, item) => acc += item.quantity, 0) : 0}
+                {cart.isLoaded ? cart.items.items.reduce((acc, item) => acc += item.quantity, 0) : 0}
               </p>
               <p>
                 <b>Total amount: </b>
                 <span className="total">
-                  {this.props.cart.items.length ? numeral(this.props.cart.items.reduce((acc, item) => acc += item.product.info.price * item.quantity, 0)).format('$0,0.00') : numeral(0).format('$0,0.00')}
+                  {cart.isLoaded ? numeral(cart.items.items.reduce((acc, item) => acc += item.product.info.price * item.quantity, 0)).format('$0,0.00') : numeral(0).format('$0,0.00')}
                 </span>
               </p>
             </div>
@@ -97,7 +100,7 @@ export class Cart extends React.Component {
                 labelPosition="before"
                 icon={<NavigateNext />}
                 primary={true}
-                disabled={!this.props.cart.items.length}
+                disabled={!cart.isLoaded}
               />
               <RaisedButton
                 onClick={() => this.toggleOpen('dialogOpen')}
@@ -106,14 +109,14 @@ export class Cart extends React.Component {
                 labelPosition="before"
                 icon={<RemoveShoppingCart />}
                 secondary={true}
-                disabled={!this.props.cart.items.length}
+                disabled={!cart.isLoaded}
               />
             </div>
             <CheckoutModal
               isOpen={this.state.checkoutModalOpen}
               onRequestClose={this.toggleOpen}
               toggle={this.toggleOpen}
-              makeOrder={this.makeOrder}           
+              makeOrder={this.makeOrder}
             />
             <OrderSuccessModal
               isOpen={this.state.orderSuccessModalOpen}
@@ -153,7 +156,7 @@ export class Cart extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {this.props.cart.items.length ? this.props.cart.items.map((item) => {
+                {cart.isLoaded ? cart.items.items.map((item) => {
                   return (
                     <tr key={item.product.info.name} >
                       <td><img src={item.product.info.photo} /></td>
@@ -164,10 +167,9 @@ export class Cart extends React.Component {
                       <td><button title="Remove this item from the cart" onClick={() => this.removeItem(item._id)}>X</button></td>
                     </tr>
                   );
-                }) : ''}
+                }) : <h1>No items in the cart.</h1>}
               </tbody>
             </table>
-            {!this.props.cart.items.length && <h1>No items in the cart.</h1>}
             <Snackbar
               open={this.state.snackbarOpen}
               message="Item removed from your cart."

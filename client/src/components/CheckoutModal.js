@@ -26,7 +26,7 @@ export const CheckoutModal = (props) => (
           </tr>
         </thead>
         <tbody>
-          {props.cart.map((item) => {
+          {props.cart.length && props.cart.map((item) => {
             return (
               <tr key={item.product.info.name} >
                 <td>{item.product.info.name}</td>
@@ -40,7 +40,7 @@ export const CheckoutModal = (props) => (
       </table>
       <p className="total">
         <b>TOTAL AMOUNT: </b>
-        <span>{numeral(props.cart.reduce((acc, item) => acc += item.product.info.price * item.quantity, 0)).format('$0,0.00')}</span>
+        <span>{numeral(props.cart.length && props.cart.reduce((acc, item) => acc += item.product.info.price * item.quantity, 0)).format('$0,0.00')}</span>
       </p>
       <div className="btns">
         <RaisedButton

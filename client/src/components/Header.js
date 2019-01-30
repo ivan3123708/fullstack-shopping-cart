@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as actions from '../actions';
+import { getUser } from '../actions';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import IconMenu from 'material-ui/IconMenu';
@@ -136,7 +136,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getUser: () => dispatch(actions.getUser())
+  getUser: () => dispatch(getUser())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

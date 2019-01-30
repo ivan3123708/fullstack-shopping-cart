@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import numeral from 'numeral';
 import { connect } from 'react-redux';
-import { getUser } from '../actions/userActions';
+import { getUser } from '../actions';
 import AccountModal from './AccountModal';
 import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
