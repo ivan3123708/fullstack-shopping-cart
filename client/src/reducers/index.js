@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
 import userReducer from './userReducer';
 import cartReducer from './cartReducer';
 import catalogReducer from './catalogReducer';
 import filtersReducer from './filtersReducer';
 import sortReducer from './sortReducer';
 
-const rootReducer = combineReducers({
+const createRootReducer = (history) => combineReducers({
+  router: connectRouter(history),
   loggedUser: userReducer,
   cart: cartReducer,
   catalog: catalogReducer,
@@ -13,4 +15,4 @@ const rootReducer = combineReducers({
   sortBy: sortReducer
 });
 
-export default rootReducer;
+export default createRootReducer;

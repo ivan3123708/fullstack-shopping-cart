@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import store from './store/configureStore';
+import { ConnectedRouter } from 'connected-react-router';
+import configureStore, { history } from './store/configureStore';
 import ShoppingCart from './components/ShoppingCart';
 
+const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <ShoppingCart />
+    <ConnectedRouter history={history}>
+      <ShoppingCart />
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('app_root')
 );
