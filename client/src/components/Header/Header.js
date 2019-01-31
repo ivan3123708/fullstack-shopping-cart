@@ -1,7 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getUser } from '@actions';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import IconMenu from 'material-ui/IconMenu';
@@ -48,16 +46,21 @@ export class Header extends React.Component {
   }
 
   render() {
+    const {
+      history,
+      loggedUser
+    } = this.props;
+
     return (
       <div className="header">
         <AppBar 
           className="title"
           title="MOBILE SHOP"
-          onTitleClick={() => this.props.history.push('/')}
+          onTitleClick={() => history.push('/')}
           showMenuIconButton={false}
           zDepth={0}
           iconElementRight={
-            this.props.loggedUser.user ?
+            loggedUser ?
               <div>
                 <div className="menu">
                   <FlatButton 

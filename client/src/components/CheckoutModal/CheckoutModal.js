@@ -4,11 +4,11 @@ import Modal from 'react-modal';
 import RaisedButton from 'material-ui/RaisedButton';
 import '@styles/CheckoutModal.css';
 
-export const CheckoutModal = (props) => (
+export const CheckoutModal = ({ cart, isOpen, toggle, makeOrder }) => (
   <Modal
     className="checkout-modal"
-    isOpen={props.isOpen}
-    onRequestClose={() => props.toggle('checkoutModalOpen')}
+    isOpen={isOpen}
+    onRequestClose={() => toggle('checkoutModalOpen')}
   >
     <div className="order">
       <h1>Checkout Information</h1>
@@ -25,7 +25,7 @@ export const CheckoutModal = (props) => (
           </tr>
         </thead>
         <tbody>
-          {props.cart.length && props.cart.map((item) => {
+          {cart.length && cart.map((item) => {
             return (
               <tr key={item.product.info.name} >
                 <td>{item.product.info.name}</td>
@@ -39,21 +39,21 @@ export const CheckoutModal = (props) => (
       </table>
       <p className="total">
         <b>TOTAL AMOUNT: </b>
-        <span>{numeral(props.cart.length && props.cart.reduce((acc, item) => acc += item.product.info.price * item.quantity, 0)).format('$0,0.00')}</span>
+        <span>{numeral(cart.length && cart.reduce((acc, item) => acc += item.product.info.price * item.quantity, 0)).format('$0,0.00')}</span>
       </p>
       <div className="btns">
         <RaisedButton
           className="btn"
           label="Cancel"
           primary={true}
-          onClick={() => props.toggle('checkoutModalOpen')}
+          onClick={() => toggle('checkoutModalOpen')}
         />
         <RaisedButton
           className="btn"
           label="Confirm"
           backgroundColor="#64DD17"
           labelColor="#fff"
-          onClick={props.makeOrder}
+          onClick={makeOrder}
         />
       </div>
     </div>

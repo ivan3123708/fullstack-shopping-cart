@@ -31,89 +31,72 @@ export class ProductDetails extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const {
       loggedUser,
-      product: {
-        info: {
-          name,
-          photo,
-          dimensions,
-          weight,
-          displayType,
-          displaySize,
-          displayResolution,
-          os,
-          cpu,
-          internalMemory,
-          ram,
-          camera,
-          batery,
-          color,
-          price
-        }
-      }
+      product: { info }
     } = this.props;
 
     return (
       <div className="product-details-container">
-        <h1>{name}</h1>
+        <h1>{info.name}</h1>
         <div className="product-details">
           <div className="product-image">
-            <img src={photo} />
+            <img src={info.photo} />
           </div>
           <div className="product-info">
             <table>
               <tr>
                 <th>Model</th>
-                <td>{name}</td>
+                <td>{info.name}</td>
               </tr>
               <tr>
                 <th>Dimensions</th>
-                <td>{dimensions}</td>
+                <td>{info.dimensions}</td>
               </tr>
               <tr>
                 <th>Weight</th>
-                <td>{weight}</td>
+                <td>{info.weight}</td>
               </tr>
               <tr>
                 <th>Display Type</th>
-                <td>{displayType}</td>
+                <td>{info.displayType}</td>
               </tr>
               <tr>
                 <th>Display Size</th>
-                <td>{displaySize}</td>
+                <td>{info.displaySize}</td>
               </tr>
               <tr>
                 <th>Display Resolution</th>
-                <td>{displayResolution}</td>
+                <td>{info.displayResolution}</td>
               </tr>
               <tr>
                 <th>OS</th>
-                <td>{os}</td>
+                <td>{info.os}</td>
               </tr>
               <tr>
                 <th>CPU</th>
-                <td>{cpu}</td>
+                <td>{info.cpu}</td>
               </tr>
               <tr>
                 <th>Internal Memory</th>
-                <td>{internalMemory}</td>
+                <td>{info.internalMemory}</td>
               </tr>
               <tr>
                 <th>RAM</th>
-                <td>{ram}</td>
+                <td>{info.ram}</td>
               </tr>
               <tr>
                 <th>Camera</th>
-                <td>{camera}</td>
+                <td>{info.camera}</td>
               </tr>
               <tr>
                 <th>Batery</th>
-                <td>{batery}</td>
+                <td>{info.batery}</td>
               </tr>
               <tr>
                 <th>Color</th>
-                <td>{color}</td>
+                <td>{info.color}</td>
               </tr>
             </table>
             <Snackbar
@@ -138,7 +121,7 @@ export class ProductDetails extends React.Component {
           <div className="right">
             <div className="price">
               <span className="price-text">Price: </span>
-              <span className="price-num">{numeral(price).format('$0,0.00')}</span>
+              <span className="price-num">{numeral(info.price).format('$0,0.00')}</span>
             </div>
             <div className="quantity">
               <span className="price-text">Quantity: </span>

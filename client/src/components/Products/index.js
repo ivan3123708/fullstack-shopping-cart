@@ -1,13 +1,12 @@
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
 import { initCatalog, clearFilters, setSortBy } from '@actions';
-import filterProducts from '@selectors/filterProducts';
-import sortProducts from '@selectors/sortProducts';
+import { isCatalogLoaded, sortProducts, filterProducts } from '@selectors/catalog';
 import Products from './Products';
 
 const mapStateToProps = (state) => ({
-  catalogLoaded: state.catalog.isLoaded,
-  catalog: sortProducts(filterProducts(state.catalog.items, state.filters), state.sortBy)
+  catalogLoaded: isCatalogLoaded(state),
+  catalog: sortProducts(filterProducts(state), state.sortBy)
 });
 
 const actions = {

@@ -25,7 +25,8 @@
     "redux": "^3.7.2",
     "redux-actions": "^2.6.4",
     "redux-saga": "^1.0.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "reselect": "^4.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^9.1.5",

@@ -17,17 +17,20 @@ const filtersReducer = (state = initState, action) => {
   switch (action.type) {
     case SET_FILTER:
       const { filterType, filter } = action.payload;
+      const newState = { ...state };
 
-      if (state[filterType].includes(filter)) {
-        state[filterType] = state[filterType].filter((item) => item !== filter);
+      if (newState[filterType].includes(filter)) {
+        newState[filterType] = newState[filterType].filter((item) => item !== filter);
       } else {
-        state[filterType].push(filter);
+        newState[filterType].push(filter);
       }
 
-      return {
-        ...state
-      };
+      return newState;
     case CLEAR_FILTER:
+      for (let key in initState) {
+        initState[key] = [];
+      }
+
       return initState;
     default:
       return state;

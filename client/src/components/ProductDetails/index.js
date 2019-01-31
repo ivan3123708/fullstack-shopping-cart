@@ -1,10 +1,12 @@
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
+import { selectUser } from '@selectors/user';
+import { selectProduct } from '@selectors/catalog';
 import ProductDetails from './ProductDetails';
 
 const mapStateToProps = (state, props) => ({
-  loggedUser: state.loggedUser.user,
-  product: state.catalog.items.find((item) => item._id == props.match.params.id)
+  loggedUser: selectUser(state),
+  product: selectProduct(state, props)
 });
 
 export default compose(
