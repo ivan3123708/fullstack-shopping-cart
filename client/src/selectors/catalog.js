@@ -4,7 +4,7 @@ export const isCatalogLoaded = (state) => state.catalog.isLoaded;
 export const selectFilters = (state) => state.filters;
 export const selectSortBy = (state) => state.sortBy;
 export const selectProducts = (state) => state.catalog.items;
-export const selectProduct = (state) => state.items.find((item) => item._id == props.match.params.id);
+export const selectProduct = (state, props) => state.catalog.items.find((item) => item._id == props.match.params.id);
 
 export const sortProducts = (catalog, sortBy) => {
   switch (sortBy) {

@@ -33,7 +33,7 @@ function* getCart() {
 
     yield put(actions.getCartSuccess(cart.data));
   } catch(e) {
-    yield put(actions.getCardFail('COULD NOT GET CART'));
+    yield put(actions.getCartFail('COULD NOT GET CART'));
   }
 }
 

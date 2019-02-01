@@ -1,9 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import numeral from 'numeral';
-import { getCart } from '@actions';
 import CheckoutModal from '../CheckoutModal';
 import OrderSuccessModal from '../OrderSuccessModal';
 import FlatButton from 'material-ui/FlatButton';
@@ -73,6 +71,7 @@ export class Cart extends React.Component {
 
   render() {
     const { cart } = this.props;
+    const cartExists = cart.isLoaded && !cart.error && cart.items.length;
 
     return (
       <div className="cart-container">
@@ -82,12 +81,12 @@ export class Cart extends React.Component {
             <div className="info">
               <p>
                 <b>Number of items: </b>
-                {cart.isLoaded ? cart.items.items.reduce((acc, item) => acc += item.quantity, 0) : 0}
+                {cartExists ? cart.items.reduce((acc, item) => acc += item.quantity, 0) : 0}
               </p>
               <p>
                 <b>Total amount: </b>
                 <span className="total">
-                  {cart.isLoaded ? numeral(cart.items.items.reduce((acc, item) => acc += item.product.info.price * item.quantity, 0)).format('$0,0.00') : numeral(0).format('$0,0.00')}
+                  {cartExists ? numeral(cart.items.reduce((acc, item) => acc += item.product.info.price * item.quantity, 0)).format('$0,0.00') : numeral(0).format('$0,0.00')}
                 </span>
               </p>
             </div>
@@ -99,7 +98,7 @@ export class Cart extends React.Component {
                 labelPosition="before"
                 icon={<NavigateNext />}
                 primary={true}
-                disabled={!cart.isLoaded}
+                disabled={!cartExists}
               />
               <RaisedButton
                 onClick={() => this.toggleOpen('dialogOpen')}
@@ -108,7 +107,7 @@ export class Cart extends React.Component {
                 labelPosition="before"
                 icon={<RemoveShoppingCart />}
                 secondary={true}
-                disabled={!cart.isLoaded}
+                disabled={!cartExists}
               />
             </div>
             <CheckoutModal
@@ -143,32 +142,35 @@ export class Cart extends React.Component {
             </Dialog>
           </div>
           <div className="cart-items">
-            <table>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Product Name</th>
-                  <th>Price</th>
-                  <th>Qty</th>
-                  <th>Total</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {cart.isLoaded ? cart.items.items.map((item) => {
-                  return (
-                    <tr key={item.product.info.name} >
-                      <td><img src={item.product.info.photo} /></td>
-                      <td><Link to={`/product/${item.product._id}`}>{item.product.info.name}</Link></td>
-                      <td>{numeral(item.product.info.price).format('$0,0.00')}</td>
-                      <td>{item.quantity}</td>
-                      <td>{numeral(item.product.info.price * item.quantity).format('$0,0.00')}</td>
-                      <td><button title="Remove this item from the cart" onClick={() => this.removeItem(item._id)}>X</button></td>
-                    </tr>
-                  );
-                }) : <h1>No items in the cart.</h1>}
-              </tbody>
-            </table>
+            {cartExists ?
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {cart.items.map((item) => {
+                    return (
+                      <tr key={item.product.info.name} >
+                        <td><img src={item.product.info.photo} /></td>
+                        <td><Link to={`/product/${item.product._id}`}>{item.product.info.name}</Link></td>
+                        <td>{numeral(item.product.info.price).format('$0,0.00')}</td>
+                        <td>{item.quantity}</td>
+                        <td>{numeral(item.product.info.price * item.quantity).format('$0,0.00')}</td>
+                        <td><button title="Remove this item from the cart" onClick={() => this.removeItem(item._id)}>X</button></td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table> :
+              <h1>No items in the cart.</h1>
+            }
             <Snackbar
               open={this.state.snackbarOpen}
               message="Item removed from your cart."
