@@ -1,5 +1,6 @@
 .product-details-container {
   min-height: 100vh;
+  margin: 0 6px;
   margin-top: -72px;
   border: 1px solid #ffffff00;
 }
@@ -58,7 +59,7 @@
 .product-handle {
   display: flex;
   flex-direction: row;
-  margin: 40px 0;
+  margin: 10px 0 20px 0;
 }
 
 .product-handle .left {
@@ -100,6 +101,10 @@
 }
 
 @media (max-width: 1000px) {
+  .product-details-container h1 {
+    font-size: 24px;
+  }
+
   .product-details {
     flex-direction: column;
   }
@@ -127,7 +132,6 @@
 
   .product-handle .left {
     width: 100%;
-    margin: 20px auto;
     order: 2;
   }
 

@@ -1,5 +1,6 @@
 .account-container {
   min-height: 100vh;
+  margin: 0 6px;
   margin-top: -72px;
   border: 1px solid #ffffff00;
 }
@@ -63,6 +64,10 @@
 }
 
 @media (max-width: 1000px) {
+  .account-container h1 {
+    font-size: 24px;
+  }
+
   .account {
     flex-direction: column;
   }
