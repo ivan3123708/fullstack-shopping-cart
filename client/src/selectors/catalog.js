@@ -13,9 +13,9 @@ export const sortProducts = (catalog, sortBy) => {
     case 'Name: Z-A':
       return catalog.sort((a, b) => (a.info.name < b.info.name) ? 1 : ((b.info.name < a.info.name) ? -1 : 0));
     case 'Price: Low to High':
-      return catalog.sort((a, b) => a.info.price > b.info.price);
+      return catalog.sort((a, b) => (a.info.price > b.info.price) ? 1 : ((b.info.price > a.info.price) ? -1 : 0));
     case 'Price: High to Low':
-      return catalog.sort((a, b) => a.info.price < b.info.price);
+      return catalog.sort((a, b) => (a.info.price < b.info.price) ? 1 : ((b.info.price < a.info.price) ? -1 : 0));
     default:
       return catalog;
   }
