@@ -1,24 +1,25 @@
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['babel-regenerator-runtime', './src/index.js'],
   output: {
     path: path.resolve(__dirname, 'public', 'dist'),
     filename: 'bundle.js'
+  },
+  resolve: {
+    alias: {
+      '@actions': path.resolve(__dirname, 'src/actions'),
+      '@selectors': path.resolve(__dirname, 'src/selectors'),
+      '@styles': path.resolve(__dirname, 'src/styles')
+    }
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env', 'react'],
-            plugins: ['transform-class-properties', 'transform-object-rest-spread']
-          }
-        }
+        loader: 'babel-loader'
       },
       {
         test: /\.css$/,
@@ -51,7 +52,7 @@ module.exports = {
     publicPath: '/dist',
     proxy: [{
       context: ['/auth/*', '/api/*'],
-      target: "http://localhost:5000",
+      target: 'http://localhost:5000',
     }]
   }
 }

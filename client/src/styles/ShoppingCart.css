@@ -2,6 +2,10 @@ button:focus {
   outline: 0;
 }
 
+body {
+  margin: 0;
+}
+
 .container {
   width: 100%;
   max-width: 1200px;

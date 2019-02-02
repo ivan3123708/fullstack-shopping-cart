@@ -16,6 +16,7 @@ View demo <a href="http://ij-mobile-shop.herokuapp.com/">here</a> or go to "Inst
 
 * React
 * Redux
+* Redux-Saga
 * Material-UI
 * Webpack
 * Axios
@@ -25,10 +26,6 @@ View demo <a href="http://ij-mobile-shop.herokuapp.com/">here</a> or go to "Inst
 * Node/Express
 * MongoDB/Mongoose
 * Passport
-
-### Tests:
-
-* Jest/Enzyme
 
 ## Installation and Usage
 

@@ -1,11 +1,13 @@
-export const defaultSortState = 'Name: A-Z';
+import { SET_SORT_BY } from '../constants';
 
-const sortReducer = (state = defaultSortState, action) => {
+const initState = 'Name: A-Z';
+
+const sortReducer = (state = initState, action) => {
   switch (action.type) {
-    case 'SET_SORT_BY':
-      return action.sortBy
+    case SET_SORT_BY:
+      return action.payload;
     default:
-      return state
+      return state;
   }
 };
 
