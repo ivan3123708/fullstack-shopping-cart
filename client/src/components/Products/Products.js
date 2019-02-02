@@ -10,7 +10,7 @@ import '@styles/Products.css';
 export class Products extends React.Component {
   state = {
     drawerOpen: false,
-    value: 'Name: A-Z'
+    value: this.props.sortBy || 'Name: A-Z'
   }
 
   toggleDrawer = () => {
