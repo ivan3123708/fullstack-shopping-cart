@@ -26,7 +26,7 @@ export const getCart = createAction(GET_CART);
 export const getCartSuccess = createAction(GET_CART_SUCCESS);
 export const getCartFail = createAction(GET_CART_FAIL);
 
-export const setFilter = createAction(SET_FILTER, (filterType, filter) => ({ filterType, filter }));
+export const setFilter = createAction(SET_FILTER, (filterType, filterValue) => ({ filterType, filterValue }));
 export const clearFilters = createAction(CLEAR_FILTER);
 
 export const setSortBy = createAction(SET_SORT_BY);

@@ -23,7 +23,7 @@ export const sortProducts = (catalog, sortBy) => {
 
 export const filterProducts = createSelector(
   [selectProducts, selectFilters],
-  (catalog, filters) => {
+  (catalog, { filters }) => {
     return catalog.filter((item) => {
       const priceRange = filters.priceRange.length ? filters.priceRange.includes(item.tags.priceRange) : item.tags.priceRange;
       const brand = filters.brand.length ? filters.brand.includes(item.tags.brand) : item.tags.brand;
