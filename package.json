@@ -15,7 +15,7 @@
     "install:client": "npm install --prefix client",
     "build": "npm run build --prefix client",
     "start": "node server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run install:client && npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION: false npm run install:client && npm run build"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
