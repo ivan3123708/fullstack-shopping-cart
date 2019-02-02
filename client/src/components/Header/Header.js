@@ -63,22 +63,22 @@ export class Header extends React.Component {
             loggedUser ?
               <div>
                 <div className="menu">
-                  <FlatButton 
+                  <FlatButton
                     style={styles.menuBtn}
-                    label="ACCOUNT" 
-                    icon={<Person />} 
+                    label="ACCOUNT"
+                    icon={<Person />}
                     containerElement={<Link to="/account" />}
                   />
-                  <FlatButton 
+                  <FlatButton
                     style={styles.menuBtn}
-                    label="CART" 
-                    icon={<ShoppingCart />} 
+                    label="CART"
+                    icon={<ShoppingCart />}
                     containerElement={<Link to="/cart" />}
                   />
-                  <FlatButton 
+                  <FlatButton
                     style={styles.menuBtn}
-                    label="LOGOUT" 
-                    icon={<Logout />} 
+                    label="LOGOUT"
+                    icon={<Logout />}
                     containerElement={<a href="/auth/logout"/>}
                   />
                 </div>
@@ -111,10 +111,10 @@ export class Header extends React.Component {
                 </div>
               </div> : 
               <FlatButton 
-                label="LOGIN" 
-                labelPosition="before" 
-                icon={<Input/>} 
-                onClick={() => this.toggleOpen('loginModalOpen')} 
+                label="LOGIN"
+                labelPosition="before"
+                icon={<Input/>}
+                onClick={() => this.toggleOpen('loginModalOpen')}
               />
           }
         />

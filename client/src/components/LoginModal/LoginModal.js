@@ -24,7 +24,7 @@ const LoginModal = ({ isOpen, onRequestClose, toggle }) => (
         name="password"
         type="password"
       /><br />
-      <RaisedButton 
+      <RaisedButton
         className="btn"
         label="Submit"
         primary={true}

@@ -84,10 +84,10 @@ export class Products extends React.Component {
             </Drawer>
           </div>
         </div>
-        {catalog.length ? 
+        {catalog.length ?
           catalog.map((item) => {
             return <Product key={item.info.name} item={item} />
-          }) : 
+          }) :
           <h1 className="no-products">No products found.</h1>}
       </div>
     )

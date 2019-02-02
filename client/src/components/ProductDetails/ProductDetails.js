@@ -21,7 +21,7 @@ export class ProductDetails extends React.Component {
   onQuantityChange = (e) => {
     let value = e.target.value;
     this.setState((prevState) => ({
-      postData: { ...prevState.postData, quantity: value*1 }
+      postData: { ...prevState.postData, quantity: parseInt(value) }
     }));
   }
 
@@ -135,7 +135,7 @@ export class ProductDetails extends React.Component {
                 icon={<AddShoppingCart />}
               />
             </div>
-           </div> 
+           </div>
         </div>
       </div>
     );

@@ -57,7 +57,7 @@ class Account extends React.Component {
               <h2>Order History</h2>
               <Divider />
               <div className="orders">
-                {user.orders.length ? 
+                {user.orders.length ?
                   <table>
                     <thead>
                       <tr>
