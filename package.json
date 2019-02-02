@@ -5,6 +5,9 @@
   "main": "server.js",
   "author": "Ivan Jakimovski",
   "license": "ISC",
+  "engines": {
+    "node": "8.10.0"
+  },
   "scripts": {
     "start:dev": "nodemon server.js",
     "start:client": "npm run start:dev --prefix client",
