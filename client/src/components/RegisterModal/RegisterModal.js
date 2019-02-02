@@ -4,11 +4,11 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import '@styles/RegisterModal.css';
 
-const RegisterModal = (props) => (
+const RegisterModal = ({ isOpen, onRequestClose, toggle }) => (
   <Modal
     className="register-modal"
-    isOpen={props.isOpen}
-    onRequestClose={props.onRequestClose}
+    isOpen={isOpen}
+    onRequestClose={onRequestClose}
   >
     <form className="form" action="/auth/register" method="POST">
       <h1>Register</h1>
@@ -45,7 +45,7 @@ const RegisterModal = (props) => (
         primary={true} 
         type="submit"
       />
-      <p>Already have an account? <a onClick={props.switch}>Login here</a>.</p>
+      <p>Already have an account? <a onClick={toggle}>Login here</a>.</p>
     </form>
   </Modal>
 );
