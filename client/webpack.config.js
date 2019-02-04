@@ -15,7 +15,7 @@ module.exports = {
       '@actions': path.resolve(__dirname, 'src/actions'),
       '@selectors': path.resolve(__dirname, 'src/selectors'),
       '@styles': path.resolve(__dirname, 'src/styles'),
-      '@types': path.resolve(__dirname, 'src/types')
+      '@state': path.resolve(__dirname, 'src/state')
     }
   },
   module: {

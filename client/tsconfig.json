@@ -1,13 +1,10 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "build/dist",
-    "module": "es6",
+    "outDir": "public/dist",
+    "module": "esnext",
     "target": "es5",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2017","dom"],
     "sourceMap": true,
     "allowJs": true,
     "jsx": "react",
@@ -21,18 +18,10 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "paths": {
-      "@actions/*": [
-        "src/actions/*"
-      ],
-      "@selectors/*": [
-        "src/selectors/*"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@types/*": [
-        "src/types/*"
-      ]
+      "@actions/*": ["src/actions/*"],
+      "@selectors/*": ["src/selectors/*"],
+      "@styles/*": ["src/styles/*"],
+      "@state/*": ["src/state/*"]
     }
   },
   "exclude": [

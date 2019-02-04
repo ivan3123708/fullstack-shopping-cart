@@ -1,13 +1,23 @@
-import React from 'react';
-import moment from 'moment';
-import numeral from 'numeral';
+import * as React from 'react';
+import * as moment from 'moment';
+import * as numeral from 'numeral';
 import AccountModal from '../AccountModal';
-import Divider from 'material-ui/Divider';
-import RaisedButton from 'material-ui/RaisedButton';
-import Edit from 'material-ui/svg-icons/image/edit.js';
+import IconButton from '@material-ui/core/IconButton';
+import EditIcon from '@material-ui/icons/Edit';
+import Divider from '@material-ui/core/Divider';
+import { User, Order } from '@state/index';
 import '@styles/Account.css';
 
-class Account extends React.Component {
+interface Props {
+  user: User;
+  getUser: () => void;
+}
+
+interface State {
+  accountModalOpen: boolean;
+}
+
+class Account extends React.Component<Props, State> {
   state = {
     accountModalOpen: false
   }
@@ -38,20 +48,20 @@ class Account extends React.Component {
           <h1>Your Account</h1>
           <div className="account">
             <div className="account-info">
-              <h2>Info</h2>
+              <div className="top">
+                <h2>Info</h2>
+                <IconButton
+                  color="secondary"
+                  aria-label="Edit"
+                  onClick={this.toggleAccountModal}>
+                  <EditIcon />
+                </IconButton>
+              </div>
               <Divider />
               <p><b>Username: </b>{user.username}</p>
               <p><b>E-mail: </b>{user.email}</p>
               <p><b>Billing Address: </b>{user.address}</p>
               <p><b>Phone: </b>{user.phone}</p>
-              <RaisedButton
-                className="btn"
-                label="Edit account"
-                labelPosition="before"
-                primary={true}
-                icon={<Edit />}
-                onClick={this.toggleAccountModal}
-              />
             </div>
             <div className="account-history">
               <h2>Order History</h2>
@@ -69,14 +79,14 @@ class Account extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {user.orders.map((order) => {
+                      {user.orders.map((order: Order) => {
                         return (
                           <tr key={order.name}>
                             <td>{moment(order.dateCreated).format('ll')}</td>
                             <td>{order.name}</td>
                             <td>{numeral(order.price).format('$0,0.00')}</td>
                             <td>{order.quantity}</td>
-                            <td>{numeral(order.price * order.quantity).format('$0,0.00')}</td>
+                            <td>{numeral(parseInt(order.price) * parseInt(order.quantity)).format('$0,0.00')}</td>
                           </tr>
                         );
                       })}

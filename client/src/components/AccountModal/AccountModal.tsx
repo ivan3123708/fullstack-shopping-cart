@@ -1,21 +1,37 @@
-import React from 'react';
-import Modal from 'react-modal';
+import * as React from 'react';
+import * as Modal from 'react-modal';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import { User } from '@state/index';
 import '@styles/AccountModal.css';
 
-class AccountModal extends React.Component {
+interface Props {
+  user: User;
+  isOpen: boolean;
+  onRequestClose: () => void;
+}
+
+interface State {
+  email: string;
+  address: string;
+  phone: string;
+}
+
+class AccountModal extends React.Component<Props, State> {
   state = {
     email: this.props.user.email,
     address: this.props.user.address,
     phone: this.props.user.phone
   }
 
-  onInputChange = (e) => {
-    const value = e.target.value;
-    const key = e.target.name;
+  onInputChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const value = e.currentTarget.value;
+    const key = e.currentTarget.name;
 
-    this.setState({ [key]: value });
+    this.setState((prevState: State) => ({
+      ...prevState,
+      [key]: value
+    }));
   }
 
   render() {
