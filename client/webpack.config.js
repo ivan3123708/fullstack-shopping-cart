@@ -1,4 +1,5 @@
 const path = require('path');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -8,14 +9,21 @@ module.exports = {
     filename: 'bundle.js'
   },
   resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+    plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
     alias: {
       '@actions': path.resolve(__dirname, 'src/actions'),
       '@selectors': path.resolve(__dirname, 'src/selectors'),
-      '@styles': path.resolve(__dirname, 'src/styles')
+      '@styles': path.resolve(__dirname, 'src/styles'),
+      '@types': path.resolve(__dirname, 'src/types')
     }
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader'
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
