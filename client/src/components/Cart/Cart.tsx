@@ -129,7 +129,7 @@ class Cart extends React.Component<Props, State> {
             </div>
             <CheckoutModal
               isOpen={this.state.checkoutModalOpen}
-              onRequestClose={this.toggleOpen}
+              onRequestClose={() => this.toggleOpen}
               toggle={this.toggleOpen}
               makeOrder={this.makeOrder}
             />

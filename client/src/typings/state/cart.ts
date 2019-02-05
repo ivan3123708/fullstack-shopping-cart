@@ -1,9 +1,9 @@
-import { IProduct } from './product';
+import { ICartProduct } from './cartProduct';
 
 export interface ICart {
   isLoading: boolean;
   isLoaded: boolean;
   _id: string;
-  items: IProduct[];
+  items: ICartProduct[];
   error: string | null;
 }

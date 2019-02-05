@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import '@styles/NotFound.css';
 
 const NotFound = () => (

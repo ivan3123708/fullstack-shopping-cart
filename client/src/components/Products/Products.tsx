@@ -1,13 +1,28 @@
-import React from 'react';
+import * as React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import Drawer from 'material-ui/Drawer';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import { ICatalogProduct } from '@typings/state/index';
 import FiltersList from '../FiltersList';
 import Product from '../Product';
 import '@styles/Products.css';
 
-export class Products extends React.Component {
+interface Props {
+  catalogLoaded: boolean;
+  catalog: ICatalogProduct[];
+  sortBy: string;
+  initCatalog: () => void;
+  clearFilters: () => void;
+  setSortBy: (value: string) => void;
+}
+
+interface State {
+  drawerOpen: boolean;
+  value: string;
+}
+
+export class Products extends React.Component<Props, State> {
   state = {
     drawerOpen: false,
     value: this.props.sortBy || 'Name: A-Z'
@@ -17,7 +32,7 @@ export class Products extends React.Component {
     this.setState({ drawerOpen: !this.state.drawerOpen });
   }
 
-  handleChange = (event, index, value) => {
+  handleChange = (e: React.ChangeEvent, index: number, value: string) => {
     this.props.setSortBy(value);
     this.setState({ value });
   }
@@ -25,7 +40,7 @@ export class Products extends React.Component {
   componentWillMount() {
     this.props.initCatalog();
   }
-  
+
   render() {
     const {
       catalogLoaded,

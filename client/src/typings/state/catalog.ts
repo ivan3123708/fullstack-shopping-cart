@@ -1,8 +1,8 @@
-import { IProduct } from './product';
+import { ICatalogProduct } from './catalogProduct';
 
 export interface ICatalog {
   isLoading: boolean;
   isLoaded: boolean;
-  items: IProduct[];
+  items: ICatalogProduct[];
   error: string | null;
 }

@@ -1,5 +1,4 @@
-import { IProduct } from './state/index';
-import { IOrder } from './state/index';
+import { ICartProduct } from './state/index';
 
 export type targetModal =
   'snackbarOpen' |
@@ -12,7 +11,7 @@ export type targetModal =
 export interface ModalProps {
   isOpen: boolean;
   toggle: (targetComponent: targetModal) => void;
-  onRequestClose: (targetComponent: targetModal) => void;
-  cart?: IProduct[];
-  makeOrder?: () => IOrder;
+  onRequestClose?: (event: MouseEvent) => void;
+  cart?: ICartProduct[];
+  makeOrder?: () => void;
 }

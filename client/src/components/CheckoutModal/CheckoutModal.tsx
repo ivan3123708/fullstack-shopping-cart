@@ -1,20 +1,12 @@
 import * as React from 'react';
 import * as numeral from 'numeral';
 import * as Modal from 'react-modal';
+import { ICartProduct } from '@typings/state/index';
+import { ModalProps } from '@typings/modal';
 import Button from '@material-ui/core/Button';
-import { IProduct } from '@state/index';
-import { target } from '../Cart/Cart';
 import '@styles/CheckoutModal.css';
 
-export interface Props {
-  cart?: IProduct[];
-  isOpen: boolean;
-  toggle: (targetComponent: target) => void;
-  makeOrder: () => any;
-  onRequestClose: (targetComponent: target) => void;
-}
-
-export const CheckoutModal: React.SFC<Props> = ({ cart, isOpen, toggle, makeOrder }): JSX.Element => (
+const CheckoutModal: React.SFC<ModalProps> = ({ cart, isOpen, toggle, makeOrder }): JSX.Element => (
   <Modal
     className="checkout-modal"
     isOpen={isOpen}
@@ -35,7 +27,7 @@ export const CheckoutModal: React.SFC<Props> = ({ cart, isOpen, toggle, makeOrde
           </tr>
         </thead>
         <tbody>
-          {cart!.length && cart!.map((item: IProduct) => {
+          {cart!.length && cart!.map((item: ICartProduct) => {
             return (
               <tr key={item.product.info.name} >
                 <td>{item.product.info.name}</td>
@@ -62,19 +54,6 @@ export const CheckoutModal: React.SFC<Props> = ({ cart, isOpen, toggle, makeOrde
           onClick={makeOrder}>
           Confirm
         </Button>
-        {/* <RaisedButton
-          className="btn"
-          label="Cancel"
-          primary={true}
-          onClick={() => toggle('checkoutModalOpen')}
-        />
-        <RaisedButton
-          className="btn"
-          label="Confirm"
-          backgroundColor="#64DD17"
-          labelColor="#fff"
-          onClick={makeOrder}
-        /> */}
       </div>
     </div>
   </Modal>

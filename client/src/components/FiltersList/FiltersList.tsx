@@ -2,7 +2,7 @@ import * as React from 'react';
 import { List, ListItem } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Checkbox from 'material-ui/Checkbox';
-import { IFilters } from '@state/index';
+import { IFilters } from '@typings/state/index';
 import '@styles/FiltersList.css';
 
 interface Props {
@@ -10,11 +10,11 @@ interface Props {
   setFilter: (name: string, value: string) => void;
 }
 
-export class FiltersList extends React.Component<Props> {
-  handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
+class FiltersList extends React.Component<Props> {
+  handleCheck = (e: React.MouseEvent<HTMLInputElement>) => {
     const { setFilter } = this.props;
 
-    setFilter(e.target.name, e.currentTarget.value);
+    setFilter(e.currentTarget.name, e.currentTarget.value);
   };
 
   render() {
@@ -23,7 +23,7 @@ export class FiltersList extends React.Component<Props> {
     return (
       <div className="filtersList">
         <List>
-          <Subheader className="subheader">Search by:</Subheader>
+          <Subheader>Search by:</Subheader>
           <ListItem
             className="listItem"
             primaryText="Price"

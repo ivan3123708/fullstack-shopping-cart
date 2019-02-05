@@ -23,7 +23,9 @@ class Account extends React.Component<Props, State> {
   }
 
   toggleAccountModal = () => {
-    this.setState({ accountModalOpen: !this.state.accountModalOpen });
+    this.setState((prevState: State) => ({
+      accountModalOpen: !prevState.accountModalOpen
+    }));
   }
 
   componentDidMount() {

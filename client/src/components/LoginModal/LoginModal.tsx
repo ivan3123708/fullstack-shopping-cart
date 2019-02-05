@@ -2,15 +2,10 @@ import * as React from 'react';
 import * as Modal from 'react-modal';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import { ModalProps } from '@typings/modal';
 import '@styles/LoginModal.css';
 
-interface Props {
-  isOpen: boolean;
-  onRequestClose: () => void;
-  toggle: () => void;
-}
-
-const LoginModal: React.SFC<Props> = ({ isOpen, onRequestClose, toggle }): JSX.Element => (
+const LoginModal: React.SFC<ModalProps> = ({ isOpen, onRequestClose, toggle }): JSX.Element => (
   <Modal
     className="login-modal"
     isOpen={isOpen}
@@ -36,7 +31,7 @@ const LoginModal: React.SFC<Props> = ({ isOpen, onRequestClose, toggle }): JSX.E
         primary={true}
         type="submit"
       />
-      <p>Don't have an account yet? <a onClick={toggle}>Register here</a>.</p>
+      <p>Don't have an account yet? <a onClick={() => toggle}>Register here</a>.</p>
     </form>
   </Modal>
 );

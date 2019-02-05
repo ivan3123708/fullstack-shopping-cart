@@ -9,16 +9,15 @@ import Menu from 'material-ui/svg-icons/navigation/menu';
 import Logout from 'material-ui/svg-icons/navigation/subdirectory-arrow-left';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import Input from '@material-ui/icons/Input';
+import { RouteComponentProps } from 'react-router-dom';
+import { ILoggedUser } from '@typings/state/loggedUser';
+import { ICart } from '@typings/state/cart';
+import { targetModal } from '@typings/modal';
 import LoginModal from '../LoginModal';
 import RegisterModal from '../RegisterModal';
-import { RouteComponentProps } from 'react-router-dom';
-import { ILoggedUser } from '@state/loggedUser';
-import { ICart } from '@state/cart';
-import { target } from '../Cart/Cart';
 import '@styles/Header.css';
 
 interface Props extends RouteComponentProps {
-  history: any;
   loggedUser: ILoggedUser;
   cart: ICart;
   getUser: () => void;
@@ -35,13 +34,13 @@ const styles = {
   }
 }
 
-export class Header extends React.Component<Props> {
+class Header extends React.Component<Props> {
   state = {
     loginModalOpen: false,
     registerModalOpen: false
   }
 
-  toggleOpen = (targetComponent: target) => {
+  toggleOpen = (targetComponent: targetModal) => {
     this.setState({ [targetComponent]: !this.state[targetComponent] });
   }
 
@@ -101,27 +100,27 @@ export class Header extends React.Component<Props> {
                     iconStyle={{ color: '#fff' }}
                   >
                     <FlatButton
-                      style={styles.iconMenuBtn}
+                      // style={styles.iconMenuBtn}
                       label="ACCOUNT"
                       icon={<Person />}
                       containerElement={<Link to="/account" />}
                     /><br />
                     <FlatButton
-                      style={styles.iconMenuBtn}
+                      // style={styles.iconMenuBtn}
                       label="CART"
                       icon={<ShoppingCart />}
                       containerElement={<Link to="/cart" />}
                     /><br />
                     <FlatButton
-                      style={styles.iconMenuBtn}
+                      // style={styles.iconMenuBtn}
                       label="LOGOUT"
                       icon={<Logout />}
                       containerElement={<a href="/auth/logout" />}
                     />
                   </IconMenu>
                 </div>
-              </div> : 
-              <FlatButton 
+              </div> :
+              <FlatButton
                 label="LOGIN"
                 labelPosition="before"
                 icon={<Input/>}

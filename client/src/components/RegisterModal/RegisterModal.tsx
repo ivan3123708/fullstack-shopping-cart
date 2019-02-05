@@ -1,10 +1,13 @@
-import React from 'react';
-import Modal from 'react-modal';
+import * as React from 'react';
+import * as Modal from 'react-modal';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import { ModalProps } from '@typings/modal';
 import '@styles/RegisterModal.css';
 
-const RegisterModal = ({ isOpen, onRequestClose, toggle }) => (
+
+
+const RegisterModal = ({ isOpen, onRequestClose, toggle }: ModalProps) => (
   <Modal
     className="register-modal"
     isOpen={isOpen}
@@ -45,7 +48,7 @@ const RegisterModal = ({ isOpen, onRequestClose, toggle }) => (
         primary={true} 
         type="submit"
       />
-      <p>Already have an account? <a onClick={toggle}>Login here</a>.</p>
+      <p>Already have an account? <a onClick={() => toggle}>Login here</a>.</p>
     </form>
   </Modal>
 );

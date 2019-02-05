@@ -1,13 +1,18 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
-import numeral from 'numeral';
+import * as numeral from 'numeral';
 import RaisedButton from 'material-ui/RaisedButton';
 import NavigateNext from 'material-ui/svg-icons/image/navigate-next';
+import { ICatalogProduct } from '@typings/state/index'
 import '@styles/Product.css';
 
-const Product = (props) => {
-  const { item } = props;
-  const { info: {
+interface Props {
+  key: string;
+  item: ICatalogProduct;
+}
+
+const Product = ({ item: {info, _id} }: Props) => {
+  const {
     photo,
     name,
     displaySize,
@@ -17,7 +22,7 @@ const Product = (props) => {
     ram,
     camera,
     price
-  }} = item;
+  } = info;
 
   return (
     <div className="product">
@@ -40,7 +45,7 @@ const Product = (props) => {
             <h2>{numeral(price).format('$0,0.00')}</h2>
           </div>
           <RaisedButton
-            containerElement={<Link to={`/product/${item._id}`} />}
+            containerElement={<Link to={`/product/${_id}`} />}
             className="btn"
             label="See more"
             labelPosition="before"

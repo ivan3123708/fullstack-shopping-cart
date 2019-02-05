@@ -1,14 +1,29 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import numeral from 'numeral';
+import * as numeral from 'numeral';
 import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 import AddShoppingCart from 'material-ui/svg-icons/action/add-shopping-cart';
 import KeyboardArrowLeft from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
+import { IUser, ICatalogProduct } from '@typings/state/index';
 import '@styles/ProductDetails.css';
 
-export class ProductDetails extends React.Component {
+interface Props {
+  loggedUser: IUser;
+  product: ICatalogProduct;
+}
+
+interface State {
+  postData: {
+    user: string;
+    product: string;
+    quantity: number;
+  };
+  snackbarOpen: boolean;
+}
+
+class ProductDetails extends React.Component<Props, State> {
   state = {
     postData: {
       user: this.props.loggedUser._id,
@@ -18,15 +33,17 @@ export class ProductDetails extends React.Component {
     snackbarOpen: false
   }
 
-  onQuantityChange = (e) => {
+  onQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
-    this.setState((prevState) => ({
+
+    this.setState((prevState: State) => ({
       postData: { ...prevState.postData, quantity: parseInt(value) }
     }));
   }
 
   addToCart = () => {
     axios.post('/api/cart', this.state.postData);
+
     this.setState({ snackbarOpen: true });
   }
 

@@ -1,15 +1,10 @@
 import * as React from 'react';
 import * as Modal from 'react-modal';
 import RaisedButton from 'material-ui/RaisedButton';
-import { target } from '../Cart/Cart';
+import { ModalProps } from '@typings/modal';
 import '@styles/OrderSuccessModal.css';
 
-interface Props {
-  isOpen: boolean;
-  toggle: (targetComponent: target) => void;
-}
-
-const OrderSuccessModal: React.SFC<Props> = ({ isOpen, toggle }) => (
+const OrderSuccessModal: React.SFC<ModalProps> = ({ isOpen, toggle }) => (
   <Modal
     className="order-success-modal"
     isOpen={isOpen}
