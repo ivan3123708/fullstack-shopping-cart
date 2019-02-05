@@ -1,10 +1,16 @@
-import React from 'react';
-import Modal from 'react-modal';
+import * as React from 'react';
+import * as Modal from 'react-modal';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import '@styles/LoginModal.css';
 
-const LoginModal = ({ isOpen, onRequestClose, toggle }) => (
+interface Props {
+  isOpen: boolean;
+  onRequestClose: () => void;
+  toggle: () => void;
+}
+
+const LoginModal: React.SFC<Props> = ({ isOpen, onRequestClose, toggle }): JSX.Element => (
   <Modal
     className="login-modal"
     isOpen={isOpen}

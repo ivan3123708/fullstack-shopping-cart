@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
@@ -7,11 +7,22 @@ import IconButton from 'material-ui/IconButton';
 import Person from 'material-ui/svg-icons/social/person';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 import Logout from 'material-ui/svg-icons/navigation/subdirectory-arrow-left';
-import ShoppingCart from 'material-ui/svg-icons/action/shopping-cart.js';
-import Input from 'material-ui/svg-icons/action/input.js';
+import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import Input from '@material-ui/icons/Input';
 import LoginModal from '../LoginModal';
 import RegisterModal from '../RegisterModal';
+import { RouteComponentProps } from 'react-router-dom';
+import { ILoggedUser } from '@state/loggedUser';
+import { ICart } from '@state/cart';
+import { target } from '../Cart/Cart';
 import '@styles/Header.css';
+
+interface Props extends RouteComponentProps {
+  history: any;
+  loggedUser: ILoggedUser;
+  cart: ICart;
+  getUser: () => void;
+}
 
 const styles = {
   menuBtn: {
@@ -24,13 +35,13 @@ const styles = {
   }
 }
 
-export class Header extends React.Component {
+export class Header extends React.Component<Props> {
   state = {
     loginModalOpen: false,
     registerModalOpen: false
   }
 
-  toggleOpen = (targetComponent) => {
+  toggleOpen = (targetComponent: target) => {
     this.setState({ [targetComponent]: !this.state[targetComponent] });
   }
 

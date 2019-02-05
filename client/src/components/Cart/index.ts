@@ -1,10 +1,11 @@
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
-import { getCart } from '@actions';
+import { getCart } from '@actions/index';
 import { selectCart } from '@selectors/cart';
+import { IState } from '@state/index';
 import Cart from './Cart';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: IState) => ({
   cart: selectCart(state)
 });
 

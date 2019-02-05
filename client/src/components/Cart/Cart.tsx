@@ -1,18 +1,32 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import numeral from 'numeral';
-import CheckoutModal from '../CheckoutModal';
-import OrderSuccessModal from '../OrderSuccessModal';
+import * as numeral from 'numeral';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import NavigateNext from 'material-ui/svg-icons/image/navigate-next';
-import RemoveShoppingCart from 'material-ui/svg-icons/action/remove-shopping-cart.js';
+import RemoveShoppingCart from '@material-ui/icons/RemoveShoppingCart';
 import Dialog from 'material-ui/Dialog';
 import Snackbar from 'material-ui/Snackbar';
+import CheckoutModal from '../CheckoutModal';
+import OrderSuccessModal from '../OrderSuccessModal';
+import { ICart } from '@typings/state/index';
+import { targetModal } from '@typings/modal';
 import '@styles/Cart.css';
 
-export class Cart extends React.Component {
+interface Props {
+  cart: ICart;
+  getCart: () => ICart;
+}
+
+interface State {
+  checkoutModalOpen: boolean;
+  orderSuccessModalOpen: boolean;
+  dialogOpen: boolean;
+  snackbarOpen: boolean;
+}
+
+class Cart extends React.Component<Props, State> {
   state = {
     checkoutModalOpen: false,
     orderSuccessModalOpen: false,
@@ -20,11 +34,14 @@ export class Cart extends React.Component {
     snackbarOpen: false
   }
 
-  toggleOpen = (targetComponent) => {
-    this.setState({ [targetComponent]: !this.state[targetComponent] });
+  toggleOpen = (target: targetModal) => {
+    this.setState((prevState: State) => ({
+      ...prevState,
+      [target]: !prevState[target]
+    }));
   }
 
-  removeItem = (itemId) => {
+  removeItem = (itemId: string) => {
     axios.put('/api/cart', {
         cartId: this.props.cart._id,
         itemId: itemId
@@ -81,12 +98,12 @@ export class Cart extends React.Component {
             <div className="info">
               <p>
                 <b>Number of items: </b>
-                {cartExists ? cart.items.reduce((acc, item) => acc += item.quantity, 0) : 0}
+                {cartExists ? cart.items.reduce((acc, item) => acc += item.quantity!, 0) : 0}
               </p>
               <p>
                 <b>Total amount: </b>
                 <span className="total">
-                  {cartExists ? numeral(cart.items.reduce((acc, item) => acc += item.product.info.price * item.quantity, 0)).format('$0,0.00') : numeral(0).format('$0,0.00')}
+                  {cartExists ? numeral(cart.items.reduce((acc, item) => acc += item.product.info.price * item.quantity!, 0)).format('$0,0.00') : numeral(0).format('$0,0.00')}
                 </span>
               </p>
             </div>
@@ -118,7 +135,6 @@ export class Cart extends React.Component {
             />
             <OrderSuccessModal
               isOpen={this.state.orderSuccessModalOpen}
-              onRequestClose={this.toggleOpen}
               toggle={this.toggleOpen}
             />
             <Dialog
@@ -162,7 +178,7 @@ export class Cart extends React.Component {
                         <td><Link to={`/product/${item.product._id}`}>{item.product.info.name}</Link></td>
                         <td>{numeral(item.product.info.price).format('$0,0.00')}</td>
                         <td>{item.quantity}</td>
-                        <td>{numeral(item.product.info.price * item.quantity).format('$0,0.00')}</td>
+                        <td>{numeral(item.product.info.price * item.quantity!).format('$0,0.00')}</td>
                         <td><button title="Remove this item from the cart" onClick={() => this.removeItem(item._id)}>X</button></td>
                       </tr>
                     );

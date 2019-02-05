@@ -2,11 +2,11 @@ import * as React from 'react';
 import * as Modal from 'react-modal';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import { User } from '@state/index';
+import { IUser } from '@typings/state/index';
 import '@styles/AccountModal.css';
 
 interface Props {
-  user: User;
+  user: IUser;
   isOpen: boolean;
   onRequestClose: () => void;
 }

@@ -21,7 +21,7 @@
       "@actions/*": ["src/actions/*"],
       "@selectors/*": ["src/selectors/*"],
       "@styles/*": ["src/styles/*"],
-      "@state/*": ["src/state/*"]
+      "@typings/*": ["src/typings/*"]
     }
   },
   "exclude": [

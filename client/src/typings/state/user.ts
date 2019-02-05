@@ -1,7 +1,7 @@
-import { Order } from './order';
+import { IOrder } from './order';
 
-export interface User {
-  orders: Order[];
+export interface IUser {
+  orders: IOrder[];
   username: string;
   email: string;
   address: string;

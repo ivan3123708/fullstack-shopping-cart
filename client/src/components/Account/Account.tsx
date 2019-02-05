@@ -1,16 +1,16 @@
 import * as React from 'react';
 import * as moment from 'moment';
 import * as numeral from 'numeral';
-import AccountModal from '../AccountModal';
+import { IUser, IOrder } from '@typings/state/index';
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 import Divider from '@material-ui/core/Divider';
-import { User, Order } from '@state/index';
+import AccountModal from '../AccountModal';
 import '@styles/Account.css';
 
 interface Props {
-  user: User;
-  getUser: () => void;
+  user: IUser;
+  getUser: () => any;
 }
 
 interface State {
@@ -79,7 +79,7 @@ class Account extends React.Component<Props, State> {
                       </tr>
                     </thead>
                     <tbody>
-                      {user.orders.map((order: Order) => {
+                      {user.orders.map((order: IOrder) => {
                         return (
                           <tr key={order.name}>
                             <td>{moment(order.dateCreated).format('ll')}</td>

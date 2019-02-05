@@ -1,14 +1,20 @@
-import React from 'react';
+import * as React from 'react';
 import { List, ListItem } from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Checkbox from 'material-ui/Checkbox';
+import { IFilters } from '@state/index';
 import '@styles/FiltersList.css';
 
-export class FiltersList extends React.Component {
-  handleCheck = (e) => {
+interface Props {
+  filters: IFilters;
+  setFilter: (name: string, value: string) => void;
+}
+
+export class FiltersList extends React.Component<Props> {
+  handleCheck = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { setFilter } = this.props;
 
-    setFilter(e.target.name, e.target.value);
+    setFilter(e.target.name, e.currentTarget.value);
   };
 
   render() {

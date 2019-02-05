@@ -1,4 +1,4 @@
-export interface Order {
+export interface IOrder {
   name: string;
   price: string;
   quantity: string;

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import FiltersList from '../FiltersList';
 import Products from '../Products';
 import '@styles/Homepage.css';
