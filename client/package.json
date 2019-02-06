@@ -43,6 +43,7 @@
     "@types/react-redux": "^7.0.1",
     "@types/react-router-dom": "^4.3.1",
     "@types/recompose": "^0.30.3",
+    "@types/redux-actions": "^2.3.1",
     "autoprefixer": "^9.1.5",
     "babel-loader": "^8.0.5",
     "babel-plugin-transform-class-properties": "^6.24.1",

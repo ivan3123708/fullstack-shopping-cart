@@ -1,6 +1,13 @@
 import { GET_CART, GET_CART_SUCCESS, GET_CART_FAIL } from '../constants';
+import { actionTypes } from '@typings/action';
+import { ICart } from '@typings/state/cart';
 
-export const initState = {
+interface IAction {
+  type: actionTypes;
+  payload?: ICart;
+}
+
+export const initState: ICart = {
   isLoading: false,
   isLoaded: false,
   _id: null,
@@ -8,7 +15,7 @@ export const initState = {
   error: null
 };
 
-const cartReducer = (state = initState, action) => {
+const cartReducer = (state = initState, action: IAction) => {
   switch(action.type) {
     case GET_CART:
       return {

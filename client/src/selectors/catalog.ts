@@ -1,12 +1,13 @@
 import { createSelector } from 'reselect';
+import { IState, ICatalogProduct, TSortBy } from '@typings/state/index';
 
-export const isCatalogLoaded = (state) => state.catalog.isLoaded;
-export const selectFilters = (state) => state.filters;
-export const selectSortBy = (state) => state.sortBy;
-export const selectProducts = (state) => state.catalog.items;
-export const selectProduct = (state, props) => state.catalog.items.find((item) => item._id == props.match.params.id);
+export const isCatalogLoaded = (state: IState) => state.catalog.isLoaded;
+export const selectFilters = (state: IState) => state.filters;
+export const selectSortBy = (state: IState) => state.sortBy;
+export const selectProducts = (state: IState) => state.catalog.items;
+export const selectProduct = (state: IState, props: any) => state.catalog.items.find((item) => item._id == props.match.params.id);
 
-export const sortProducts = (catalog, sortBy) => {
+export const sortProducts = (catalog: ICatalogProduct[], sortBy: TSortBy) => {
   switch (sortBy) {
     case 'Name: A-Z':
       return catalog.sort((a, b) => (a.info.name > b.info.name) ? 1 : ((b.info.name > a.info.name) ? -1 : 0));

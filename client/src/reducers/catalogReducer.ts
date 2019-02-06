@@ -1,17 +1,20 @@
-import {
-  INIT_CATALOG,
-  INIT_CATALOG_SUCCESS,
-  INIT_CATALOG_FAIL
-} from '../constants';
+import { INIT_CATALOG, INIT_CATALOG_SUCCESS, INIT_CATALOG_FAIL } from '../constants';
+import { ICatalog } from '@typings/state/index';
+import { actionTypes } from '@typings/action';
 
-const initState = {
+interface IAction {
+  type: actionTypes;
+  payload: ICatalog;
+}
+
+const initState: ICatalog = {
   isLoading: false,
   isLoaded: false,
   items: [],
   error: null
 };
 
-const catalogReducer = (state = initState, action) => {
+const catalogReducer = (state = initState, action: IAction) => {
   switch (action.type) {
     case INIT_CATALOG:
       return {

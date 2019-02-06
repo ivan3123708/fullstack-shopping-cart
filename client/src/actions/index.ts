@@ -10,9 +10,10 @@ import {
   GET_CART_SUCCESS,
   GET_CART_FAIL,
   SET_FILTER,
-  CLEAR_FILTER,
+  CLEAR_FILTERS,
   SET_SORT_BY,
 } from '../constants';
+import { filterTypes, filterValues } from '@typings/filters';
 
 export const initCatalog = createAction(INIT_CATALOG);
 export const initCatalogSuccess = createAction(INIT_CATALOG_SUCCESS);
@@ -26,7 +27,10 @@ export const getCart = createAction(GET_CART);
 export const getCartSuccess = createAction(GET_CART_SUCCESS);
 export const getCartFail = createAction(GET_CART_FAIL);
 
-export const setFilter = createAction(SET_FILTER, (filterType, filterValue) => ({ filterType, filterValue }));
-export const clearFilters = createAction(CLEAR_FILTER);
+export const setFilter = createAction(
+  SET_FILTER,
+  (filterType: filterTypes, filterValue: filterValues) => ({ filterType, filterValue })
+);
+export const clearFilters = createAction(CLEAR_FILTERS);
 
 export const setSortBy = createAction(SET_SORT_BY);
