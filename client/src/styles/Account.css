@@ -5,7 +5,12 @@
   border: 1px solid #ffffff00;
 }
 
-.account-container h1 {
+.account-container .top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.account-container .top h1 {
   margin-top: 100px;
   margin-bottom: 30px;
 }
@@ -23,7 +28,7 @@
 
 .account-info {
   width: 50%;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .account-info .btn {

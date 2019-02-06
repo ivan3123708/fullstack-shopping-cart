@@ -1,21 +1,29 @@
 const path = require('path');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: ['babel-regenerator-runtime', './src/index.js'],
+  entry: ['babel-regenerator-runtime', './src/index.tsx'],
   output: {
     path: path.resolve(__dirname, 'public', 'dist'),
     filename: 'bundle.js'
   },
   resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+    plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
     alias: {
       '@actions': path.resolve(__dirname, 'src/actions'),
       '@selectors': path.resolve(__dirname, 'src/selectors'),
-      '@styles': path.resolve(__dirname, 'src/styles')
+      '@styles': path.resolve(__dirname, 'src/styles'),
+      '@typings': path.resolve(__dirname, 'src/typings')
     }
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        loader: 'ts-loader'
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
