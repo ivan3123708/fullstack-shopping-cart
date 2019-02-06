@@ -3,7 +3,7 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: ['babel-regenerator-runtime', './src/index.js'],
+  entry: ['babel-regenerator-runtime', './src/index.tsx'],
   output: {
     path: path.resolve(__dirname, 'public', 'dist'),
     filename: 'bundle.js'

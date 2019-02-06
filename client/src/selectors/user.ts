@@ -1,3 +1,3 @@
 import { IState, IUser } from '@typings/state/index';
 
-export const selectUser = (state: IState): IUser => state.loggedUser.user;
+export const selectUser = (state: IState): IUser | null => state.loggedUser.user;
