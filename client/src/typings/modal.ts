@@ -1,16 +1,17 @@
 import { ICartProduct } from './state/index';
 
-export type targetModal =
-  'snackbarOpen' |
-  'checkoutModalOpen' |
-  'orderSuccessModalOpen' |
-  'dialogOpen' |
-  'loginModalOpen' |
-  'registerModalOpen';
+export type modal =
+  null |
+  'snackbar' |
+  'checkout' |
+  'orderSuccess' |
+  'dialog' |
+  'login' |
+  'register';
 
 export interface ModalProps {
   isOpen: boolean;
-  toggle: (targetComponent: targetModal) => void;
+  setActiveModal: (modal: modal) => void;
   onRequestClose?: (event: MouseEvent) => void;
   cart?: ICartProduct[];
   makeOrder?: () => void;

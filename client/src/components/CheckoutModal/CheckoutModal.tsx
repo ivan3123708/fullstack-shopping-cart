@@ -6,11 +6,11 @@ import { ModalProps } from '@typings/modal';
 import Button from '@material-ui/core/Button';
 import '@styles/CheckoutModal.css';
 
-const CheckoutModal: React.SFC<ModalProps> = ({ cart, isOpen, toggle, makeOrder }): JSX.Element => (
+const CheckoutModal: React.SFC<ModalProps> = ({ cart, isOpen, setActiveModal, makeOrder }): JSX.Element => (
   <Modal
     className="checkout-modal"
     isOpen={isOpen}
-    onRequestClose={() => toggle('checkoutModalOpen')}
+    onRequestClose={() => setActiveModal(null)}
   >
     <div className="order">
       <h1>Checkout Information</h1>
@@ -46,7 +46,7 @@ const CheckoutModal: React.SFC<ModalProps> = ({ cart, isOpen, toggle, makeOrder 
       <div className="btns">
         <Button
           className="btn"
-          onClick={() => toggle('checkoutModalOpen')}>
+          onClick={() => setActiveModal(null)}>
           Cancel
         </Button>
         <Button

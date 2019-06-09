@@ -41,8 +41,8 @@ class ProductDetails extends React.Component<Props, State> {
     }));
   }
 
-  addToCart = () => {
-    axios.post('/api/cart', this.state.postData);
+  addToCart = async () => {
+    await axios.post('/api/cart', this.state.postData);
 
     this.setState({ snackbarOpen: true });
   }

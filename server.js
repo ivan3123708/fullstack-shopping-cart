@@ -12,9 +12,9 @@ const cartRoutes = require('./routes/cartRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const User = require('./models/User');
 const privates = require('./config/privates');
+
 // Uncomment to seed products to the database
 // const seedProducts = require('./seeds/products');
-
 // seedProducts();
 
 const publicPath = path.join(__dirname, 'client', 'public');

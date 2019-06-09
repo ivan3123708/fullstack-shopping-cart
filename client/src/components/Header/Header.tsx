@@ -12,7 +12,7 @@ import Input from '@material-ui/icons/Input';
 import { RouteComponentProps } from 'react-router-dom';
 import { ILoggedUser } from '@typings/state/loggedUser';
 import { ICart } from '@typings/state/cart';
-import { targetModal } from '@typings/modal';
+import { modal } from '@typings/modal';
 import LoginModal from '../LoginModal';
 import RegisterModal from '../RegisterModal';
 import '@styles/Header.css';
@@ -36,19 +36,11 @@ const styles = {
 
 class Header extends React.Component<Props> {
   state = {
-    loginModalOpen: false,
-    registerModalOpen: false
+    activeModal: null
   }
 
-  toggleOpen = (targetComponent: targetModal) => {
-    this.setState({ [targetComponent]: !this.state[targetComponent] });
-  }
-
-  switchLoginRegister = () => {
-    this.setState({ 
-      loginModalOpen: !this.state.loginModalOpen,
-      registerModalOpen: !this.state.registerModalOpen 
-    });
+  setActiveModal = (modal: modal) => {
+    this.setState({ activeModal: modal });
   }
 
   componentDidMount() {
@@ -100,19 +92,16 @@ class Header extends React.Component<Props> {
                     iconStyle={{ color: '#fff' }}
                   >
                     <FlatButton
-                      // style={styles.iconMenuBtn}
                       label="ACCOUNT"
                       icon={<Person />}
                       containerElement={<Link to="/account" />}
                     /><br />
                     <FlatButton
-                      // style={styles.iconMenuBtn}
                       label="CART"
                       icon={<ShoppingCart />}
                       containerElement={<Link to="/cart" />}
                     /><br />
                     <FlatButton
-                      // style={styles.iconMenuBtn}
                       label="LOGOUT"
                       icon={<Logout />}
                       containerElement={<a href="/auth/logout" />}
@@ -124,19 +113,19 @@ class Header extends React.Component<Props> {
                 label="LOGIN"
                 labelPosition="before"
                 icon={<Input/>}
-                onClick={() => this.toggleOpen('loginModalOpen')}
+                onClick={() => this.setActiveModal('login')}
               />
           }
         />
         <LoginModal
-          isOpen={this.state.loginModalOpen}
-          onRequestClose={() => this.toggleOpen('loginModalOpen')}
-          toggle={this.switchLoginRegister}
+          isOpen={this.state.activeModal === 'login'}
+          onRequestClose={() => this.setActiveModal(null)}
+          setActiveModal={this.setActiveModal}
         />
         <RegisterModal
-          isOpen={this.state.registerModalOpen}
-          onRequestClose={() => this.toggleOpen('registerModalOpen')}
-          toggle={this.switchLoginRegister}
+          isOpen={this.state.activeModal === 'register'}
+          onRequestClose={() => this.setActiveModal('register')}
+          setActiveModal={this.setActiveModal}
         />
       </div>
     )

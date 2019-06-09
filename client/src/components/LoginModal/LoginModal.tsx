@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { ModalProps } from '@typings/modal';
 import '@styles/LoginModal.css';
 
-const LoginModal: React.SFC<ModalProps> = ({ isOpen, onRequestClose, toggle }): JSX.Element => (
+const LoginModal: React.SFC<ModalProps> = ({ isOpen, onRequestClose, setActiveModal }): JSX.Element => (
   <Modal
     className="login-modal"
     isOpen={isOpen}
@@ -31,7 +31,7 @@ const LoginModal: React.SFC<ModalProps> = ({ isOpen, onRequestClose, toggle }): 
         primary={true}
         type="submit"
       />
-      <p>Don't have an account yet? <a onClick={() => toggle}>Register here</a>.</p>
+      <p>Don't have an account yet? <a onClick={() => setActiveModal('register')}>Register here</a>.</p>
     </form>
   </Modal>
 );

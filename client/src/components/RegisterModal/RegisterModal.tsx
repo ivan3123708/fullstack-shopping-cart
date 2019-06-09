@@ -5,9 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { ModalProps } from '@typings/modal';
 import '@styles/RegisterModal.css';
 
-
-
-const RegisterModal = ({ isOpen, onRequestClose, toggle }: ModalProps) => (
+const RegisterModal = ({ isOpen, onRequestClose, setActiveModal }: ModalProps) => (
   <Modal
     className="register-modal"
     isOpen={isOpen}
@@ -48,7 +46,7 @@ const RegisterModal = ({ isOpen, onRequestClose, toggle }: ModalProps) => (
         primary={true} 
         type="submit"
       />
-      <p>Already have an account? <a onClick={() => toggle}>Login here</a>.</p>
+      <p>Already have an account? <a onClick={() => setActiveModal('login')}>Login here</a>.</p>
     </form>
   </Modal>
 );

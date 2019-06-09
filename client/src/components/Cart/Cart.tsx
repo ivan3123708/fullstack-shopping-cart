@@ -11,7 +11,7 @@ import Snackbar from 'material-ui/Snackbar';
 import CheckoutModal from '../CheckoutModal';
 import OrderSuccessModal from '../OrderSuccessModal';
 import { ICart } from '@typings/state/index';
-import { targetModal } from '@typings/modal';
+import { modal } from '@typings/modal';
 import '@styles/Cart.css';
 
 interface Props {
@@ -20,50 +20,39 @@ interface Props {
 }
 
 interface State {
-  checkoutModalOpen: boolean;
-  orderSuccessModalOpen: boolean;
-  dialogOpen: boolean;
-  snackbarOpen: boolean;
+  activeModal: modal
 }
 
 class Cart extends React.Component<Props, State> {
   state = {
-    checkoutModalOpen: false,
-    orderSuccessModalOpen: false,
-    dialogOpen: false,
-    snackbarOpen: false
+    activeModal: null
   }
 
-  toggleOpen = (target: targetModal) => {
-    this.setState((prevState: State) => ({
-      ...prevState,
-      [target]: !prevState[target]
-    }));
+  setActiveModal = (modal: modal) => {
+    this.setState({ activeModal: modal });
   }
 
-  removeItem = (itemId: string) => {
-    axios.put('/api/cart', {
-        cartId: this.props.cart._id,
-        itemId: itemId
-      })
-      .then(() => {
-        this.props.getCart();
-        this.toggleOpen('snackbarOpen');
-        setTimeout(() => {
-          this.toggleOpen('snackbarOpen');
-        }, 4000);
-      });
+  removeItem = async (itemId: string) => {
+    await axios.put('/api/cart', {
+      cartId: this.props.cart._id,
+      itemId: itemId
+    });
+
+    this.props.getCart();
+
+    this.setActiveModal('snackbar');
+    setTimeout(() => {
+      this.setActiveModal(null);
+    }, 4000);
   }
 
-  emptyCart = () => {
-    axios.delete('/api/cart', { params: { id: this.props.cart._id } })
-      .then(() => {
-        this.setState({ dialogOpen: false });
-        this.props.getCart();
-      });
+  emptyCart = async () => {
+    await axios.delete('/api/cart', { params: { id: this.props.cart._id } });
+    await this.setState({ activeModal: null });
+    await this.props.getCart();
   }
 
-  makeOrder = () => {
+  makeOrder = async () => {
     const order = this.props.cart.items.map((item) => {
       let order = {
         name: item.product.info.name,
@@ -74,12 +63,10 @@ class Cart extends React.Component<Props, State> {
       return order;
     });
 
-    axios.post('/api/order', { order: order })
-      .then(() => {
-        this.toggleOpen('checkoutModalOpen');
-        this.toggleOpen('orderSuccessModalOpen');
-        this.emptyCart();
-      });
+    await axios.post('/api/order', { order: order });
+    await this.emptyCart();
+    
+    this.setActiveModal('orderSuccess');
   }
 
   componentWillMount() {
@@ -109,7 +96,7 @@ class Cart extends React.Component<Props, State> {
             </div>
             <div className="btns">
               <RaisedButton
-                onClick={() => this.toggleOpen('checkoutModalOpen')}
+                onClick={() => this.setActiveModal('checkout')}
                 className="btn"
                 label="Checkout"
                 labelPosition="before"
@@ -118,7 +105,7 @@ class Cart extends React.Component<Props, State> {
                 disabled={!cartExists}
               />
               <RaisedButton
-                onClick={() => this.toggleOpen('dialogOpen')}
+                onClick={() => this.setActiveModal('dialog')}
                 className="btn"
                 label="Empty cart"
                 labelPosition="before"
@@ -128,14 +115,14 @@ class Cart extends React.Component<Props, State> {
               />
             </div>
             <CheckoutModal
-              isOpen={this.state.checkoutModalOpen}
-              onRequestClose={() => this.toggleOpen}
-              toggle={this.toggleOpen}
+              isOpen={this.state.activeModal === 'checkout'}
+              onRequestClose={() => this.setActiveModal}
+              setActiveModal={this.setActiveModal}
               makeOrder={this.makeOrder}
             />
             <OrderSuccessModal
-              isOpen={this.state.orderSuccessModalOpen}
-              toggle={this.toggleOpen}
+              isOpen={this.state.activeModal === 'orderSuccess'}
+              setActiveModal={this.setActiveModal}
             />
             <Dialog
               title="Are you sure that you want to empty your cart?"
@@ -143,7 +130,7 @@ class Cart extends React.Component<Props, State> {
                 <FlatButton
                   label="Cancel"
                   primary={true}
-                  onClick={() => this.toggleOpen('dialogOpen')}
+                  onClick={() => this.setActiveModal(null)}
                 />,
                 <FlatButton
                   label="Yes"
@@ -152,7 +139,7 @@ class Cart extends React.Component<Props, State> {
                 />,
               ]}
               modal={true}
-              open={this.state.dialogOpen}
+              open={this.state.activeModal === 'dialog'}
             >
               All items will be removed.
             </Dialog>
@@ -188,7 +175,7 @@ class Cart extends React.Component<Props, State> {
               <h1>No items in the cart.</h1>
             }
             <Snackbar
-              open={this.state.snackbarOpen}
+              open={this.state.activeModal === 'snackbar'}
               message="Item removed from your cart."
               bodyStyle={{ 'textAlign': 'center' }}
             />
