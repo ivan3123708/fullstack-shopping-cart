@@ -4,7 +4,7 @@ This was my personal project I started back in January 2018, and its purpose was
 
 <strong>It isn't maintained anymore</strong>.
 
-Live demo won't work because the service database was hosted on has migrated and it doesn't exist anymore, but you can try setting up the database on your machine and running it locally.
+Live demo won't work because the service database was hosted on has migrated and it doesn't exist anymore, but you can try setting up the database on your machine and running it locally. You can also look at the code if you want to learn and you are new to these technologies, as I was when I started this little project.
 
 # MERN stack shopping cart
 
