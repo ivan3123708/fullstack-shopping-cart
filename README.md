@@ -1,3 +1,11 @@
+# Disclaimer
+
+This was my personal project I started back in January 2018, and its purpose was to help me exercise React, Redux, Typescript, Node, MongoDB, hosting on Heroku etc.
+
+<strong>It isn't maintained anymore</strong>.
+
+Live demo won't work because the service database was hosted on has migrated and it doesn't exist anymore, but you can try setting up the database on your machine and running it locally.
+
 # MERN stack shopping cart
 
 <img src="githubImg/mobile_shop.jpg"/>
