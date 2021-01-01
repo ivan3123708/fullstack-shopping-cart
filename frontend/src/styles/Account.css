@@ -1,0 +1,87 @@
+.account-container {
+  min-height: 100vh;
+  margin: 0 6px;
+  margin-top: -72px;
+  border: 1px solid #ffffff00;
+}
+
+.account-container .top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.account-container .top h1 {
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+.loader {
+  margin: 20px auto;
+  color: #00BCD4;
+  text-align: center;
+}
+
+.account {
+  display: flex;
+  flex-direction: row;
+}
+
+.account-info {
+  width: 50%;
+  margin-bottom: 30px;
+}
+
+.account-info .btn {
+  margin-top: 20px;
+}
+
+.account-history {
+  width: 50%;
+  margin-bottom: 50px;
+}
+
+.account-history h1 {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.account-history .orders table {
+  width: 100%;
+  margin: 10px auto;
+  border-spacing: 0;
+}
+
+.orders th {
+  padding: 5px 5px;
+  background-color: #00BCD4;
+  color: white;
+  text-align: left;
+}
+
+.orders td {
+  padding: 12px 5px;
+  text-align: left;
+  border-bottom: 1px solid #00BCD4;
+}
+
+.orders td:nth-child(4) {
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .account-container h1 {
+    font-size: 24px;
+  }
+
+  .account {
+    flex-direction: column;
+  }
+
+  .account-info {
+    width: 100%;
+  }
+
+  .account-history {
+    width: 100%;
+  }
+}

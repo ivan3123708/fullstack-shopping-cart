@@ -1,0 +1,32 @@
+.order-success-modal {
+  width: 90%;
+  max-width: 385px;
+  height: 410px;
+  margin: auto;
+  margin-top: 100px;
+  background: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  outline: none;
+}
+
+.order-success-modal .success {
+  width: 70%;
+  margin: auto;
+  margin-top: 10px;
+  text-align: center;
+  font-family: 'Roboto';
+}
+
+.order-success-modal h1 {
+  color: #00BCD4;
+}
+
+.order-success-modal img {
+  max-height: 100px;
+  margin: 30px 0;
+}
+
+.order-success-modal .btn {
+  margin-top: 20px;
+}

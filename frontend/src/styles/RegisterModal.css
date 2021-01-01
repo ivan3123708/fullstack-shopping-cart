@@ -1,0 +1,44 @@
+.register-modal {
+  width: 90%;
+  max-width: 385px;
+  height: 570px;
+  margin: auto;
+  margin-top: 100px;
+  background: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  outline: none;
+}
+
+.register-modal .form {
+  width: 90%;
+  max-width: 360px;
+  margin: auto;
+  margin-top: 10px;
+  text-align: center;
+  font-family: 'Roboto';
+}
+
+.register-modal .form h1 {
+  color: #00BCD4;
+}
+
+.register-modal .form .btn {
+  margin: 20px auto;
+}
+
+.register-modal .form p {
+  font-style: italic;
+}
+
+.register-modal .form a {
+  color: #00BCD4;
+  cursor: pointer;
+}
+
+@media (max-height: 700px) {
+  .register-modal {
+    height: 500px;
+    overflow: scroll;
+  }
+}

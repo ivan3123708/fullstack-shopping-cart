@@ -1,0 +1,31 @@
+{
+  "name": "fullstack-shopping-cart",
+  "version": "1.0.0",
+  "description": "Mobile phones shopping cart",
+  "main": "index.js",
+  "author": "Ivan Jakimovski",
+  "license": "ISC",
+  "engines": {
+    "node": "8.10.0"
+  },
+  "scripts": {
+    "start:dev": "nodemon index.js",
+    "start:client": "npm run start:dev --prefix client",
+    "start:dev-full": "concurrently \"npm run start:dev\" \"npm run start:client\"",
+    "install:client": "npm install --prefix client",
+    "build": "npm run build --prefix client",
+    "start": "node index.js",
+    "heroku-postbuild": "npm run install:client && npm run build"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.18.2",
+    "concurrently": "^3.5.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.20",
+    "mongoose": "^5.11.9"
+  }
+}
