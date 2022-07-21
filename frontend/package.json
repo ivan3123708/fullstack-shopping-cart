@@ -30,7 +30,7 @@
     "redux-persist": "^6.0.0",
     "redux-saga": "^1.0.0",
     "reselect": "^4.0.0",
-    "terser": "^3.14.1"
+    "terser": "^4.8.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
