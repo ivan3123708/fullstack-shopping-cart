@@ -56,16 +56,24 @@ router.get('/', checkToken, (req, res) => {
 });
 
 router.put('/', checkToken, jsonParser, (req, res) => {
-  Cart.findById(req.body.cartId)
+  Cart.findOne({ _id: req.body.cartId, user: req.user._id })
     .then((foundCart) => {
+      if (!foundCart) {
+        return res.sendStatus(404);
+      }
       foundCart.items = foundCart.items.filter((item) => item._id != req.body.itemId);
       foundCart.save(() => res.end());
     });
 });
 
 router.delete('/', checkToken, (req, res) => {
-  Cart.findByIdAndRemove(req.query.id)
-    .then(() => res.end())
+  Cart.findOneAndRemove({ _id: req.query.id, user: req.user._id })
+    .then((removedCart) => {
+      if (!removedCart) {
+        return res.sendStatus(404);
+      }
+      res.end();
+    })
     .catch((err) => res.send(err));
 });
 
